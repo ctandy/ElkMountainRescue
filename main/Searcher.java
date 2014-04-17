@@ -6,26 +6,28 @@ public abstract class Searcher {
 	private String name;
 	private double speed;
 	private double direction; // in degrees counterclockwise from positive x-axis
-	private Cell index;
+	private int row, col;
 	private double radius;
 	
 	public Searcher(){
 		name = new String();
 		speed = 0.0;
 		direction = 0.0;
-		index = null;
+		row = 0;
+		col = 0;
 		radius = 0.0;
 	}
 	
-	public Searcher(String n, double s, double d, double r){
+	public Searcher(String n, double s, double d, double r, int row, int col){
 		name = n;
 		speed = s;
 		direction = d;
-		index = null;
 		radius = r;
+		this.row = row;
+		this.col = col;
 	}
 	
-	public abstract void move(Rescue r); //Should be implemented in part I following TDD (fail-pass)
+	public abstract void move(Grid g); //Should be implemented in part I following TDD (fail-pass)
 	// move calls setRow and setCol after finding those end coordinates
 	public void draw(Graphics g){} //Implemented in part II by the child classes
 	
@@ -47,7 +49,7 @@ public abstract class Searcher {
 	 * if not you'll need to override hashcode and equals
 	 * in the cell class
 	 */
-	public void setIndex(Cell index) {
+	public void setIndex(int r, int c) {
 		this.index = index;
 	}
 
