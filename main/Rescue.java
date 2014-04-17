@@ -7,13 +7,11 @@ import java.util.ArrayList;
 public class Rescue {
 	private ArrayList<Searcher> searchers = new ArrayList<Searcher>();
 	private ArrayList<Cell> cells = new ArrayList<Cell>();
-	public static int MAX_ROW = 10; 
-	public static int MAX_COL = 10;
+	public static int MAX_ROW = 0; 
+	public static int MAX_COL = 0;
 
 	public Rescue(int row, int col){
 		this.initializeCells();
-		this.setMAX_ROW(row);
-		this.setMAX_COL(col);
 	}
 	
 	public void initializeCells(){
@@ -23,7 +21,7 @@ public class Rescue {
 	}
 	
 	public void addSearcher(Searcher s){ //called from a MouseListener for the 'add' button
-		this.getSearchers().add(s);
+		
 	}
 	
 	public void importBackground(){} //Part of GUI, done in part 2
