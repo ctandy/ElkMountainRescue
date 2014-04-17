@@ -9,6 +9,7 @@ public abstract class Searcher {
 	private int row, col;
 	private double radius;
 	
+
 	public Searcher(){
 		name = new String();
 		speed = 0.0;
@@ -44,6 +45,7 @@ public abstract class Searcher {
 		this.direction = direction;
 	}
 
+
 	/*
 	 * should we pass in a pointer to the right index?
 	 * if not you'll need to override hashcode and equals
@@ -52,6 +54,7 @@ public abstract class Searcher {
 	public void setIndex(int r, int c) {
 		this.row = r;
 		this.col = c;
+
 	}
 
 	public void setRadius(double radius) {

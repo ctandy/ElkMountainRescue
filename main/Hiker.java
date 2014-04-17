@@ -1,7 +1,8 @@
 package main;
 
-public class Hiker extends Searcher {
+import java.awt.Graphics;
 
+public class Hiker extends Searcher{
 	private static Double RADIUS = 0.0;
 	
 	public Hiker(){
@@ -15,6 +16,10 @@ public class Hiker extends Searcher {
 	@Override
 	public void move(Grid g) {
 		// TODO Auto-generated method stub
+	}
+	
+	@Override
+	public void draw(Graphics g){
 		
 	}
 }

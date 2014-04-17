@@ -1,7 +1,8 @@
 package main;
 
-public class Helicopter extends Searcher {
+import java.awt.Graphics;
 
+public class Helicopter extends Searcher {
 	private static Double RADIUS=0.0;
 	
 	public Helicopter(){

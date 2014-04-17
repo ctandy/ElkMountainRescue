@@ -3,6 +3,7 @@ package main;
 import java.awt.Graphics;
 
 public class Dog extends Searcher {
+	
 	private static double RADIUS = 0.0;  
 	
 	public Dog(){

@@ -16,7 +16,7 @@ public class SearcherTest {
 	@BeforeClass
 	public void setUp(){
 		hiker = new Hiker();
-		dog = new Dog();
+		dog = new Dog(null, 0, 0, null);
 		helicopter = new Helicopter();
 	}
 
