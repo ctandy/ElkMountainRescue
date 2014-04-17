@@ -18,9 +18,4 @@ public class Dog extends Searcher {
 		
 	}
 
-	@Override
-	public void move(Grid g) {
-		// TODO Auto-generated method stub
-		
-	}
 }
