@@ -16,7 +16,13 @@ public class GridTest {
 		testing = new Grid();
 		testing.loadConfigFiles();
 	}
-
+	
+	@Test
+	public void testDimensions() {
+		int expected = 10000;
+		int actual = (testing.getNumRows() * testing.getNumColumns());
+		Assert.assertEquals(expected, actual);
+	}
 	@Test
 	public void testCalcIndex() {
 		int expected = 173;
