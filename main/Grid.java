@@ -19,7 +19,7 @@ public class Grid {
 		cells = new ArrayList<Cell>();
 		for (int i = 0; i < MAX_ROW; i++){
 			for (int j = 0; j < MAX_COL; j++){
-				cells.add(new Cell(i, j));
+				cells.add(new NormalCell(i, j));
 			}
 		}
 	}

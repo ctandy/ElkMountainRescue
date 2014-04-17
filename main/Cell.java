@@ -2,8 +2,10 @@ package main;
 
 import java.awt.Color;
 
-//cell uses abstraction so that the program can be upgraded as needed.
-//For instance if they don't want to send searchers into dangerous areas a new type of cell could be created for that easily
+//cell uses abstraction so that the program can be adapted as needed.
+//For instance if they don't want to send searchers into dangerous areas 
+//a new type of cell could be created for that easily
+//For now only NormalCell will be used
 public abstract class Cell {
 	private int row, col;
 	private boolean searched = false;
@@ -26,7 +28,7 @@ public abstract class Cell {
 	public boolean isSearched() {
 		return searched;
 	}
-	public void setSearched(boolean searched) {
+	public void setSearched(boolean searched) {// for testing purposes
 		if (searched) 
 			this.color = Color.YELLOW;
 		else this.color = null;
