@@ -6,7 +6,7 @@ public class Searcher {
 	private String name;
 	private double speed;
 	private double direction;
-	private int index;
+	private Cell index;
 	private double radius;
 	
 	public Searcher(){
@@ -14,7 +14,7 @@ public class Searcher {
 	}
 	
 	public void move(){} //Should be implemented in part I following TDD (fail-pass)
-	
+	// move calls setRow and setCol after finding those end coordinates
 	public void draw(Graphics g){} //Implemented in part II by the child classes
 	
 	
@@ -30,7 +30,7 @@ public class Searcher {
 		this.direction = direction;
 	}
 
-	public void setIndex(int index) {
+	public void setIndex(Cell index) {
 		this.index = index;
 	}
 
@@ -50,7 +50,7 @@ public class Searcher {
 		return direction;
 	}
 
-	public int getIndex() {
+	public Cell getIndex() {
 		return index;
 	}
 
