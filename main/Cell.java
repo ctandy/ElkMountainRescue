@@ -4,13 +4,26 @@ package main;
 public class Cell {
 	private int row, col;
 	
-	
 	public Cell(int r, int c) {
 		this.row = r;
 		this.col = c;
 	}
+	
 	public boolean equals(){//Test and implement this for part 1
 		return false;
+	}
+	
+	public int getRow() {
+		return row;
+	}
+	public void setRow(int row) {
+		this.row = row;
+	}
+	public int getCol() {
+		return col;
+	}
+	public void setCol(int col) {
+		this.col = col;
 	}
 
 }

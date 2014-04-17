@@ -6,9 +6,11 @@ import java.util.ArrayList;
 
 public class Rescue {
 	private ArrayList<Searcher> searchers;
+	private Grid grid;
 
-	public Rescue(){
+	public Rescue() throws BadConfigFormatException{
 		searchers = new ArrayList<Searcher>();
+		grid = new Grid();
 	}
 	
 	public void addSearcher(Searcher s){ //called from a MouseListener for the 'add' button
@@ -19,6 +21,10 @@ public class Rescue {
 
 	public ArrayList<Searcher> getSearchers() {
 		return searchers;
+	}
+	
+	public Grid getGrid(){
+		return grid;
 	}
 	
 	public static void main(String[] args) {
