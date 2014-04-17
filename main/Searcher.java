@@ -25,7 +25,7 @@ public abstract class Searcher {
 		radius = r;
 	}
 	
-	public abstract void move(); //Should be implemented in part I following TDD (fail-pass)
+	public abstract void move(Rescue r); //Should be implemented in part I following TDD (fail-pass)
 	// move calls setRow and setCol after finding those end coordinates
 	public void draw(Graphics g){} //Implemented in part II by the child classes
 	
@@ -42,6 +42,11 @@ public abstract class Searcher {
 		this.direction = direction;
 	}
 
+	/*
+	 * should we pass in a pointer to the right index?
+	 * if not you'll need to override hashcode and equals
+	 * in the cell class
+	 */
 	public void setIndex(Cell index) {
 		this.index = index;
 	}
