@@ -17,6 +17,14 @@ public abstract class Searcher {
 		radius = 0.0;
 	}
 	
+	public Searcher(String n, double s, double d, double r){
+		name = n;
+		speed = s;
+		direction = d;
+		index = null;
+		radius = r;
+	}
+	
 	public abstract void move(); //Should be implemented in part I following TDD (fail-pass)
 	// move calls setRow and setCol after finding those end coordinates
 	public void draw(Graphics g){} //Implemented in part II by the child classes
