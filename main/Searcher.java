@@ -50,7 +50,8 @@ public abstract class Searcher {
 	 * in the cell class
 	 */
 	public void setIndex(int r, int c) {
-		this.index = index;
+		this.row = r;
+		this.col = c;
 	}
 
 	public void setRadius(double radius) {
@@ -69,8 +70,12 @@ public abstract class Searcher {
 		return direction;
 	}
 
-	public Cell getIndex() {
-		return index;
+	public int getRow() {
+		return row;
+	}
+	
+	public int getCol(){
+		return col;
 	}
 
 	public double getRadius() {
