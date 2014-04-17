@@ -9,6 +9,8 @@ public class Cell {
 		this.row = r;
 		this.col = c;
 	}
-	
+	public boolean equals(){//Test and implement this for part 1
+		return false;
+	}
 
 }
