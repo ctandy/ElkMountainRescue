@@ -1,39 +1,70 @@
 package test;
 
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
 import main.Dog;
 import main.Helicopter;
 import main.Hiker;
+import main.Searcher;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class SearcherTest {
+	private ArrayList<Searcher> searchers;
 	private Hiker hiker;
 	private Dog dog;
 	private Helicopter helicopter;
 	
 	@BeforeClass
 	public void setUp(){
-		hiker = new Hiker();
-		dog = new Dog();
-		helicopter = new Helicopter();
+		searchers.add(new Hiker());
+		searchers.add(new Dog());
+		searchers.add(new Helicopter());
 	}
 
 	@Test
 	public void searchersHaveName(){
-		String hikerName = "Hiker1";
-		String dogName = "Dog1";
-		String heliName = "Helicopter1";
+		ArrayList names = new ArrayList<String>();
+		names.add("Hiker1");
+		names.add("Dog1");
+		names.add("Helicopter1");
 		
-		hiker.setName(hikerName);
-		dog.setName(dogName);
-		helicopter.setName(heliName);
+		for(int i=0; i<searchers.size(); i++){
+			searchers.get(i).setName(names.get(i).toString());
+		}
 		
-		assertEquals(hikerName, hiker.getName());
-		assertEquals(dogName, dog.getName());
-		assertEquals(heliName, helicopter.getName());
+		for(int i=0; i<searchers.size(); i++){
+			assertEquals(names.get(i), searchers.get(i).getName());
+		}
 		
 	}
 
+	//searchers can share a cell
+	@Test
+	public void searchersHaveLocation(){
+		int testRow = 0;
+		int testColumn = 0;
+		
+		hiker.setIndex(testRow, testColumn);
+		dog.setIndex(testRow, testColumn);
+		helicopter.setIndex(testRow, testColumn);
+		
+		assertEquals(testRow, hiker.getRow());
+		assertEquals(testColumn, hiker.getCol());
+		assertEquals(testRow, dog.getRow());
+		assertEquals(testColumn, dog.getCol());
+		assertEquals(testRow, helicopter.getRow());
+		assertEquals(testColumn, helicopter.getCol());
+		
+		hiker.setIndex(++testRow, testColumn)
+		assertEquals(testRow, hiker.getRow());
+		assertEquals(testColumn, hiker.getCol());
+		
+		dog.setIndex(testRow, ++testColumn);
+		assertEquals(testRow, dog.getRow());
+		assertEquals(testColumn, dog.getCol());
+	}
 }
