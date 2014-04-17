@@ -30,6 +30,7 @@ public abstract class Searcher {
 	
 	public abstract void move(Grid g); //Should be implemented in part I following TDD (fail-pass)
 	// move calls setRow and setCol after finding those end coordinates
+
 	public void draw(Graphics g){} //Implemented in part II by the child classes
 	
 	
@@ -54,8 +55,8 @@ public abstract class Searcher {
 	public void setIndex(int r, int c) {
 		this.row = r;
 		this.col = c;
-
 	}
+
 
 	public void setRadius(double radius) {
 		this.radius = radius;

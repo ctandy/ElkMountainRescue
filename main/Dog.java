@@ -24,4 +24,5 @@ public class Dog extends Searcher {
 		// TODO Auto-generated method stub
 		
 	}
+
 }
