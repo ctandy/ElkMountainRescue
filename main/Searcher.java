@@ -2,30 +2,18 @@ package main;
 
 import java.awt.Graphics;
 
-public abstract class Searcher {
+public class Searcher {
 	private String name;
 	private double speed;
 	private double direction; // in degrees counterclockwise from positive x-axis
 	private Cell index;
 	private double radius;
 	
-	public Searcher(){
-		name = new String();
-		speed = 0.0;
-		direction = 0.0;
-		index = null;
-		radius = 0.0;
-	}
+	public Searcher(){}
 	
-	public Searcher(String n, double s, double d, double r){
-		name = n;
-		speed = s;
-		direction = d;
-		index = null;
-		radius = r;
-	}
-	
-	public abstract void move(Rescue r); //Should be implemented in part I following TDD (fail-pass)
+	public void move(Rescue r){
+		
+	}//Should be implemented in part I following TDD (fail-pass)
 	// move calls setRow and setCol after finding those end coordinates
 	public void draw(Graphics g){} //Implemented in part II by the child classes
 	
@@ -42,11 +30,6 @@ public abstract class Searcher {
 		this.direction = direction;
 	}
 
-	/*
-	 * should we pass in a pointer to the right index?
-	 * if not you'll need to override hashcode and equals
-	 * in the cell class
-	 */
 	public void setIndex(Cell index) {
 		this.index = index;
 	}
