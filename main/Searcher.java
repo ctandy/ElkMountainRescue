@@ -1,5 +1,62 @@
 package main;
 
-public class Searcher {
+import java.awt.Graphics;
 
+public class Searcher {
+	private String name;
+	private double speed;
+	private double direction;
+	private int index;
+	private double radius;
+	
+	public Searcher(){
+		
+	}
+	
+	public void move(){} //Should be implemented in part I following TDD (fail-pass)
+	
+	public void draw(Graphics g){} //Implemented in part II by the child classes
+	
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setSpeed(double speed) {
+		this.speed = speed;
+	}
+
+	public void setDirection(double direction) {
+		this.direction = direction;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
+	public void setRadius(double radius) {
+		this.radius = radius;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public double getSpeed() {
+		return speed;
+	}
+
+	public double getDirection() {
+		return direction;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public double getRadius() {
+		return radius;
+	}
+	
+	
 }
