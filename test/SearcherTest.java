@@ -20,9 +20,9 @@ public class SearcherTest {
 	
 	@BeforeClass
 	public void setUp(){
-		searchers.add(new Hiker());
-		searchers.add(new Dog());
-		searchers.add(new Helicopter());
+		hiker = new Hiker();
+		dog = new Dog(null, 0, 0, null);
+		helicopter = new Helicopter();
 	}
 
 	@Test
