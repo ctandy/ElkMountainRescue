@@ -6,22 +6,28 @@ import java.util.ArrayList;
 
 public class Rescue {
 	private ArrayList<Searcher> searchers = new ArrayList<Searcher>();
-	private ArrayList<Cell> cells = new ArrayList<Cell>();
-	public static int MAX_ROW = 0; 
-	public static int MAX_COL = 0;
+	private ArrayList<Cell> cells;
+	//origin of board is upper-left
+	public static int MAX_ROW = 0; //row is increasing going down 
+	public static int MAX_COL = 0; //col is increasing going right
 
 	public Rescue(int row, int col){
+		this.setMAX_ROW(row);
+		this.setMAX_COL(col);
 		this.initializeCells();
 	}
 	
 	public void initializeCells(){
-		ArrayList<Cell> cell = new ArrayList<Cell>();
-		//...for loops
-		this.setCells(cell);
+		cells = new ArrayList<Cell>();
+		for (int i = 0; i < MAX_ROW; i++){
+			for (int j = 0; j < MAX_COL; j++){
+				cells.add(new Cell(i, j));
+			}
+		}
 	}
 	
 	public void addSearcher(Searcher s){ //called from a MouseListener for the 'add' button
-		
+		this.getSearchers().add(s);
 	}
 	
 	public void importBackground(){} //Part of GUI, done in part 2
