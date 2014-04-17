@@ -2,18 +2,22 @@ package main;
 
 import java.awt.Graphics;
 
-public class Searcher {
+public abstract class Searcher {
 	private String name;
 	private double speed;
-	private double direction;
+	private double direction; // in degrees counterclockwise from positive x-axis
 	private Cell index;
 	private double radius;
 	
 	public Searcher(){
-		
+		name = new String();
+		speed = 0.0;
+		direction = 0.0;
+		index = null;
+		radius = 0.0;
 	}
 	
-	public void move(){} //Should be implemented in part I following TDD (fail-pass)
+	public abstract void move(); //Should be implemented in part I following TDD (fail-pass)
 	// move calls setRow and setCol after finding those end coordinates
 	public void draw(Graphics g){} //Implemented in part II by the child classes
 	
