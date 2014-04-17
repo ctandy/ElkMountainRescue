@@ -13,8 +13,10 @@ public abstract class Cell {
 		this.row = r;
 		this.col = c;
 	}
-	
-	public boolean equals(){//Test and implement this for part 1
+	// empty draw to be implemented with GUI
+	public abstract void draw();
+	public boolean equals(Cell cell){//Test and implement this for part 1
+		
 		return false;
 	}
 	public boolean isSearched() {
@@ -38,5 +40,4 @@ public abstract class Cell {
 	public void setCol(int col) {
 		this.col = col;
 	}
-
 }

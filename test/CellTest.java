@@ -17,7 +17,12 @@ public class CellTest {
 	public void setup() {
 		cell = new NormalCell(0, 0);
 	}
-
+	
+	@Test
+	public void testEquals() {
+		Assert.assertTrue(cell.equals(new NormalCell(0, 0)));
+		Assert.assertTrue(cell.equals(new NormalCell(1, 1)));
+	}
 	@Test
 	public void testSearchedColor() {
 		cell.setSearched(true);
