@@ -21,7 +21,7 @@ public class CellTest {
 	@Test
 	public void testEquals() {
 		Assert.assertTrue(cell.equals(new NormalCell(0, 0)));
-		Assert.assertTrue(cell.equals(new NormalCell(1, 1)));
+		Assert.assertFalse(cell.equals(new NormalCell(1, 1)));
 	}
 	@Test
 	public void testSearchedColor() {
@@ -29,6 +29,8 @@ public class CellTest {
 		Assert.assertEquals(Color.YELLOW, cell.getColor());
 		cell.setSearched(false);
 		Assert.assertEquals(null, cell.getColor());
+		cell.equals(new NormalCell(0, 0));
+		Assert.assertEquals(Color.YELLOW, cell.getColor());
 	}
 
 }

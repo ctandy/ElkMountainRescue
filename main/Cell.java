@@ -6,7 +6,7 @@ import java.awt.Color;
 //For instance if they don't want to send searchers into dangerous areas a new type of cell could be created for that easily
 public abstract class Cell {
 	private int row, col;
-	private boolean searched;
+	private boolean searched = false;
 	private Color color;
 	
 	public Cell(int r, int c) {
@@ -15,14 +15,21 @@ public abstract class Cell {
 	}
 	// empty draw to be implemented with GUI
 	public abstract void draw();
-	public boolean equals(Cell cell){//Test and implement this for part 1
-		
-		return false;
+	public boolean equals(Cell c){//Test and implement this for part 1
+		if(this.row == c.getRow() && this.col == c.getCol()) {
+			searched = true;
+			color = Color.YELLOW;
+			return true;
+		}
+		else return false;
 	}
 	public boolean isSearched() {
 		return searched;
 	}
 	public void setSearched(boolean searched) {
+		if (searched) 
+			this.color = Color.YELLOW;
+		else this.color = null;
 		this.searched = searched;
 	}
 	public Color getColor() {
