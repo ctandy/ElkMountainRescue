@@ -1,6 +1,7 @@
 package test;
 
 import static org.junit.Assert.*;
+import junit.framework.Assert;
 import main.BadConfigFormatException;
 import main.Grid;
 
@@ -36,6 +37,14 @@ public class GridTest {
 		expected = 3;
 		actual = testing.calcIndex(0, 3);
 		assertEquals(expected, actual);
+	}
+	@Test
+	//tests to make sure that the rows and columns in grid are being set according to the pixels in the background image
+	public void testSetRowCol() {
+		//columns = 55 rows = 42 from 889*687 pixels
+		int cols = 55;
+		int rows = 42;
+		Assert.assertEquals(cols, testing.MAX_COL);
 	}
 	
 }
