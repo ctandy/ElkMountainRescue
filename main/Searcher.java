@@ -10,7 +10,7 @@ public class Searcher {
 	private double radius;
 
 	public Searcher(){}
-
+	
 	public void draw(Graphics g){} //Implemented in part II by the child classes
 
 	public void setName(String name) {
@@ -48,7 +48,7 @@ public class Searcher {
 	public Cell getIndex() {
 		return index;
 	}
-
+	
 	public double getRadius() {
 		return radius;
 	}

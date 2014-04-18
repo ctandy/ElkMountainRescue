@@ -1,6 +1,7 @@
 package test;
 
 import static org.junit.Assert.*;
+import junit.framework.Assert;
 import main.BadConfigFormatException;
 import main.Grid;
 
@@ -37,5 +38,4 @@ public class GridTest {
 		actual = testing.calcIndex(0, 3);
 		assertEquals(expected, actual);
 	}
-	
 }

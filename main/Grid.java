@@ -4,12 +4,14 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.MediaTracker;
 import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
 public class Grid extends JPanel{
+	public final int CELL_SIZE = 16;
 	private ArrayList<Cell> cells;
 	//origin of grid is upper-left
 	public static int MAX_ROW = 0; //row is increasing going down 
@@ -36,7 +38,9 @@ public class Grid extends JPanel{
 		int mrow = 5; //set mrow and mcol for testing
 		int mcol = 4;
 		this.setMAX_ROW(mrow);
-		this.setMAX_COL(mcol);
+		setMAX_COL(mcol);
+		//this.setMAX_ROW(map.getHeight()/CELL_SIZE);
+		//setMAX_COL(map.getWidth()/CELL_SIZE);
 	}
 	
 	public int calcIndex(int r, int c) {
@@ -45,7 +49,7 @@ public class Grid extends JPanel{
 	
 	public void paint(Graphics g){} //Part of GUI, done in part 2
 	
-	public void importBackground(){
+	/*public void importBackground(){
 		URL url = getClass().getResource("/images/searchMap.jpg"); 
 		Image original = Toolkit.getDefaultToolkit().getImage(url);
 	    tracker.addImage(original, 0);
@@ -53,7 +57,7 @@ public class Grid extends JPanel{
 	      tracker.waitForID(0);
 	    } catch (InterruptedException e) {  return; }
 	    map = original;
-	}
+	}*/
 	
 	public void setMAX_ROW(int mAX_ROW) {
 		MAX_ROW = mAX_ROW;
