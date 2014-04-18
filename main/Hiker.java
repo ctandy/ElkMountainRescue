@@ -7,6 +7,7 @@ public class Hiker extends Searcher {
 	
 	public Hiker(){
 		super();
+		this.setRadius(RADIUS);
 	}
 
 	public Hiker(String n, double s, double dir, int r, int c){

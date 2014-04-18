@@ -8,6 +8,7 @@ public class Searcher {
 	private double direction; // in degrees counterclockwise from positive x-axis
 	private int row;
 	private int col;
+	private Cell index;
 	private double radius;
 	
 	public Searcher(){
@@ -17,6 +18,7 @@ public class Searcher {
 		row = 0;
 		col = 0;
 		radius = 0;
+		index = null;
 	}
 	
 	public Searcher(String name, double speed, double direction, int row, int col, double radius){
@@ -25,6 +27,15 @@ public class Searcher {
 		this.direction = direction;
 		this.row = row;
 		this.col = col;
+		this.radius = radius;
+	}
+	
+	//constructor using cell type instead of row/column
+	public Searcher(String name, double speed, double direction, Cell index, double radius){
+		this.name = name;
+		this.speed = speed;
+		this.direction = direction;
+		this.index = index;
 		this.radius = radius;
 	}
 	
@@ -42,9 +53,15 @@ public class Searcher {
 		this.direction = direction;
 	}
 
+	//set location using row and column
 	public void setLocation(int row, int col){
 		this.row = row;
 		this.col = col;
+	}
+	
+	//set location using cell class
+	public void setIndex(Cell current){
+		index = current;
 	}
 
 	public void setRadius(double radius) {
@@ -75,4 +92,7 @@ public class Searcher {
 		return radius;
 	}
 	
+	public Cell getIndex(){
+		return index;
+	}
 }

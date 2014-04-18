@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import main.Dog;
 import main.Helicopter;
 import main.Hiker;
+import main.NormalCell;
 import main.Searcher;
 
 import org.junit.BeforeClass;
@@ -87,5 +88,25 @@ public class SearcherTest {
 		searchers.get(2).setLocation(++testRow, ++testColumn);
 		assertEquals(testRow, searchers.get(2).getRow());
 		assertEquals(testColumn, searchers.get(2).getCol());
+	}
+	
+	@Test
+	public void searchersHaveCell(){
+		int testRow = 0;
+		int testColumn = 0;
+		
+		//test initial conditions allow for searchers to share cell
+		for(Searcher s : searchers){
+			s.setIndex(new NormalCell(testRow, testColumn));
+			assertEquals(testRow, s.getIndex().getRow());
+			assertEquals(testColumn, s.getIndex().getCol());
+		}
+		
+		//check that new location can be set by passing in a new cell
+		for(Searcher s : searchers){
+			s.setIndex(new NormalCell(++testRow, testColumn));
+			assertEquals(testRow, s.getIndex().getRow());
+			assertEquals(testColumn, s.getIndex().getCol());
+		}
 	}
 }

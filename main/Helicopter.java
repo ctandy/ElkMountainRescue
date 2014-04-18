@@ -7,6 +7,7 @@ public class Helicopter extends Searcher {
 	
 	public Helicopter(){
 		super();
+		this.setRadius(RADIUS);
 	}
 
 	public Helicopter(String n, double s, double dir, int r, int c){

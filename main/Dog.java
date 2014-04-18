@@ -7,6 +7,7 @@ public class Dog extends Searcher {
 	
 	public Dog(){
 		super();
+		this.setRadius(RADIUS);
 	}
 
 	public Dog(String n, double s, double dir, int r, int c){
