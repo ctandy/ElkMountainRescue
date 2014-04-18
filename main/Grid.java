@@ -33,7 +33,6 @@ public class Grid extends JPanel{
 	}
 	
 	public void loadConfigFiles() throws BadConfigFormatException{
-		
 		int mrow = 5; //set mrow and mcol for testing
 		int mcol = 4;
 		this.setMAX_ROW(mrow);

@@ -27,7 +27,7 @@ public class Rescue {
 			int dy = (int) (s.getSpeed()*Math.sin(Math.toRadians(s.getDirection())));
 			newrow = introw-dy;
 			newcol = intcol+dx;
-			if ((newrow < 0 || newrow > Grid.MAX_ROW-1) || (newcol < 0 || newcol > Grid.MAX_COL-1)){
+			if ((newrow<0 || newrow>Grid.MAX_ROW-1) || (newcol<0 || newcol>Grid.MAX_COL-1)){
 				s.setDirection(Math.random()*360);
 			}
 			else {
