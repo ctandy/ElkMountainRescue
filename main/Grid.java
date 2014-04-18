@@ -1,13 +1,21 @@
 package main;
 
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.MediaTracker;
+import java.awt.Toolkit;
+import java.net.URL;
 import java.util.ArrayList;
 
-public class Grid {
+import javax.swing.JPanel;
+
+public class Grid extends JPanel{
 	private ArrayList<Cell> cells;
 	//origin of grid is upper-left
 	public static int MAX_ROW = 0; //row is increasing going down 
 	public static int MAX_COL = 0; //col is increasing going right
+	private Image map;
+	MediaTracker tracker = new MediaTracker(this);
 
 
 	public Grid() throws BadConfigFormatException{
@@ -25,6 +33,7 @@ public class Grid {
 	}
 	
 	public void loadConfigFiles() throws BadConfigFormatException{
+		
 		int mrow = 5; //set mrow and mcol for testing
 		int mcol = 4;
 		this.setMAX_ROW(mrow);
@@ -37,7 +46,15 @@ public class Grid {
 	
 	public void paint(Graphics g){} //Part of GUI, done in part 2
 	
-	public void importBackground(){} //Part of GUI, done in part 2
+	public void importBackground(){
+		URL url = getClass().getResource("/images/searchMap.jpg"); 
+		Image original = Toolkit.getDefaultToolkit().getImage(url);
+	    tracker.addImage(original, 0);
+	    try {
+	      tracker.waitForID(0);
+	    } catch (InterruptedException e) {  return; }
+	    map = original;
+	}
 	
 	public void setMAX_ROW(int mAX_ROW) {
 		MAX_ROW = mAX_ROW;
