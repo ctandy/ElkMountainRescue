@@ -20,20 +20,18 @@ public class SearcherTest {
 	
 	@BeforeClass
 	public void setUp(){
-		hiker = new Hiker();
-		dog = new Dog();
-		helicopter = new Helicopter();
+		ArrayList<String> names = new ArrayList<String>();
 	}
 
 	@Test
 	public void searchersHaveName(){
-		ArrayList names = new ArrayList<String>();
+		ArrayList<String> names = new ArrayList<String>();
 		names.add("Hiker1");
 		names.add("Dog1");
 		names.add("Helicopter1");
 		
 		for(int i=0; i<searchers.size(); i++){
-			searchers.get(i).setName(names.get(i).toString());
+			searchers.get(i).setName(names.get(i));
 		}
 		
 		for(int i=0; i<searchers.size(); i++){
