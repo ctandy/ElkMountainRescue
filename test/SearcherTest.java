@@ -19,9 +19,9 @@ public class SearcherTest {
 	@BeforeClass
 	public static void setUp(){
 		searchers = new ArrayList<Searcher>();
-		searchers.add(new Hiker());
-		searchers.add(new Dog());
-		searchers.add(new Helicopter());
+		searchers.add(new Hiker(null, 0, 0, null));
+		searchers.add(new Dog(null, 0, 0, null));
+		searchers.add(new Helicopter(null, 0, 0, null));
 	}
 
 	@Test

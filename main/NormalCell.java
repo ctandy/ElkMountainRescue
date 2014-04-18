@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.Color;
+import java.awt.Graphics;
 
 public class NormalCell extends Cell{
 	
@@ -10,7 +11,7 @@ public class NormalCell extends Cell{
 	}
 	
 	// empty draw to be implemented with GUI
-	public void draw() {
+	public void draw(Graphics g) {
 		
 	}
 	

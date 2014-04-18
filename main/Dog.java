@@ -13,8 +13,8 @@ public class Dog extends Searcher {
 		this.setRadius(RADIUS);
 	}
 
-	@Override
 	public void draw(Graphics g){
 
 	}
+
 }

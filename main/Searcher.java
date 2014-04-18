@@ -2,7 +2,7 @@ package main;
 
 import java.awt.Graphics;
 
-public class Searcher {
+public abstract class Searcher {
 	private String name;
 	private double speed;
 	private double direction; // in degrees counterclockwise from positive x-axis
@@ -11,7 +11,7 @@ public class Searcher {
 
 	public Searcher(){}
 	
-	public void draw(Graphics g){} //Implemented in part II by the child classes
+	public abstract void draw(Graphics g); //Implemented in part II by the child classes
 
 	public void setName(String name) {
 		this.name = name;

@@ -13,7 +13,6 @@ public class Hiker extends Searcher {
 		this.setRadius(RADIUS);
 	}
 
-	@Override
 	public void draw(Graphics g){
 
 	}

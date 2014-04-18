@@ -2,6 +2,7 @@ package test;
 
 import static org.junit.Assert.*;
 import main.BadConfigFormatException;
+import main.Hiker;
 import main.NormalCell;
 import main.Rescue;
 import main.Searcher;
@@ -24,14 +25,14 @@ public class RescueTest {
 	
 	@Test
 	public void testAddSearcher() {
-		Searcher s = new Searcher();
+		Searcher s = new Hiker(null, 0, 0, null);
 		res.addSearcher(s);
 		assertTrue(res.getSearchers().size() == 1);
 	}
 	
 	@Test
 	public void testMove() {//MAX_Row = 5 and Max_Col = 4 by the Grid class
-		Searcher s = new Searcher();
+		Searcher s = new Hiker(null, 0, 0, null);
 		NormalCell cell = new NormalCell(0, 3);
 		//test for redirecting the team when it hits a wall
 		s.setDirection(0.0);
