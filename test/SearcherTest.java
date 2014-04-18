@@ -42,9 +42,21 @@ public class SearcherTest {
 		
 	}
 	
-	//add a test that checks if the searchers have the correct radii.
-	//Initially the test will fail, but then when the static ints in each class are changed,
-	//the test should pass
+	//test that classes have the correct radii
+	//the numbers below are made up, please change them once we decide what the ranges
+	//should actually be
+	@Test
+	public void searchersHaveCorrectRadii(){
+		final double HIKER_RADIUS = 3.0;
+		final double DOG_RADIUS = 5.0;
+		final double HELICOPTER_RADIUS = 10.0;
+		
+		assertEquals(HIKER_RADIUS, searchers.get(0).getRadius());
+		assertEquals(DOG_RADIUS, searchers.get(1).getRadius());
+		assertEquals(HELICOPTER_RADIUS, searchers.get(2).getRadius());
+		
+		
+	}
 
 	//searchers can share a cell
 	@Test
