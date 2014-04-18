@@ -50,9 +50,9 @@ public class SearcherTest {
 		int testRow = 0;
 		int testColumn = 0;
 		
-		hiker.setIndex(testRow, testColumn);
-		dog.setIndex(testRow, testColumn);
-		helicopter.setIndex(testRow, testColumn);
+		hiker.setLocation(testRow, testColumn);
+		dog.setLocation(testRow, testColumn);
+		helicopter.setLocation(testRow, testColumn);
 		
 		assertEquals(testRow, hiker.getRow());
 		assertEquals(testColumn, hiker.getCol());
@@ -61,12 +61,16 @@ public class SearcherTest {
 		assertEquals(testRow, helicopter.getRow());
 		assertEquals(testColumn, helicopter.getCol());
 		
-		hiker.setIndex(++testRow, testColumn)
+		hiker.setLocation(++testRow, testColumn);
 		assertEquals(testRow, hiker.getRow());
 		assertEquals(testColumn, hiker.getCol());
 		
-		dog.setIndex(testRow, ++testColumn);
+		dog.setLocation(testRow, ++testColumn);
 		assertEquals(testRow, dog.getRow());
 		assertEquals(testColumn, dog.getCol());
+		
+		helicopter.setLocation(++testRow, ++testColumn);
+		assertEquals(testRow, helicopter.getRow());
+		assertEquals(testColumn, helicopter.getCol());
 	}
 }
