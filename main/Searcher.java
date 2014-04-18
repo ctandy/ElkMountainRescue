@@ -6,7 +6,8 @@ public class Searcher {
 	private String name;
 	private double speed;
 	private double direction; // in degrees counterclockwise from positive x-axis
-	private Cell index;
+	private int row;
+	private int col;
 	private double radius;
 	
 	public Searcher(){}
@@ -25,8 +26,9 @@ public class Searcher {
 		this.direction = direction;
 	}
 
-	public void setIndex(Cell index) {
-		this.index = index;
+	public void setLocation(int row, int col){
+		this.row = row;
+		this.col = col;
 	}
 
 	public void setRadius(double radius) {
@@ -45,8 +47,12 @@ public class Searcher {
 		return direction;
 	}
 
-	public Cell getIndex() {
-		return index;
+	public int getRow(){
+		return row;
+	}
+	
+	public int getCol(){
+		return col;
 	}
 
 	public double getRadius() {
