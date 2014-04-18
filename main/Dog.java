@@ -10,8 +10,8 @@ public class Dog extends Searcher {
 		this.setRadius(RADIUS);
 	}
 
-	public Dog(String n, double s, double dir, int r, int c){
-		super(n, s, dir, r, c, RADIUS);
+	public Dog(String n, double s, double dir, Cell c){
+		super(n, s, dir, c, RADIUS);
 	}
 
 	@Override

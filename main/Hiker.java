@@ -10,8 +10,8 @@ public class Hiker extends Searcher {
 		this.setRadius(RADIUS);
 	}
 
-	public Hiker(String n, double s, double dir, int r, int c){
-		super(n, s, dir, r, c, RADIUS);
+	public Hiker(String n, double s, double dir, Cell c){
+		super(n, s, dir, c, RADIUS);
 	}
 
 	@Override

@@ -58,37 +58,6 @@ public class SearcherTest {
 		
 		
 	}
-
-	//searchers can share a cell
-	@Test
-	public void searchersHaveLocation(){// didn't we decide in class to keep these as rows/cols?
-		int testRow = 0;
-		int testColumn = 0;
-		
-		for(Searcher s : searchers){
-			s.setLocation(testRow, testColumn);
-		}
-		
-		for(Searcher s : searchers){
-			assertEquals(testRow, s.getRow());
-			assertEquals(testColumn, s.getCol());
-		}
-		
-		//test changing hiker's position
-		searchers.get(0).setLocation(++testRow, testColumn);
-		assertEquals(testRow, searchers.get(0).getRow());
-		assertEquals(testColumn, searchers.get(0).getCol());
-		
-		//test changing dog's position
-		searchers.get(1).setLocation(testRow, ++testColumn);
-		assertEquals(testRow, searchers.get(1).getRow());
-		assertEquals(testColumn, searchers.get(1).getCol());
-		
-		//test changing the helicopter's position
-		searchers.get(2).setLocation(++testRow, ++testColumn);
-		assertEquals(testRow, searchers.get(2).getRow());
-		assertEquals(testColumn, searchers.get(2).getCol());
-	}
 	
 	@Test
 	public void searchersHaveCell(){
