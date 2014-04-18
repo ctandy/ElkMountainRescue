@@ -3,7 +3,7 @@ package main;
 import java.awt.Graphics;
 
 public class Hiker extends Searcher {
-	private static double RADIUS = 0.0;  
+	private static double RADIUS = 3.0;  
 
 	public Hiker(String n, double s, double dir, Cell ind){
 		this.setName(n);

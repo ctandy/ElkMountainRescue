@@ -50,10 +50,9 @@ public class SearcherTest {
 		final double DOG_RADIUS = 5.0;
 		final double HELICOPTER_RADIUS = 10.0;
 		
-		assertEquals(HIKER_RADIUS, searchers.get(0).getRadius());
-		assertEquals(DOG_RADIUS, searchers.get(1).getRadius());
-		assertEquals(HELICOPTER_RADIUS, searchers.get(2).getRadius());
-		
+		assertTrue(HIKER_RADIUS == searchers.get(0).getRadius());
+		assertTrue(DOG_RADIUS == searchers.get(1).getRadius());
+		assertTrue(HELICOPTER_RADIUS == searchers.get(2).getRadius());
 		
 	}
 	
