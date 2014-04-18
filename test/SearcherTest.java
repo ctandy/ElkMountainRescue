@@ -31,8 +31,6 @@ public class SearcherTest {
 		names.add("Dog1");
 		names.add("Helicopter1");
 		
-		System.out.println(searchers.toString());
-		
 		for(int i=0; i<searchers.size(); i++){
 			searchers.get(i).setName(names.get(i));
 		}
