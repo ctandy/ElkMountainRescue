@@ -13,11 +13,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class SearcherTest {
-	private ArrayList<Searcher> searchers;
+	private static ArrayList<Searcher> searchers;
 	
 	@BeforeClass
 	public static void setUp(){
-		ArrayList<Searcher> searchers = new ArrayList<Searcher>();
+		searchers = new ArrayList<Searcher>();
 		searchers.add(new Hiker());
 		searchers.add(new Dog());
 		searchers.add(new Helicopter());
@@ -29,6 +29,8 @@ public class SearcherTest {
 		names.add("Hiker1");
 		names.add("Dog1");
 		names.add("Helicopter1");
+		
+		System.out.println(searchers.toString());
 		
 		for(int i=0; i<searchers.size(); i++){
 			searchers.get(i).setName(names.get(i));
@@ -46,7 +48,7 @@ public class SearcherTest {
 
 	//searchers can share a cell
 	@Test
-	public void searchersHaveLocation(){// change this test to work with Cell indices
+	public void searchersHaveLocation(){// didn't we decide in class to keep these as rows/cols?
 		int testRow = 0;
 		int testColumn = 0;
 		
