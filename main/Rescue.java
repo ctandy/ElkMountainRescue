@@ -17,6 +17,10 @@ public class Rescue {
 		this.getSearchers().add(s);
 	}
 	
+	public void move(Searcher s){
+		
+	}
+	
 	public void manualUpdate(MouseListener click){} //Part of GUI, done in part 2 
 
 	public ArrayList<Searcher> getSearchers() {
