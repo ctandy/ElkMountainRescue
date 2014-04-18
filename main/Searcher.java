@@ -10,7 +10,23 @@ public class Searcher {
 	private int col;
 	private double radius;
 	
-	public Searcher(){}
+	public Searcher(){
+		name = new String();
+		speed = 0.0;
+		direction = 0.0;
+		row = 0;
+		col = 0;
+		radius = 0;
+	}
+	
+	public Searcher(String name, double speed, double direction, int row, int col, double radius){
+		this.name = name;
+		this.speed = speed;
+		this.direction = direction;
+		this.row = row;
+		this.col = col;
+		this.radius = radius;
+	}
 	
 	public void draw(Graphics g){} //Implemented in part II by the child classes
 	

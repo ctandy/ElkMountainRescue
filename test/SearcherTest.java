@@ -20,7 +20,10 @@ public class SearcherTest {
 	
 	@BeforeClass
 	public void setUp(){
-		ArrayList<String> names = new ArrayList<String>();
+		ArrayList<Searcher> searchers = new ArrayList<Searcher>();
+		searchers.add(new Hiker());
+		searchers.add(new Dog());
+		searchers.add(new Helicopter());
 	}
 
 	@Test
