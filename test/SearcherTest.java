@@ -14,12 +14,9 @@ import org.junit.Test;
 
 public class SearcherTest {
 	private ArrayList<Searcher> searchers;
-	private Hiker hiker;
-	private Dog dog;
-	private Helicopter helicopter;
 	
 	@BeforeClass
-	public void setUp(){
+	public static void setUp(){
 		ArrayList<Searcher> searchers = new ArrayList<Searcher>();
 		searchers.add(new Hiker());
 		searchers.add(new Dog());
@@ -53,27 +50,28 @@ public class SearcherTest {
 		int testRow = 0;
 		int testColumn = 0;
 		
-		hiker.setLocation(testRow, testColumn);
-		dog.setLocation(testRow, testColumn);
-		helicopter.setLocation(testRow, testColumn);
+		for(Searcher s : searchers){
+			s.setLocation(testRow, testColumn);
+		}
 		
-		assertEquals(testRow, hiker.getRow());
-		assertEquals(testColumn, hiker.getCol());
-		assertEquals(testRow, dog.getRow());
-		assertEquals(testColumn, dog.getCol());
-		assertEquals(testRow, helicopter.getRow());
-		assertEquals(testColumn, helicopter.getCol());
+		for(Searcher s : searchers){
+			assertEquals(testRow, s.getRow());
+			assertEquals(testColumn, s.getCol());
+		}
 		
-		hiker.setLocation(++testRow, testColumn);
-		assertEquals(testRow, hiker.getRow());
-		assertEquals(testColumn, hiker.getCol());
+		//test changing hiker's position
+		searchers.get(0).setLocation(++testRow, testColumn);
+		assertEquals(testRow, searchers.get(0).getRow());
+		assertEquals(testColumn, searchers.get(0).getCol());
 		
-		dog.setLocation(testRow, ++testColumn);
-		assertEquals(testRow, dog.getRow());
-		assertEquals(testColumn, dog.getCol());
+		//test changing dog's position
+		searchers.get(1).setLocation(testRow, ++testColumn);
+		assertEquals(testRow, searchers.get(1).getRow());
+		assertEquals(testColumn, searchers.get(1).getCol());
 		
-		helicopter.setLocation(++testRow, ++testColumn);
-		assertEquals(testRow, helicopter.getRow());
-		assertEquals(testColumn, helicopter.getCol());
+		//test changing the helicopter's position
+		searchers.get(2).setLocation(++testRow, ++testColumn);
+		assertEquals(testRow, searchers.get(2).getRow());
+		assertEquals(testColumn, searchers.get(2).getCol());
 	}
 }
