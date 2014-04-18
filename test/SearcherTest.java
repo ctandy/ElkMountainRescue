@@ -39,10 +39,14 @@ public class SearcherTest {
 		}
 		
 	}
+	
+	//add a test that checks if the searchers have the correct radii.
+	//Initially the test will fail, but then when the static ints in each class are changed,
+	//the test should pass
 
 	//searchers can share a cell
 	@Test
-	public void searchersHaveLocation(){
+	public void searchersHaveLocation(){// change this test to work with Cell indices
 		int testRow = 0;
 		int testColumn = 0;
 		

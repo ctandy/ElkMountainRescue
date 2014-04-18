@@ -2,6 +2,7 @@ package test;
 
 import static org.junit.Assert.*;
 import main.BadConfigFormatException;
+import main.NormalCell;
 import main.Rescue;
 import main.Searcher;
 
@@ -29,10 +30,17 @@ public class RescueTest {
 	}
 	
 	@Test
-	public void testMove() {
+	public void testMove() {//MAX_Row = 5 and Max_Col = 4 by the Grid class
 		Searcher s = new Searcher();
-		res.addSearcher(s);
-		assertTrue(res.getSearchers().size() == 1);
+		NormalCell cell = new NormalCell(0, 3);
+		s.setDirection(0.0);
+		s.setIndex(cell);
+		s.setSpeed(3.0);
+		res.move(s);
+		assertTrue(s.getIndex().getRow() >= 0);
+		assertTrue(s.getIndex().getRow() <= s.getSpeed());
+		assertTrue(s.getIndex().getCol() <= 3);
+		assertTrue(s.getIndex().getRow() >= (3-s.getSpeed()));
 	}
 
 }

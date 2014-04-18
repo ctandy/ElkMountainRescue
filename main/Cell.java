@@ -15,38 +15,50 @@ public abstract class Cell {
 		this.row = r;
 		this.col = c;
 	}
+	
 	// empty draw to be implemented with GUI
 	public abstract void draw();
-	public boolean equals(Cell c){//Test and implement this for part 1
+	
+	public boolean equals(Cell c){
 		if(this.row == c.getRow() && this.col == c.getCol()) {
-			searched = true;
-			color = Color.YELLOW;
+			this.searched = true;
+			this.color = Color.YELLOW;
 			return true;
 		}
-		else return false;
+		else 
+			return false;
 	}
+	
 	public boolean isSearched() {
 		return searched;
 	}
+	
 	public void setSearched(boolean searched) {// for testing purposes
 		if (searched) 
 			this.color = Color.YELLOW;
-		else this.color = null;
+		else 
+			this.color = null;
 		this.searched = searched;
 	}
+	
 	public Color getColor() {
 		return color;
 	}
+	
 	public int getRow() {
 		return row;
 	}
+	
 	public void setRow(int row) {
 		this.row = row;
 	}
+	
 	public int getCol() {
 		return col;
 	}
+	
 	public void setCol(int col) {
 		this.col = col;
 	}
+	
 }
