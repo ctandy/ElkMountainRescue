@@ -39,9 +39,6 @@ public class RescueTest {
 		res.move(s);
 		assertTrue(s.getIndex().getRow() >= 0);
 		assertTrue(s.getIndex().getRow() <= s.getSpeed());
-		System.out.println(s.getDirection());
-		System.out.println(s.getIndex().getCol());
-		System.out.println(s.getIndex().getRow());
 		assertTrue(s.getIndex().getCol() <= 3);
 		assertTrue(s.getIndex().getRow() >= (3-s.getSpeed()));
 	}

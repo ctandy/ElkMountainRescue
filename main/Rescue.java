@@ -18,7 +18,25 @@ public class Rescue {
 	}
 	
 	public void move(Searcher s){
-		
+		Cell cell = s.getIndex();
+		int introw = cell.getRow();
+		int intcol = cell.getCol();
+		int newrow, newcol;
+		while(true){
+			int dx = (int) (s.getSpeed()*Math.cos(Math.toRadians(s.getDirection())));
+			int dy = (int) (s.getSpeed()*Math.sin(Math.toRadians(s.getDirection())));
+			newrow = introw-dy;
+			newcol = intcol+dx;
+			if ((newrow < 0 || newrow > Grid.MAX_ROW-1) || (newcol < 0 || newcol > Grid.MAX_COL-1)){
+				s.setDirection(Math.random()*360);
+			}
+			else {
+				cell.setRow(newrow);
+				cell.setCol(newcol);
+				s.setIndex(cell);
+				break;
+			}
+		}
 	}
 	
 	public void manualUpdate(MouseListener click){} //Part of GUI, done in part 2 
