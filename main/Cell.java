@@ -10,12 +10,14 @@ import java.awt.Graphics2D;
 //For now only NormalCell will be used
 public abstract class Cell {
 	private int row, col;
-	private boolean searched = false;
+	private boolean searched;
 	private Color color;
 	
 	public Cell(int r, int c) {
 		this.row = r;
 		this.col = c;
+		this.color = null;
+		this.searched = false;
 	}
 	
 

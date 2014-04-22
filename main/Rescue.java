@@ -69,6 +69,7 @@ public class Rescue extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// Bernardo: here is where you could look for a click and update the index/direction
+				// could call to the manualUpdate function below
 			}
 		});
 		menuBar.add(file);

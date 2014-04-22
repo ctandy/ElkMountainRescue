@@ -54,7 +54,7 @@ public class Grid extends JPanel{
 	
 	@Override
 	public void paintComponent(Graphics g) {
-		//paints the cell onto the board
+		//paints the cells onto the board
 		super.paintComponent(g);
 		g2d = (Graphics2D) g;
 		// paints the image to the background
@@ -62,6 +62,9 @@ public class Grid extends JPanel{
 		for(int i = 0; i < MAX_ROW; i++)
 			for(int j = 0; j < MAX_COL; j++)
 				cells.get(calcIndex(i, j)).draw(g2d, j * CELL_SIZE, i * CELL_SIZE);
+		// paints search teams
+		for(Searcher s : searchers)
+			s.draw(g);		
 	}
 	
 	public void importBackground(){
@@ -99,7 +102,7 @@ public class Grid extends JPanel{
 		}
 	}
 	
-	public void addSearcher(Searcher s){ //called from a MouseListener for the 'add' button
+	public void addSearcher(Searcher s){ //called from the menu bar
 		this.getSearchers().add(s);
 	}
 	
