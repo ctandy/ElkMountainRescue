@@ -15,6 +15,7 @@ public class Rescue extends JFrame{
 	private Grid grid;
 
 	public Rescue() {
+		//loads the grid
 		try {
 			grid = new Grid();
 		} catch (BadConfigFormatException e) {
@@ -25,7 +26,7 @@ public class Rescue extends JFrame{
 		JMenuBar menuBar = makeMenuBar();
 		setJMenuBar(menuBar);
 		add(grid, BorderLayout.CENTER);
-		
+		//sets the size of the JFrame
 		setSize(grid.getPixelCol() + 16, grid.getPixelRow() + menuBar.getHeight() + 64);
 		setVisible(true);
 	}
@@ -33,7 +34,6 @@ public class Rescue extends JFrame{
 		//makes menu bar and adds items to menu bar
 		JMenuBar menuBar = new JMenuBar();
 		JMenu file = new JMenu("File");
-		//allows player to see detective notes
 		JMenuItem close = new JMenuItem("Close");
 		close.addActionListener(new ActionListener() {
 			@Override

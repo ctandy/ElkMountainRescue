@@ -58,6 +58,7 @@ public class Grid extends JPanel{
 		//paints the cell onto the board
 		super.paintComponent(g);
 		g2d = (Graphics2D) g;
+		// paints the image to the background
 		g.drawImage(map, 0, 0, this);
 		for(int i = 0; i < MAX_ROW; i++)
 			for(int j = 0; j < MAX_COL; j++)
