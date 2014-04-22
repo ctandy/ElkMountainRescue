@@ -20,18 +20,18 @@ public class GridTest {
 	
 	@Test
 	public void testConstructor() {
-		assertTrue(Grid.MAX_ROW == 5);
-		assertTrue(Grid.MAX_COL == 4);
+		assertTrue(Grid.MAX_ROW == 42);// 687 pixels / 16
+		assertTrue(Grid.MAX_COL == 55);// 889 pixels / 16
 	}
 	
 	@Test
 	public void testInitializeCells() {
-		assertTrue(testing.getCells().size() == 20);
+		assertTrue(testing.getCells().size() == 2310);
 	}
 	
 	@Test
 	public void testCalcIndex() {
-		int expected = 19;
+		int expected = 223;
 		int actual = testing.calcIndex(4, 3);
 		assertEquals(expected, actual);
 		expected = 3;
