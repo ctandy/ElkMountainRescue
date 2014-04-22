@@ -28,13 +28,14 @@ public class Rescue extends JFrame{
 		add(grid, BorderLayout.CENTER);
 		//sets the size of the JFrame
 		setSize(grid.getPixelCol() + 16, grid.getPixelRow() + menuBar.getHeight() + 64);
+		setTitle("Elk Mountain Rescue System");
 		setVisible(true);
 	}
 	private JMenuBar makeMenuBar() {
 		//makes menu bar and adds items to menu bar
 		JMenuBar menuBar = new JMenuBar();
 		JMenu file = new JMenu("File");
-		JMenuItem close = new JMenuItem("Close");
+		JMenuItem close = new JMenuItem("Exit");
 		close.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -42,7 +43,39 @@ public class Rescue extends JFrame{
 					System.exit(0);
 			}
 		});
+		JMenuItem add = new JMenuItem("Add Search Team");
+		close.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// combo box with 3 types of team, types in attributes and adds this new team to grid
+			}
+		});
+		JMenuItem remove = new JMenuItem("Remove Search Team");
+		close.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// combo box with teams, selecting a team or teams removes them from the grid
+			}
+		});
+		JMenuItem edit = new JMenuItem("Edit Search Team");
+		close.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// Bring up ComboBox for choosing a team to edit and then what to edit
+			}
+		});
+		JMenuItem manUpdate = new JMenuItem("Manual Update");
+		close.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// Bernardo: here is where you could look for a click and update the index/direction
+			}
+		});
 		menuBar.add(file);
+		file.add(add);
+		file.add(remove);
+		file.add(edit);
+		file.add(manUpdate);
 		file.add(close);
 		return menuBar;
 	}

@@ -21,5 +21,6 @@ public class RescueTest {
 	public void testConstructor() {
 		assertTrue(res.getGrid() != null);
 	}
+	
 
 }
