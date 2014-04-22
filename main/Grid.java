@@ -37,10 +37,12 @@ public class Grid extends JPanel{
 	public void loadConfigFiles() throws BadConfigFormatException{
 		int mrow = 5; //set mrow and mcol for testing
 		int mcol = 4;
-		this.setMAX_ROW(mrow);
-		setMAX_COL(mcol);
-		//this.setMAX_ROW(map.getHeight()/CELL_SIZE);
-		//setMAX_COL(map.getWidth()/CELL_SIZE);
+		//this.setMAX_ROW(mrow);
+		//this.setMAX_COL(mcol);
+		importBackground();
+		this.setMAX_ROW(map.getHeight(this)/CELL_SIZE);
+		this.setMAX_COL(map.getWidth(this)/CELL_SIZE);
+		System.out.println(MAX_ROW + "   " + MAX_COL);
 	}
 	
 	public int calcIndex(int r, int c) {
@@ -49,7 +51,7 @@ public class Grid extends JPanel{
 	
 	public void paint(Graphics g){} //Part of GUI, done in part 2
 	
-	/*public void importBackground(){
+	public void importBackground(){
 		URL url = getClass().getResource("/images/searchMap.jpg"); 
 		Image original = Toolkit.getDefaultToolkit().getImage(url);
 	    tracker.addImage(original, 0);
@@ -57,7 +59,7 @@ public class Grid extends JPanel{
 	      tracker.waitForID(0);
 	    } catch (InterruptedException e) {  return; }
 	    map = original;
-	}*/
+	}
 	
 	public void setMAX_ROW(int mAX_ROW) {
 		MAX_ROW = mAX_ROW;
