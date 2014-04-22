@@ -46,7 +46,6 @@ public class Grid extends JPanel{
 		pixelCol = map.getWidth(this);
 		this.setMAX_ROW(pixelRow/CELL_SIZE);
 		this.setMAX_COL(pixelCol/CELL_SIZE);
-		System.out.println(MAX_ROW + "   " + MAX_COL);
 	}
 	
 	public int calcIndex(int r, int c) {
