@@ -17,7 +17,9 @@ public class NormalCell extends Cell{
 	public void draw(Graphics2D g, Integer x, Integer y) {
 		g.setColor(Color.black);
 		g.drawRect(x, y, Grid.CELL_SIZE.intValue(), Grid.CELL_SIZE.intValue());
-		g.setColor(this.getColor());
-		g.fillRect(x + 1, y + 1, Grid.CELL_SIZE.intValue() - 1, Grid.CELL_SIZE.intValue() - 1);
+		if (this.isSearched()) {
+			g.setColor(this.getColor());
+			g.fillRect(x + 1, y + 1, Grid.CELL_SIZE.intValue() - 1, Grid.CELL_SIZE.intValue() - 1);
+		}
 	}
 }

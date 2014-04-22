@@ -1,56 +1,60 @@
 package main;
 
-import java.awt.Graphics;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 
-public class Rescue {
-	private ArrayList<Searcher> searchers;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
+public class Rescue extends JFrame{
 	private Grid grid;
 
-	public Rescue() throws BadConfigFormatException{
-		searchers = new ArrayList<Searcher>();
-		grid = new Grid();
-	}
-	
-	public void addSearcher(Searcher s){ //called from a MouseListener for the 'add' button
-		this.getSearchers().add(s);
-	}
-	
-	public void move(Searcher s){
-		Cell cell = s.getIndex();
-		int introw = cell.getRow();
-		int intcol = cell.getCol();
-		int newrow, newcol;
-		while(true){
-			int dx = (int) (s.getSpeed()*Math.cos(Math.toRadians(s.getDirection())));
-			int dy = (int) (s.getSpeed()*Math.sin(Math.toRadians(s.getDirection())));
-			newrow = introw-dy;
-			newcol = intcol+dx;
-			if ((newrow<0 || newrow>Grid.MAX_ROW-1) || (newcol<0 || newcol>Grid.MAX_COL-1)){
-				s.setDirection(Math.random()*360);
-			}
-			else {
-				cell.setRow(newrow);
-				cell.setCol(newcol);
-				s.setIndex(cell);
-				break;
-			}
+	public Rescue() {
+		try {
+			grid = new Grid();
+		} catch (BadConfigFormatException e) {
+			e.printStackTrace();
 		}
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// Make Menu
+		JMenuBar menuBar = makeMenuBar();
+		setJMenuBar(menuBar);
+		add(grid, BorderLayout.CENTER);
+		
+		setSize(grid.getPixelCol() + 16, grid.getPixelRow() + menuBar.getHeight() + 64);
+		setVisible(true);
+	}
+	private JMenuBar makeMenuBar() {
+		//makes menu bar and adds items to menu bar
+		JMenuBar menuBar = new JMenuBar();
+		JMenu file = new JMenu("File");
+		//allows player to see detective notes
+		JMenuItem close = new JMenuItem("Close");
+		close.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if(JOptionPane.showConfirmDialog(null, "Are you sure you wish to exit?", "Are you sure?", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+					System.exit(0);
+			}
+		});
+		menuBar.add(file);
+		file.add(close);
+		return menuBar;
 	}
 	
-	public void manualUpdate(MouseListener click){} //Part of GUI, done in part 2 
-
-	public ArrayList<Searcher> getSearchers() {
-		return searchers;
-	}
+	public void manualUpdate(MouseListener click){} 
 	
 	public Grid getGrid(){
 		return grid;
 	}
 	
 	public static void main(String[] args) {
-        
+        Rescue r = new Rescue();
     }
 	
 }

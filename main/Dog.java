@@ -14,7 +14,8 @@ public class Dog extends Searcher {
 	}
 
 	public void draw(Graphics g){
-
+		g.setColor(null);
+		super.draw(g);
 	}
 
 }
