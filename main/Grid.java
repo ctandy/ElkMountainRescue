@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.MediaTracker;
 import java.awt.Toolkit;
@@ -11,12 +12,13 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 
 public class Grid extends JPanel{
-	public final int CELL_SIZE = 16;
+	public final static Integer CELL_SIZE = 16;
 	private ArrayList<Cell> cells;
 	//origin of grid is upper-left
 	public static int MAX_ROW = 0; //row is increasing going down 
 	public static int MAX_COL = 0; //col is increasing going right
 	private Image map;
+	private Graphics2D g2d;
 	MediaTracker tracker = new MediaTracker(this);
 
 
@@ -49,7 +51,16 @@ public class Grid extends JPanel{
 		return (r*MAX_COL+c);
 	}
 	
-	public void paint(Graphics g){} //Part of GUI, done in part 2
+	@Override
+	public void paintComponent(Graphics g) {
+		//paints the cell onto the board
+		super.paintComponent(g);
+		g2d = (Graphics2D) g;
+		g.drawImage(map, map.getWidth(this), map.getHeight(this), this);
+		for(int i = 0; i < MAX_ROW; i++)
+			for(int j = 0; j < MAX_COL; j++)
+				cells.get(calcIndex(i, j)).draw(g2d, j * CELL_SIZE, i * CELL_SIZE);
+	}
 	
 	public void importBackground(){
 		URL url = getClass().getResource("/images/searchMap.jpg"); 

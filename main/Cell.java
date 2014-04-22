@@ -2,6 +2,7 @@ package main;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 //cell uses abstraction so that the program can be adapted as needed.
 //For instance if they don't want to send searchers into dangerous areas 
@@ -17,8 +18,7 @@ public abstract class Cell {
 		this.col = c;
 	}
 	
-	// empty draw to be implemented with GUI
-	public abstract void draw(Graphics g);
+
 	
 	public boolean equals(Cell c){
 		if(this.row == c.getRow() && this.col == c.getCol()) {
@@ -41,6 +41,7 @@ public abstract class Cell {
 			this.color = null;
 		this.searched = searched;
 	}
+	public abstract void draw(Graphics2D g, Integer x, Integer y);
 	
 	public Color getColor() {
 		return color;
