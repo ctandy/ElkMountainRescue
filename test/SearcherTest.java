@@ -19,9 +19,9 @@ public class SearcherTest {
 	@BeforeClass
 	public static void setUp(){
 		searchers = new ArrayList<Searcher>();
-		searchers.add(new Hiker(null, 0, 0, null));
-		searchers.add(new Dog(null, 0, 0, null));
-		searchers.add(new Helicopter(null, 0, 0, null));
+		searchers.add(new Hiker(null, null, 0, 0));
+		searchers.add(new Dog(null, null));
+		searchers.add(new Helicopter(null, null, 0, 0));
 	}
 
 	@Test
@@ -74,5 +74,10 @@ public class SearcherTest {
 			assertEquals(testRow, s.getIndex().getRow());
 			assertEquals(testColumn, s.getIndex().getCol());
 		}
+	}
+	
+	@Test
+	public void SearchersHaveDifferentColors(){
+		assertFalse((searchers.get(0).getColor()).equals(searchers.get(1).getColor()));
 	}
 }

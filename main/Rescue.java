@@ -1,56 +1,95 @@
 package main;
 
-import java.awt.Graphics;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 
-public class Rescue {
-	private ArrayList<Searcher> searchers;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
+@SuppressWarnings("serial")
+public class Rescue extends JFrame{
 	private Grid grid;
 
-	public Rescue() throws BadConfigFormatException{
-		searchers = new ArrayList<Searcher>();
-		grid = new Grid();
-	}
-	
-	public void addSearcher(Searcher s){ //called from a MouseListener for the 'add' button
-		this.getSearchers().add(s);
-	}
-	
-	public void move(Searcher s){
-		Cell cell = s.getIndex();
-		int introw = cell.getRow();
-		int intcol = cell.getCol();
-		int newrow, newcol;
-		while(true){
-			int dx = (int) (s.getSpeed()*Math.cos(Math.toRadians(s.getDirection())));
-			int dy = (int) (s.getSpeed()*Math.sin(Math.toRadians(s.getDirection())));
-			newrow = introw-dy;
-			newcol = intcol+dx;
-			if ((newrow<0 || newrow>Grid.MAX_ROW-1) || (newcol<0 || newcol>Grid.MAX_COL-1)){
-				s.setDirection(Math.random()*360);
-			}
-			else {
-				cell.setRow(newrow);
-				cell.setCol(newcol);
-				s.setIndex(cell);
-				break;
-			}
+	public Rescue() {
+		//loads the grid
+		try {
+			grid = new Grid();
+		} catch (BadConfigFormatException e) {
+			e.printStackTrace();
 		}
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// Make Menu
+		JMenuBar menuBar = makeMenuBar();
+		setJMenuBar(menuBar);
+		add(grid, BorderLayout.CENTER);
+		//sets the size of the JFrame
+		setSize(grid.getPixelCol() + 16, grid.getPixelRow() + menuBar.getHeight() + 64);
+		setTitle("Elk Mountain Rescue System");
+		setVisible(true);
+	}
+	private JMenuBar makeMenuBar() {
+		//makes menu bar and adds items to menu bar
+		JMenuBar menuBar = new JMenuBar();
+		JMenu file = new JMenu("File");
+		JMenuItem close = new JMenuItem("Exit");
+		close.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if(JOptionPane.showConfirmDialog(null, "Are you sure you wish to exit?", "Are you sure?", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+					System.exit(0);
+			}
+		});
+		JMenuItem add = new JMenuItem("Add Search Team");
+		close.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// combo box with 3 types of team, types in attributes and adds this new team to grid
+			}
+		});
+		JMenuItem remove = new JMenuItem("Remove Search Team");
+		close.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// combo box with teams, selecting a team or teams removes them from the grid
+			}
+		});
+		JMenuItem edit = new JMenuItem("Edit Search Team");
+		close.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// Bring up ComboBox for choosing a team to edit and then what to edit
+			}
+		});
+		JMenuItem manUpdate = new JMenuItem("Manual Update");
+		close.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// Bernardo: here is where you could look for a click and update the index/direction
+				// could call to the manualUpdate function below
+			}
+		});
+		menuBar.add(file);
+		file.add(add);
+		file.add(remove);
+		file.add(edit);
+		file.add(manUpdate);
+		file.add(close);
+		return menuBar;
 	}
 	
-	public void manualUpdate(MouseListener click){} //Part of GUI, done in part 2 
-
-	public ArrayList<Searcher> getSearchers() {
-		return searchers;
-	}
+	public void manualUpdate(MouseListener click){} 
 	
 	public Grid getGrid(){
 		return grid;
 	}
 	
 	public static void main(String[] args) {
-        
+        Rescue r = new Rescue();
     }
 	
 }

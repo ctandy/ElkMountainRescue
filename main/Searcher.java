@@ -2,17 +2,42 @@ package main;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
+import java.util.Random;
 
-public abstract class Searcher {
-	protected String name;
+import javax.swing.JComponent;
+
+
+
+
+@SuppressWarnings("serial")
+public class Searcher extends JComponent{
+	private String name;
 	private double speed;
 	private double direction; // in degrees counterclockwise from positive x-axis
 	protected Cell index;
 	private double radius;
+	private Color color;
+	public static ArrayList<Color> usedColors = new ArrayList<Color>();
+	protected Random rand;
 
-	public Searcher(){}
+	public Searcher(){} //For testing the Grid
 	
+	public Searcher(String name, Cell index, double radius){
+		this.name = name;
+		this.index = index;
+		this.radius = radius;
+		rand = new Random();
+		makeRandColor();
+		
+	}
+	
+	//Ensures that no two searchers have the same colors
+	public void makeRandColor(){}
+	
+
 	public void draw(Graphics g){
+		g.setColor(color);
 		g.fillOval(index.getRow()*Grid.CELL_SIZE + Grid.CELL_SIZE/2, 
 				index.getCol()*Grid.CELL_SIZE + Grid.CELL_SIZE/2, Grid.CELL_SIZE*3, Grid.CELL_SIZE*3);
 		g.setColor(Color.BLACK);
@@ -35,6 +60,10 @@ public abstract class Searcher {
 
 	public void setIndex(Cell index) {
 		this.index = index;
+	}
+	
+	public void setColor(Color color){
+		this.color = color;
 	}
 
 	public void setRadius(double radius) {
@@ -59,6 +88,10 @@ public abstract class Searcher {
 	
 	public double getRadius() {
 		return radius;
+	}
+	
+	public Color getColor(){
+		return color;
 	}
 
 }
