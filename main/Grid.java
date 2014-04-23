@@ -88,8 +88,11 @@ public class Grid extends JPanel{
 			int dy = (int) (s.getSpeed()*Math.sin(Math.toRadians(s.getDirection())));
 			newrow = introw-dy;
 			newcol = intcol+dx;
-			if (s.getSpeed() > Math.sqrt(Math.pow(Grid.MAX_COL, 2)+Math.pow(Grid.MAX_ROW, 2))){
+			if (s.getSpeed() > Math.sqrt(Grid.MAX_COL*Grid.MAX_ROW)){
 				s.setSpeed(s.getSpeed()/2);
+			}
+			else if (s.getSpeed() < 0){
+				s.setSpeed(-1*s.getSpeed());
 			}
 			else if ((newrow<0 || newrow>Grid.MAX_ROW-1) || (newcol<0 || newcol>Grid.MAX_COL-1)){
 				s.setDirection(Math.random()*360);
@@ -115,39 +118,63 @@ public class Grid extends JPanel{
 	
 	public void searchedLine(Searcher s, int irow, int icol, int nrow, int ncol){
 		ArrayList<Cell> searched = new ArrayList<Cell>();
-		int crow = irow;
-		int ccol = icol;
-		double dir = Math.asin((irow-nrow)/(ncol-icol));
-		double dx = (double) (Math.cos(Math.toRadians(dir)));
-		double dy = (double) (Math.sin(Math.toRadians(dir)));
-		double dx_90 = (double) (Math.cos(Math.toRadians(dir+90)));
-		double dy_90 = (double) (Math.sin(Math.toRadians(dir+90)));
-		double dx_270 = (double) (Math.cos(Math.toRadians(dir+270)));
-		double dy_270 = (double) (Math.sin(Math.toRadians(dir+270)));
+		double crow = irow;
+		double ccol = icol;
+		double dir = 0.0;
+		if (ncol-icol != 0){
+			if (nrow-irow != 0)
+				dir = Math.atan((irow-nrow)/(ncol-icol));
+			else if(ncol > icol)
+				dir = 0.0;
+			else
+				dir = 180.0;
+		} else if (nrow-irow != 0){
+			if(nrow > irow)
+				dir = 270.0;
+			else
+				dir = 90.0;
+		} else
+			return; //does not set current index as searched
 		
-		NormalCell cell = new NormalCell(crow, ccol);
-		searched.add(cell);
-		int i = 1;
-		while (crow != nrow+dy && ccol != ncol-dx){
-			crow = (int) (irow - i*dy);
-			ccol = (int) (icol + i*dx);
-			cell = new NormalCell(crow, ccol);
-			searched.add(cell);
-			for (int j = 1; j <= s.getRadius(); j++){
-				int jrow = (int) (crow - j*dy_90);
-				int jcol = (int) (ccol + j*dx_90);
-				cell = new NormalCell(jrow, jcol);
-				searched.add(cell);
-				jrow = (int) (crow - j*dy_270);
-				jcol = (int) (ccol + j*dx_270);
-				cell = new NormalCell(jrow, jcol);
-				searched.add(cell);
+		double dx = (double) (Math.cos(dir));
+		double dy = (double) (Math.sin(dir));
+		double dx_90 = (double) (Math.cos(dir+(Math.PI)/2));
+		double dy_90 = (double) (Math.sin(dir+(Math.PI)/2));
+		double dx_270 = (double) (Math.cos(dir+(Math.PI)*3/2));
+		double dy_270 = (double) (Math.sin(dir+(Math.PI)*3/2));
+		
+		if(Math.abs(Math.round(dx) - dx) < Math.pow(10, -2))
+			dx = Math.round(dx);
+		if(Math.abs(Math.round(dy) - dy) < Math.pow(10, -2))
+			dy = Math.round(dy);
+		if(Math.abs(Math.round(dx_90) - dx_90) < Math.pow(10, -2))
+			dx_90 = Math.round(dx_90);
+		if(Math.abs(Math.round(dy_90) - dy_90) < Math.pow(10, -2))
+			dy_90 = Math.round(dy_90);
+		if(Math.abs(Math.round(dx_270) - dx_270) < Math.pow(10, -2))
+			dx_270 = Math.round(dx_270);
+		if(Math.abs(Math.round(dy_270) - dy_270) < Math.pow(10, -2))
+			dy_270 = Math.round(dy_270);
+		
+		double i = 0.0;
+		do {
+			crow = irow - i*dy;
+			ccol = icol + i*dx;
+			searched.add(new NormalCell((int) Math.round(crow), (int) Math.round(ccol)));
+			for (double j = 1; j <= s.getRadius(); j++){
+				double jrow = crow - j*dy_90;
+				double jcol = ccol + j*dx_90;
+				searched.add(new NormalCell((int) Math.round(jrow), (int) Math.round(jcol)));
+				jrow = crow - j*dy_270;
+				jcol = ccol + j*dx_270;
+				searched.add(new NormalCell((int) Math.round(jrow), (int) Math.round(jcol)));
 			}
 			i++;
-		}
-		for (Cell c : cells){
+		} while (Math.round(crow) != Math.round(nrow+dy) && Math.round(ccol) != Math.round(ncol-dx));
+		
+		for (Cell cell : cells){
 			for (Cell sCell : searched){
-				c.equals(sCell);
+				cell.equals(sCell);
 			}
 		}
 	}

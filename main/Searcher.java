@@ -8,9 +8,6 @@ import java.util.Random;
 import javax.swing.JComponent;
 
 
-
-
-@SuppressWarnings("serial")
 public class Searcher extends JComponent{
 	private String name;
 	private double speed;
