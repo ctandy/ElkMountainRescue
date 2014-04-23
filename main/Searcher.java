@@ -1,17 +1,25 @@
 package main;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public abstract class Searcher {
-	private String name;
+	protected String name;
 	private double speed;
 	private double direction; // in degrees counterclockwise from positive x-axis
-	private Cell index;
+	protected Cell index;
 	private double radius;
 
 	public Searcher(){}
 	
-	public abstract void draw(Graphics g); //Implemented in part II by the child classes
+	public void draw(Graphics g){
+		g.fillOval(index.getRow()*Grid.CELL_SIZE + Grid.CELL_SIZE/2, 
+				index.getCol()*Grid.CELL_SIZE + Grid.CELL_SIZE/2, Grid.CELL_SIZE*3, Grid.CELL_SIZE*3);
+		g.setColor(Color.BLACK);
+		g.drawOval(index.getRow()*Grid.CELL_SIZE + Grid.CELL_SIZE/2, 
+				index.getCol()*Grid.CELL_SIZE + Grid.CELL_SIZE/2, Grid.CELL_SIZE*3, Grid.CELL_SIZE*3);
+		g.drawString(name, index.getRow()*Grid.CELL_SIZE + Grid.CELL_SIZE/2, index.getCol()*Grid.CELL_SIZE);
+	}; //Implemented in part II by the child classes
 
 	public void setName(String name) {
 		this.name = name;

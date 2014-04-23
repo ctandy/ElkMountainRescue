@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 
 public class Grid extends JPanel{
-	public final int CELL_SIZE = 16;
+	public final static int CELL_SIZE = 16;
 	private ArrayList<Cell> cells;
 	//origin of grid is upper-left
 	public static int MAX_ROW = 0; //row is increasing going down 

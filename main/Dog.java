@@ -14,6 +14,7 @@ public class Dog extends Searcher {
 	}
 
 	public void draw(Graphics g){
+		
 
 	}
 

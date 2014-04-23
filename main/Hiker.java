@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class Hiker extends Searcher {
@@ -14,6 +15,7 @@ public class Hiker extends Searcher {
 	}
 
 	public void draw(Graphics g){
+		g.setColor(COLOR.);
 
 	}
 }
