@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 
 public class Grid extends JPanel{
+
 	private ArrayList<Searcher> searchers;
 	public final static Integer CELL_SIZE = 16;
 	private ArrayList<Cell> cells;
