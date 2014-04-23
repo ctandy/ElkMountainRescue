@@ -100,6 +100,55 @@ public class Grid extends JPanel{
 				break;
 			}
 		}
+		searchedLine(s, introw, intcol, newrow, newcol);
+	}
+	
+	public void moveManual(Searcher s, Cell newIndex){ // This function is used to manually update index
+		Cell cell = s.getIndex();
+		int introw = cell.getRow();
+		int intcol = cell.getCol();
+		int newrow = newIndex.getRow();
+		int newcol = newIndex.getCol();
+		searchedLine(s, introw, intcol, newrow, newcol);
+	}
+	
+	public void searchedLine(Searcher s, int irow, int icol, int nrow, int ncol){
+		ArrayList<Cell> searched = new ArrayList<Cell>();
+		int crow = irow;
+		int ccol = icol;
+		double dir = Math.asin((irow-nrow)/(ncol-icol));
+		double dx = (double) (Math.cos(Math.toRadians(dir)));
+		double dy = (double) (Math.sin(Math.toRadians(dir)));
+		double dx_90 = (double) (Math.cos(Math.toRadians(dir+90)));
+		double dy_90 = (double) (Math.sin(Math.toRadians(dir+90)));
+		double dx_270 = (double) (Math.cos(Math.toRadians(dir+270)));
+		double dy_270 = (double) (Math.sin(Math.toRadians(dir+270)));
+		
+		NormalCell cell = new NormalCell(crow, ccol);
+		searched.add(cell);
+		int i = 1;
+		while (crow != nrow+dy && ccol != ncol-dx){
+			crow = (int) (irow - i*dy);
+			ccol = (int) (icol + i*dx);
+			cell = new NormalCell(crow, ccol);
+			searched.add(cell);
+			for (int j = 1; j <= s.getRadius(); j++){
+				int jrow = (int) (crow - j*dy_90);
+				int jcol = (int) (ccol + j*dx_90);
+				cell = new NormalCell(jrow, jcol);
+				searched.add(cell);
+				jrow = (int) (crow - j*dy_270);
+				jcol = (int) (ccol + j*dx_270);
+				cell = new NormalCell(jrow, jcol);
+				searched.add(cell);
+			}
+			i++;
+		}
+		for (Cell c : cells){
+			for (Cell sCell : searched){
+				c.equals(sCell);
+			}
+		}
 	}
 	
 	public void addSearcher(Searcher s){ //called from the menu bar

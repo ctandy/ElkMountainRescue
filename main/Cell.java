@@ -20,8 +20,6 @@ public abstract class Cell {
 		this.searched = false;
 	}
 	
-
-	
 	public boolean equals(Cell c){
 		if(this.row == c.getRow() && this.col == c.getCol()) {
 			this.searched = true;
@@ -43,6 +41,7 @@ public abstract class Cell {
 			this.color = null;
 		this.searched = searched;
 	}
+	
 	public abstract void draw(Graphics2D g, Integer x, Integer y);
 	
 	public Color getColor() {
