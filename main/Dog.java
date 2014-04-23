@@ -12,9 +12,9 @@ public class Dog extends Searcher {
 	
 	public void makeRandColor(){
 		// b and g have 0.5 so that all of the hikers have a stronger red tint
-		float r = (float) (rand.nextFloat()*.25 + .5);
-		float g = (float) (rand.nextFloat()*.25);
-		float b = (float) (rand.nextFloat()*0.25);
+		float r = (float) (this.getRand().nextFloat()*.25 + .5);
+		float g = (float) (this.getRand().nextFloat()*.25);
+		float b = (float) (this.getRand().nextFloat()*0.25);
 		
 		if( !usedColors.contains(new Color(r,g,b)))
 			setColor(new Color(r,g,b));

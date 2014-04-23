@@ -91,13 +91,15 @@ public class Rescue extends JFrame{
 	
 	public static void main(String[] args) {
         Rescue r = new Rescue();
+        //r.getGrid().addSearcher(new Hiker("Hiker", null, 0, 0));
+        //r.getGrid().repaint();
         // every time a timer goes off do:
         // for (Searcher s : r.getGrid().getSearchers()){
         //   if (s.getRadius() != Dog.RADIUS) 
         //	   r.getGrid().move(s);
         // }
         // All the menu bar functions can be done on top of this timer
-        // repaint(); 
+        // r.getGrid().repaint();
     }
 	
 }

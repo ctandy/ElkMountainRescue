@@ -12,9 +12,9 @@ public class Hiker extends AutoSearcher {
 	
 	public void makeRandColor(){
 		// r and b have 0.5 so that all of the hikers have a stronger green tint
-		float r = (float) (rand.nextFloat()*0.25);
-		float g = (float) (rand.nextFloat()*.25 + .5);
-		float b = (float) (rand.nextFloat()*.25);
+		float r = (float) (this.getRand().nextFloat()*0.25);
+		float g = (float) (this.getRand().nextFloat()*.25 + .5);
+		float b = (float) (this.getRand().nextFloat()*.25);
 		
 		if( !usedColors.contains(new Color(r,g,b)))
 			setColor(new Color(r,g,b));

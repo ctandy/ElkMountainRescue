@@ -15,11 +15,11 @@ public class Searcher extends JComponent{
 	private String name;
 	private double speed;
 	private double direction; // in degrees counterclockwise from positive x-axis
-	protected Cell index;
+	private Cell index;
 	private double radius;
 	private Color color;
 	public static ArrayList<Color> usedColors = new ArrayList<Color>();
-	protected Random rand;
+	private Random rand;
 
 	public Searcher(){} //For testing the Grid
 	
@@ -27,7 +27,7 @@ public class Searcher extends JComponent{
 		this.name = name;
 		this.index = index;
 		this.radius = radius;
-		rand = new Random();
+		setRand(new Random());
 		makeRandColor();
 		
 	}
@@ -44,7 +44,7 @@ public class Searcher extends JComponent{
 		g.drawOval(index.getRow()*Grid.CELL_SIZE + Grid.CELL_SIZE/2, 
 				index.getCol()*Grid.CELL_SIZE + Grid.CELL_SIZE/2, Grid.CELL_SIZE*3, Grid.CELL_SIZE*3);
 		g.drawString(name, index.getRow()*Grid.CELL_SIZE + Grid.CELL_SIZE/2, index.getCol()*Grid.CELL_SIZE);
-	}; //Implemented in part II by the child classes
+	};
 
 	public void setName(String name) {
 		this.name = name;
@@ -92,6 +92,14 @@ public class Searcher extends JComponent{
 	
 	public Color getColor(){
 		return color;
+	}
+
+	public Random getRand() {
+		return rand;
+	}
+
+	public void setRand(Random rand) {
+		this.rand = rand;
 	}
 
 }
