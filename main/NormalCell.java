@@ -11,7 +11,6 @@ public class NormalCell extends Cell{
 		super(r, c);
 	}
 	
-	// empty draw to be implemented with GUI
 	@Override
 	public void draw(Graphics2D g, Integer x, Integer y) {
 		g.setColor(Color.black);

@@ -75,6 +75,7 @@ public class Rescue extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 				// Bernardo: here is where you could look for a click and update the index/direction
 				// could call to the manualUpdate function below
+				// use the moveManual function in Grid
 			}
 		});
 		menuBar.add(file);
@@ -94,6 +95,15 @@ public class Rescue extends JFrame{
 	
 	public static void main(String[] args) {
         Rescue r = new Rescue();
+        //r.getGrid().addSearcher(new Hiker("Hiker", null, 0, 0));
+        //r.getGrid().repaint();
+        // every time a timer goes off do:
+        // for (Searcher s : r.getGrid().getSearchers()){
+        //   if (s.getRadius() != Dog.RADIUS) 
+        //	   r.getGrid().move(s);
+        // }
+        // All the menu bar functions can be done on top of this timer
+        // r.getGrid().repaint();
     }
 	
 }

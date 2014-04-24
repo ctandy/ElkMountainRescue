@@ -51,11 +51,10 @@ public class GridTest {
 	@Test
 	public void testMove() {
 		Searcher s = new Searcher();
-		NormalCell cell = new NormalCell(0, 0);
 		
 		//test for redirecting the team when it hits a wall
 		s.setDirection(180.0);
-		s.setIndex(cell);
+		s.setIndex(new NormalCell(0, 0));
 		s.setSpeed(3.0);
 		testing.move(s);
 		assertTrue(s.getIndex().getRow() >= 0);
