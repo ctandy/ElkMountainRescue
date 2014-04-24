@@ -5,15 +5,17 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.MediaTracker;
 import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-public class Grid extends JPanel{
+public class Grid extends JPanel implements MouseListener{
 
-	private ArrayList<Searcher> searchers;
+	private static ArrayList<Searcher> searchers;
 	public final static Integer CELL_SIZE = 16;
 	private ArrayList<Cell> cells;
 	//origin of grid is upper-left
@@ -23,6 +25,9 @@ public class Grid extends JPanel{
 	private int pixelCol = 0; // number of pixels horizontally
 	private Image map;
 	private Graphics2D g2d;
+	private boolean waitingForPlacement;
+	
+
 	MediaTracker tracker = new MediaTracker(this);
 
 
@@ -30,6 +35,8 @@ public class Grid extends JPanel{
 		this.loadConfigFiles();
 		this.initializeCells();
 		searchers = new ArrayList<Searcher>();
+		waitingForPlacement = false;
+		addMouseListener(this);
 	}
 	
 	public void initializeCells(){
@@ -56,7 +63,7 @@ public class Grid extends JPanel{
 	@Override
 	public void paintComponent(Graphics g) {
 		//paints the cells onto the board
-		super.paintComponent(g);
+		super.paintComponents(g);
 		g2d = (Graphics2D) g;
 		// paints the image to the background
 		g.drawImage(map, 0, 0, this);
@@ -103,8 +110,13 @@ public class Grid extends JPanel{
 		}
 	}
 	
+	public void finishPlacement(){
+		
+	}
+	
 	public void addSearcher(Searcher s){ //called from the menu bar
 		this.getSearchers().add(s);
+		repaint();
 	}
 	
 	public void setMAX_ROW(int mAX_ROW) {
@@ -137,5 +149,55 @@ public class Grid extends JPanel{
 	
 	public ArrayList<Cell> getCells() {
 		return cells;
+	}
+	
+	public boolean isWaitingForPlacement() {
+		return waitingForPlacement;
+	}
+
+	public void setWaitingForPlacement(boolean waitingForPlacement) {
+		this.waitingForPlacement = waitingForPlacement;
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		if(isWaitingForPlacement()){
+			if(cells == null) throw new RuntimeException("No valid cells available.");
+			Cell target = null;
+			for(Cell c: cells){
+				if(c.containsClick(e.getX(), e.getY())){
+					target = c;
+					break;
+				}
+			}
+			waitingForPlacement = false;
+			NewSearcherDialog makeNewSearcher = new NewSearcherDialog(target, this);
+			makeNewSearcher.setVisible(true);
+		}
+		
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }

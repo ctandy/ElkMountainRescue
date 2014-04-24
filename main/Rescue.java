@@ -1,10 +1,12 @@
 package main;
 
 import java.awt.BorderLayout;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -45,28 +47,30 @@ public class Rescue extends JFrame{
 			}
 		});
 		JMenuItem add = new JMenuItem("Add Search Team");
-		close.addActionListener(new ActionListener() {
+		add.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// combo box with 3 types of team, types in attributes and adds this new team to grid
+				grid.setWaitingForPlacement(true);
+				JOptionPane.showMessageDialog(null, "Click a cell to place searcher", 
+						"Add new Searcher", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		JMenuItem remove = new JMenuItem("Remove Search Team");
-		close.addActionListener(new ActionListener() {
+		remove.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// combo box with teams, selecting a team or teams removes them from the grid
 			}
 		});
 		JMenuItem edit = new JMenuItem("Edit Search Team");
-		close.addActionListener(new ActionListener() {
+		edit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// Bring up ComboBox for choosing a team to edit and then what to edit
 			}
 		});
 		JMenuItem manUpdate = new JMenuItem("Manual Update");
-		close.addActionListener(new ActionListener() {
+		manUpdate.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// Bernardo: here is where you could look for a click and update the index/direction

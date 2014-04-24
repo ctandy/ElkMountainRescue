@@ -3,12 +3,17 @@ package main;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.Rectangle;
+
+import javax.swing.JComponent;
 
 //cell uses abstraction so that the program can be adapted as needed.
 //For instance if they don't want to send searchers into dangerous areas 
 //a new type of cell could be created for that easily
 //For now only NormalCell will be used
-public abstract class Cell {
+@SuppressWarnings("serial")
+public abstract class Cell extends JComponent{
 	private int row, col;
 	private boolean searched;
 	private Color color;
@@ -63,6 +68,13 @@ public abstract class Cell {
 	
 	public void setCol(int col) {
 		this.col = col;
+	}
+	
+	public boolean containsClick(int mouseX, int mouseY) {
+		Rectangle rect = new Rectangle(col * Grid.CELL_SIZE, row * Grid.CELL_SIZE, Grid.CELL_SIZE, Grid.CELL_SIZE);
+		if (rect.contains(new Point(mouseX, mouseY))) 
+			return true;
+		return false;
 	}
 	
 }
