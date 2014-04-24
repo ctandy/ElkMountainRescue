@@ -16,11 +16,13 @@ import javax.swing.JOptionPane;
 @SuppressWarnings("serial")
 public class Rescue extends JFrame{
 	private Grid grid;
+	public static Legend legend;
 
 	public Rescue() {
 		//loads the grid
 		try {
 			grid = new Grid();
+			legend = new Legend(grid);
 		} catch (BadConfigFormatException e) {
 			e.printStackTrace();
 		}
@@ -29,6 +31,7 @@ public class Rescue extends JFrame{
 		JMenuBar menuBar = makeMenuBar();
 		setJMenuBar(menuBar);
 		add(grid, BorderLayout.CENTER);
+		add(legend, BorderLayout.SOUTH);
 		//sets the size of the JFrame
 		setSize(grid.getPixelCol() + 16, grid.getPixelRow() + menuBar.getHeight() + 64);
 		setTitle("Elk Mountain Rescue System");
