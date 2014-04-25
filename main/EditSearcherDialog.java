@@ -14,13 +14,11 @@ import java.awt.event.ActionListener;
 
 
 
-
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.EtchedBorder;
@@ -28,7 +26,7 @@ import javax.swing.border.TitledBorder;
 
 
 @SuppressWarnings("serial")
-public class NewSearcherDialog extends JDialog{
+public class EditSearcherDialog extends JDialog{
 
 	JCheckBox dog, hiker, helicopter;
 	JTextArea speed, direction, name;
@@ -36,7 +34,7 @@ public class NewSearcherDialog extends JDialog{
 	Grid grid;
 	Cell cell;
 
-	public NewSearcherDialog(Cell cell, Grid grid){
+	public EditSearcherDialog(Cell cell, Grid grid){
 		setModal(true);
 		this.cell = cell;
 		this.grid = grid;
@@ -75,7 +73,7 @@ public class NewSearcherDialog extends JDialog{
 		name = new JTextArea();
 
 
-		setTitle("Add New Searcher");
+		setTitle("Edit Searcher");
 		setSize(300, 200);
 
 		JPanel sType = new JPanel();
@@ -124,8 +122,8 @@ public class NewSearcherDialog extends JDialog{
 
 	}
 
-	public void addSearcher(){
-
+	public void editSearcher(){
+		grid.removeSearcher(cell);
 		String sName = name.getText();
 		Searcher searcher;
 		if(dog.isSelected()){
@@ -133,23 +131,19 @@ public class NewSearcherDialog extends JDialog{
 			searcher = new Dog(sName, cell);
 		}else {
 			String speedStr = speed.getText();
+			double speedD = Double.parseDouble(speedStr);
 			String dirStr = direction.getText();
-			double speedD, dirD;
-			try{
-				speedD = Double.parseDouble(speedStr);
-				dirD = Double.parseDouble(dirStr);
-				if(hiker.isSelected()){
-					searcher = new Hiker(sName, cell, speedD, dirD);
-				}else{
-					searcher = new Helicopter(sName, cell, speedD, dirD);
-				}
-				grid.addSearcher(searcher);
-				
-			}catch(NumberFormatException e){
-				JOptionPane.showMessageDialog(this, "Check format for speed and direction!",
-						"Wrong Number Format", JOptionPane.ERROR_MESSAGE);
+			double dirD = Double.parseDouble(dirStr);
+
+			if(hiker.isSelected()){
+				searcher = new Hiker(sName, cell, speedD, dirD);
+			}else{
+				searcher = new Helicopter(sName, cell, speedD, dirD);
+
 			}
 		}
+		grid.addSearcher(searcher);
+
 	}
 
 
@@ -175,11 +169,11 @@ public class NewSearcherDialog extends JDialog{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource() == submit){
-				addSearcher();
+				editSearcher();
 				dispose();
 			}
 			else{
-				grid.setWaitingForPlacement(false);
+				grid.setWaitingForEdit(false);
 				dispose();
 			}
 
@@ -188,4 +182,3 @@ public class NewSearcherDialog extends JDialog{
 	}
 
 }
-

@@ -5,7 +5,9 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
+import java.util.Timer;
 
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -19,10 +21,11 @@ public class Rescue extends JFrame{
 	public static Legend legend;
 
 	public Rescue() {
-		//loads the grid
+		//loads the grid and legend
 		try {
 			grid = new Grid();
 			legend = new Legend(grid);
+			legend.setUp(grid);
 		} catch (BadConfigFormatException e) {
 			e.printStackTrace();
 		}
@@ -62,14 +65,18 @@ public class Rescue extends JFrame{
 		remove.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// combo box with teams, selecting a team or teams removes them from the grid
+				grid.setWaitingForRemove(true);
+				JOptionPane.showMessageDialog(null, "Click a cell to remove searcher", 
+						"Remove Searcher", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		JMenuItem edit = new JMenuItem("Edit Search Team");
 		edit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// Bring up ComboBox for choosing a team to edit and then what to edit
+				grid.setWaitingForEdit(true);
+				JOptionPane.showMessageDialog(null, "Click a cell to edit searcher", 
+						"Edit Searcher", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		JMenuItem manUpdate = new JMenuItem("Manual Update");
@@ -79,6 +86,9 @@ public class Rescue extends JFrame{
 				// Bernardo: here is where you could look for a click and update the index/direction
 				// could call to the manualUpdate function below
 				// use the moveManual function in Grid
+				grid.setWaitingForEdit(true);
+				JOptionPane.showMessageDialog(null, "Click the searcher to update",
+						"Manually Update Location", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		menuBar.add(file);
@@ -89,24 +99,27 @@ public class Rescue extends JFrame{
 		file.add(close);
 		return menuBar;
 	}
-	
-	public void manualUpdate(MouseListener click){} 
-	
+
+	public void manualUpdate(MouseListener click) {
+	}
+
 	public Grid getGrid(){
 		return grid;
 	}
-	
+
 	public static void main(String[] args) {
-        Rescue r = new Rescue();
-        //r.getGrid().addSearcher(new Hiker("Hiker", null, 0, 0));
-        //r.getGrid().repaint();
-        // every time a timer goes off do:
-        // for (Searcher s : r.getGrid().getSearchers()){
-        //   if (s.getRadius() != Dog.RADIUS) 
-        //	   r.getGrid().move(s);
-        // }
-        // All the menu bar functions can be done on top of this timer
-        // r.getGrid().repaint();
-    }
-	
+		Rescue r = new Rescue();
+
+		//Determines interval in milliseconds to call gridUpdater
+		Timer timer = new Timer();
+		timer.schedule(new gridUpdater(r), 20000);
+		// every time a timer goes off do:
+		// for (Searcher s : r.getGrid().getSearchers()){
+		//   if (s.getRadius() != Dog.RADIUS) 
+		//	   r.getGrid().move(s);
+		// }
+		// All the menu bar functions can be done on top of this timer
+		// r.getGrid().repaint();
+	}
+
 }
