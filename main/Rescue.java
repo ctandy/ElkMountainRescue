@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,7 +37,8 @@ public class Rescue extends JFrame{
 		add(grid, BorderLayout.CENTER);
 		add(legend, BorderLayout.SOUTH);
 		//sets the size of the JFrame
-		setSize(grid.getPixelCol() + 16, grid.getPixelRow() + menuBar.getHeight() + 64);
+		pack();
+		setSize(grid.getPixelCol() + 16, grid.getPixelRow() + menuBar.getHeight() + 64 + legend.getHeight());
 		setTitle("Elk Mountain Rescue System");
 		setVisible(true);
 	}
@@ -59,8 +61,11 @@ public class Rescue extends JFrame{
 				grid.setWaitingForPlacement(true);
 				JOptionPane.showMessageDialog(null, "Click a cell to place searcher", 
 						"Add new Searcher", JOptionPane.INFORMATION_MESSAGE);
+				repaint();
 			}
+			
 		});
+		
 		JMenuItem remove = new JMenuItem("Remove Search Team");
 		remove.addActionListener(new ActionListener() {
 			@Override
@@ -98,6 +103,11 @@ public class Rescue extends JFrame{
 		file.add(manUpdate);
 		file.add(close);
 		return menuBar;
+	}
+	
+	public void paintComponent(Graphics g){
+		super.paintComponents(g);
+		pack();
 	}
 
 	public void manualUpdate(MouseListener click) {

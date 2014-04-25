@@ -35,6 +35,7 @@ public class NewSearcherDialog extends JDialog{
 	JButton submit, cancel;
 	Grid grid;
 	Cell cell;
+	boolean finished;
 
 	public NewSearcherDialog(Cell cell, Grid grid){
 		setModal(true);
@@ -128,13 +129,16 @@ public class NewSearcherDialog extends JDialog{
 
 		String sName = name.getText();
 		Searcher searcher;
+		finished = true;
 		if(dog.isSelected()){
 
 			searcher = new Dog(sName, cell);
+			grid.addSearcher(searcher);
 		}else {
 			String speedStr = speed.getText();
 			String dirStr = direction.getText();
 			double speedD, dirD;
+			
 			try{
 				speedD = Double.parseDouble(speedStr);
 				dirD = Double.parseDouble(dirStr);
@@ -144,12 +148,19 @@ public class NewSearcherDialog extends JDialog{
 					searcher = new Helicopter(sName, cell, speedD, dirD);
 				}
 				grid.addSearcher(searcher);
+				finished = true;
 				
 			}catch(NumberFormatException e){
 				JOptionPane.showMessageDialog(this, "Check format for speed and direction!",
 						"Wrong Number Format", JOptionPane.ERROR_MESSAGE);
-			}
+				finished = false;
+			}	
+			
 		}
+		
+		if(finished)
+			dispose();
+		
 	}
 
 
@@ -176,7 +187,6 @@ public class NewSearcherDialog extends JDialog{
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource() == submit){
 				addSearcher();
-				dispose();
 			}
 			else{
 				grid.setWaitingForPlacement(false);
