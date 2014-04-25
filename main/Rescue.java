@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -16,6 +17,7 @@ import javax.swing.JOptionPane;
 @SuppressWarnings("serial")
 public class Rescue extends JFrame{
 	private Grid grid;
+	private boolean waitForUpdate = false;
 	private Legend legend;
 
 	public Rescue() {
@@ -84,7 +86,7 @@ public class Rescue extends JFrame{
 				// Bernardo: here is where you could look for a click and update the index/direction
 				// could call to the manualUpdate function below
 				// use the moveManual function in Grid
-				grid.setWaitingForPlacement(true);
+				waitForUpdate = true;
 				JOptionPane.showMessageDialog(null, "Click the searcher to update",
 						"Manually Update Location", JOptionPane.INFORMATION_MESSAGE);
 			}
@@ -98,9 +100,17 @@ public class Rescue extends JFrame{
 		return menuBar;
 	}
 	
-	public void manualUpdate(MouseListener click){
-		
-	} 
+	public void manualUpdate(MouseListener click) {
+
+		JDialog cancelOption = new JDialog(this,
+				"Would you like to cancel the manual update?");
+		JButton cancelButton = new JButton("Cancel");
+		cancelOption.add(cancelButton);
+		cancelOption.setVisible(true);
+		while (waitForUpdate) {
+			
+		}
+	}
 	
 	public Grid getGrid(){
 		return grid;
