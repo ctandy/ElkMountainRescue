@@ -19,6 +19,7 @@ public class GridUpdater extends TimerTask {
 			g.move(s);
 		}
 		g.repaint();
+		System.out.println("next");
 	}
 
 }

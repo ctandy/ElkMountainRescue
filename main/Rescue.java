@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
-import java.util.Timer;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -14,6 +13,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 @SuppressWarnings("serial")
 public class Rescue extends JFrame{
@@ -96,17 +96,35 @@ public class Rescue extends JFrame{
 		file.add(close);
 		return menuBar;
 	}
+	public void updateGrid() {
+		for (Searcher s : grid.getSearchers()) {
+			grid.move(s);
+		}
+		grid.repaint();
+		System.out.println("next");
+	}
 	
 	public Grid getGrid(){
 		return grid;
 	}
 	
 	public static void main(String[] args) {
-        Rescue r = new Rescue();
-        
+        final Rescue r = new Rescue();
+        final GridUpdater gu = new GridUpdater(r);
         //Determines interval in milliseconds to call GridUpdater
-       Timer timer = new Timer();
-       timer.schedule(new GridUpdater(r), 20000);
+        new JFrame().setVisible(true);
+        ActionListener actListner = new ActionListener() {
+    		@Override
+    		public void actionPerformed(ActionEvent event) {
+    			r.updateGrid();
+    			//gu.run();
+    		}
+
+    	};
+        Timer timer = new Timer(5000, actListner);
+		timer.start();
+       //Timer timer = new Timer();
+       //timer.schedule(new GridUpdater(r), 20000);
         // every time a timer goes off do:
         // for (Searcher s : r.getGrid().getSearchers()){
         //   if (s.getRadius() != Dog.RADIUS) 
