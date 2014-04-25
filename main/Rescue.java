@@ -100,11 +100,7 @@ public class Rescue extends JFrame{
 	
 	public void manualUpdate(MouseListener click) {
 
-		JDialog cancelOption = new JDialog(this,
-				"Would you like to cancel the manual update?");
-		JButton cancelButton = new JButton("Cancel");
-		cancelOption.add(cancelButton);
-		cancelOption.setVisible(true);
+		
 		while (waitForUpdate) {
 			
 		}

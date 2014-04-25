@@ -27,6 +27,7 @@ public class Grid extends JPanel implements MouseListener{
 	private Graphics2D g2d;
 	private boolean waitingForPlacement;
 	private boolean waitingForRemove;
+	private boolean waitingForUpdate;
 	
 
 	MediaTracker tracker = new MediaTracker(this);
@@ -244,6 +245,15 @@ public class Grid extends JPanel implements MouseListener{
 		this.waitingForRemove = remove;
 	}
 	
+	//getters and setters for boolean flag for manual update functions
+	public boolean isWaitingForUpdate(){
+		return waitingForUpdate;
+	}
+	
+	public void setWaitingForUpdate(boolean update){
+		this.waitingForUpdate = update;
+	}
+	
 	public void removeSearcher(Cell c){
 		for (Searcher s : searchers){
 			if(s.getIndex().equals(c)){
@@ -297,6 +307,10 @@ public class Grid extends JPanel implements MouseListener{
 			}
 			waitingForRemove = false;
 			removeSearcher(target);
+		}
+		//Manual Update function logic
+		if(isWaitingForUpdate()){
+			
 		}
 		
 		
