@@ -88,11 +88,21 @@ public class Rescue extends JFrame{
 						"Manual Update", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
+		JMenuItem time = new JMenuItem("Time Step");
+		time.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				for (Searcher s : grid.getSearchers()) {
+					grid.move(s);
+				}
+			}
+		});
 		menuBar.add(file);
 		file.add(add);
 		file.add(remove);
 		file.add(edit);
 		file.add(manUpdate);
+		file.add(time);
 		file.add(close);
 		return menuBar;
 	}
@@ -102,7 +112,14 @@ public class Rescue extends JFrame{
 	}
 	
 	public static void main(String[] args) {
-		final Rescue r = new Rescue();
+
+        Rescue r = new Rescue();
+        
+       //Determines interval in milliseconds to call GridUpdater
+       //Timer timer = new Timer();
+       //timer.schedule(new GridUpdater(r), 1000);
+
+		/*final Rescue r = new Rescue();
 
 		Timer timer = new Timer(1000, new ActionListener() {
 
@@ -120,13 +137,8 @@ public class Rescue extends JFrame{
         //Determines interval in milliseconds to call GridUpdater
       // Timer timer = new Timer();
        //timer.schedule(new GridUpdater(r), 20000);
-        // every time a timer goes off do:
-        // for (Searcher s : r.getGrid().getSearchers()){
-        //   if (s.getRadius() != Dog.RADIUS) 
-        //	   r.getGrid().move(s);
-        // }
-        // All the menu bar functions can be done on top of this timer
-        // r.getGrid().repaint();
+        */
+
     }
 	
 }
