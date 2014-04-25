@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
-import java.util.Timer;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -14,6 +13,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 @SuppressWarnings("serial")
 public class Rescue extends JFrame{
@@ -112,11 +112,33 @@ public class Rescue extends JFrame{
 	}
 	
 	public static void main(String[] args) {
+
         Rescue r = new Rescue();
         
        //Determines interval in milliseconds to call GridUpdater
        //Timer timer = new Timer();
        //timer.schedule(new GridUpdater(r), 1000);
+
+		/*final Rescue r = new Rescue();
+
+		Timer timer = new Timer(1000, new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				for (Searcher s : r.getGrid().getSearchers()) {
+					r.getGrid().move(s);
+				}
+				r.getGrid().repaint();
+
+			}
+
+		});
+		timer.start();
+        //Determines interval in milliseconds to call GridUpdater
+      // Timer timer = new Timer();
+       //timer.schedule(new GridUpdater(r), 20000);
+        */
+
     }
 	
 }
