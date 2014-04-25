@@ -101,11 +101,6 @@ public class Rescue extends JFrame{
 	}
 	
 	public void manualUpdate(MouseListener click) {
-
-		
-		while (waitForUpdate) {
-			
-		}
 	}
 	
 	public Grid getGrid(){
