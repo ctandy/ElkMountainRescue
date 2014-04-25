@@ -123,6 +123,9 @@ public class Grid extends JPanel implements MouseListener{
 		searchedLine(s, introw, intcol, newrow, newcol);
 	}
 	
+	//please correct this comment if wrong
+	//calculates search range for given searcher when moving from initial position(irow, icol)
+	//to new position(nrow, ncol)
 	public void searchedLine(Searcher s, int irow, int icol, int nrow, int ncol){
 		ArrayList<Cell> searched = new ArrayList<Cell>();
 		double crow = irow;
