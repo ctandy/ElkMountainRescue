@@ -106,12 +106,11 @@ public class Rescue extends JFrame{
 		file.add(close);
 		return menuBar;
 	}
+	
 	public void updateGrid() {
 		for (Searcher s : grid.getSearchers()) {
 			grid.move(s);
 		}
-		grid.repaint();
-		System.out.println("next");
 	}
 	
 	public Grid getGrid(){
@@ -120,52 +119,17 @@ public class Rescue extends JFrame{
 	
 	public static void main(String[] args) {
         final Rescue r = new Rescue();
-        final GridUpdater gu = new GridUpdater(r);
-        //Determines interval in milliseconds to call GridUpdater
-        new JFrame().setVisible(true);
+        
         ActionListener actListner = new ActionListener() {
     		@Override
     		public void actionPerformed(ActionEvent event) {
     			r.updateGrid();
-    			//gu.run();
     		}
 
     	};
         Timer timer = new Timer(5000, actListner);
 		timer.start();
-       //Timer timer = new Timer();
-       //timer.schedule(new GridUpdater(r), 20000);
-        // every time a timer goes off do:
-        // for (Searcher s : r.getGrid().getSearchers()){
-        //   if (s.getRadius() != Dog.RADIUS) 
-        //	   r.getGrid().move(s);
-        // }
-        // All the menu bar functions can be done on top of this timer
-        // r.getGrid().repaint();
-        
-       //Determines interval in milliseconds to call GridUpdater
-       //Timer timer = new Timer();
-       //timer.schedule(new GridUpdater(r), 1000);
-
-		/*final Rescue r = new Rescue();
-
-		Timer timer = new Timer(1000, new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				for (Searcher s : r.getGrid().getSearchers()) {
-					r.getGrid().move(s);
-				}
-				r.getGrid().repaint();
-
-			}
-
-		});
-		timer.start();
-        //Determines interval in milliseconds to call GridUpdater
-      // Timer timer = new Timer();
-       //timer.schedule(new GridUpdater(r), 20000);
-        */
+		
     }
 	
 }
