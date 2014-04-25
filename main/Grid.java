@@ -27,7 +27,7 @@ public class Grid extends JPanel implements MouseListener{
 	private Graphics2D g2d;
 	private boolean waitingForPlacement;
 	private boolean waitingForRemove;
-	private boolean waitingForUpdate;
+	private boolean waitingForEdit;
 	
 
 	MediaTracker tracker = new MediaTracker(this);
@@ -39,6 +39,7 @@ public class Grid extends JPanel implements MouseListener{
 		searchers = new ArrayList<Searcher>();
 		waitingForPlacement = false;
 		waitingForRemove = false;
+		waitingForEdit = false;
 		addMouseListener(this);
 	}
 	
@@ -129,6 +130,8 @@ public class Grid extends JPanel implements MouseListener{
 	//please correct this comment if wrong
 	//calculates search range for given searcher when moving from initial position(irow, icol)
 	//to new position(nrow, ncol)
+	// yes, and sets all the cells in the search range to searched
+	// they will all be yellow when repaint is called
 	public void searchedLine(Searcher s, int irow, int icol, int nrow, int ncol){
 		ArrayList<Cell> searched = new ArrayList<Cell>();
 		double crow = irow;
@@ -244,14 +247,13 @@ public class Grid extends JPanel implements MouseListener{
 	public void setWaitingForRemove(boolean remove) {
 		this.waitingForRemove = remove;
 	}
-	
-	//getters and setters for boolean flag for manual update functions
-	public boolean isWaitingForUpdate(){
-		return waitingForUpdate;
+
+	public boolean isWaitingForEdit() {
+		return waitingForEdit;
 	}
-	
-	public void setWaitingForUpdate(boolean update){
-		this.waitingForUpdate = update;
+
+	public void setWaitingForEdit(boolean edit) {
+		this.waitingForEdit = edit;
 	}
 	
 	public void removeSearcher(Cell c){
@@ -308,9 +310,24 @@ public class Grid extends JPanel implements MouseListener{
 			waitingForRemove = false;
 			removeSearcher(target);
 		}
-		//Manual Update function logic
-		if(isWaitingForUpdate()){
-			
+		if(isWaitingForEdit()){
+			if(cells == null) throw new RuntimeException("No valid cells available.");
+			Cell target = null;
+			for(Cell c: cells){
+				if(c.containsClick(e.getX(), e.getY())){
+					for (Searcher s : searchers){
+						if(s.getIndex().equals(c))
+							target = c;
+					}
+					if(target == null){
+						waitingForEdit = false;
+						return;
+					}
+				}
+			}
+			waitingForEdit = false;
+			EditSearcherDialog edit = new EditSearcherDialog(target, this);
+			edit.setVisible(true);
 		}
 		
 		

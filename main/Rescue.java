@@ -74,7 +74,9 @@ public class Rescue extends JFrame{
 		edit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// Bring up ComboBox for choosing a team to edit and then what to edit
+				grid.setWaitingForEdit(true);
+				JOptionPane.showMessageDialog(null, "Click a cell to edit searcher", 
+						"Edit Searcher", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		JMenuItem manUpdate = new JMenuItem("Manual Update");
