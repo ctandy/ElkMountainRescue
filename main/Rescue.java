@@ -88,11 +88,21 @@ public class Rescue extends JFrame{
 						"Manual Update", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
+		JMenuItem time = new JMenuItem("Time Step");
+		time.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				for (Searcher s : grid.getSearchers()) {
+					grid.move(s);
+				}
+			}
+		});
 		menuBar.add(file);
 		file.add(add);
 		file.add(remove);
 		file.add(edit);
 		file.add(manUpdate);
+		file.add(time);
 		file.add(close);
 		return menuBar;
 	}
@@ -104,11 +114,9 @@ public class Rescue extends JFrame{
 	public static void main(String[] args) {
         Rescue r = new Rescue();
         
-        //Determines interval in milliseconds to call GridUpdater
-       Timer timer = new Timer();
-       while(true){
-    	   timer.schedule(new GridUpdater(r), 1000);
-       }
+       //Determines interval in milliseconds to call GridUpdater
+       //Timer timer = new Timer();
+       //timer.schedule(new GridUpdater(r), 1000);
     }
 	
 }

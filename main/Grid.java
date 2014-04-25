@@ -121,6 +121,7 @@ public class Grid extends JPanel implements MouseListener{
 			}
 		}
 		searchedLine(s, introw, intcol, newrow, newcol);
+		//System.out.println(s.getIndex());
 		repaint();
 	}
 	
