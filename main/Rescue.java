@@ -6,7 +6,6 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
-import java.util.Timer;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -15,6 +14,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 @SuppressWarnings("serial")
 public class Rescue extends JFrame{
@@ -88,12 +88,18 @@ public class Rescue extends JFrame{
 		manUpdate.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// Bernardo: here is where you could look for a click and update the index/direction
-				// could call to the manualUpdate function below
-				// use the moveManual function in Grid
-				grid.setWaitingForEdit(true);
-				JOptionPane.showMessageDialog(null, "Click the searcher to update",
-						"Manually Update Location", JOptionPane.INFORMATION_MESSAGE);
+				grid.setWaitingForUpdate(true);
+				JOptionPane.showMessageDialog(null, "Click and drag the searcher to update location",
+						"Manual Update", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		JMenuItem time = new JMenuItem("Time Step");
+		time.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				for (Searcher s : grid.getSearchers()) {
+					grid.move(s);
+				}
 			}
 		});
 		menuBar.add(file);
@@ -101,10 +107,12 @@ public class Rescue extends JFrame{
 		file.add(remove);
 		file.add(edit);
 		file.add(manUpdate);
+		file.add(time);
 		file.add(close);
 		return menuBar;
 	}
 	
+
 	public void paintComponent(Graphics g){
 		super.paintComponents(g);
 		pack();
@@ -112,24 +120,31 @@ public class Rescue extends JFrame{
 
 	public void manualUpdate(MouseListener click) {
 	}
+	public void updateGrid() {
+		for (Searcher s : grid.getSearchers()) {
+			grid.move(s);
+		}
+		System.out.println("update");
+	}
 
 	public Grid getGrid(){
 		return grid;
 	}
 
 	public static void main(String[] args) {
-		Rescue r = new Rescue();
 
-		//Determines interval in milliseconds to call gridUpdater
-		Timer timer = new Timer();
-		timer.schedule(new gridUpdater(r), 20000);
-		// every time a timer goes off do:
-		// for (Searcher s : r.getGrid().getSearchers()){
-		//   if (s.getRadius() != Dog.RADIUS) 
-		//	   r.getGrid().move(s);
-		// }
-		// All the menu bar functions can be done on top of this timer
-		// r.getGrid().repaint();
-	}
+        final Rescue r = new Rescue();
+        
+        ActionListener actListner = new ActionListener() {
+    		@Override
+    		public void actionPerformed(ActionEvent event) {
+    			r.updateGrid();
+    		}
+
+    	};
+        Timer timer = new Timer(10000, actListner);
+		timer.start();
+		
+    }
 
 }

@@ -7,13 +7,13 @@ import java.awt.MediaTracker;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.TimerTask;
 
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class Grid extends JPanel implements MouseListener{
 
 	private static ArrayList<Searcher> searchers;
@@ -29,6 +29,8 @@ public class Grid extends JPanel implements MouseListener{
 	private boolean waitingForPlacement;
 	private boolean waitingForRemove;
 	private boolean waitingForEdit;
+	private boolean waitingForUpdate;
+	private Searcher manTarget;
 	
 
 	MediaTracker tracker = new MediaTracker(this);
@@ -41,6 +43,8 @@ public class Grid extends JPanel implements MouseListener{
 		waitingForPlacement = false;
 		waitingForRemove = false;
 		waitingForEdit = false;
+		waitingForUpdate = false;
+		manTarget = null;
 		addMouseListener(this);
 	}
 	
@@ -117,15 +121,17 @@ public class Grid extends JPanel implements MouseListener{
 			}
 		}
 		searchedLine(s, introw, intcol, newrow, newcol);
+		repaint();
 	}
 	
 	public void moveManual(Searcher s, Cell newIndex){ // This function is used to manually update index
 		Cell cell = s.getIndex();
-		int introw = cell.getRow();
-		int intcol = cell.getCol();
-		int newrow = newIndex.getRow();
-		int newcol = newIndex.getCol();
-		searchedLine(s, introw, intcol, newrow, newcol);
+		for (Cell c : cells){
+			if(c.equals(cell))
+				break;
+		}
+		s.setIndex(newIndex);
+		repaint();
 	}
 	
 	//calculates search range for given searcher when moving from initial position(irow, icol)
@@ -198,6 +204,10 @@ public class Grid extends JPanel implements MouseListener{
 	public void addSearcher(Searcher s){ //called from the menu bar
 		searchers.add(s);
 		Rescue.legend.addSearcher(this);
+		this.getSearchers().add(s);
+		System.out.println(s.getSpeed());
+		System.out.println(s.getDirection());
+
 		repaint();
 	}
 	
@@ -257,6 +267,14 @@ public class Grid extends JPanel implements MouseListener{
 		this.waitingForEdit = edit;
 	}
 	
+	public boolean isWaitingForUpdate() {
+		return waitingForUpdate;
+	}
+
+	public void setWaitingForUpdate(boolean update) {
+		this.waitingForUpdate = update;
+	}
+	
 	public void removeSearcher(Cell c){
 		for (Searcher s : searchers){
 			if(s.getIndex().equals(c)){
@@ -268,21 +286,13 @@ public class Grid extends JPanel implements MouseListener{
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent e) {
-		
-	}
+	public void mouseClicked(MouseEvent e) {}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseEntered(MouseEvent e) {}
 
 	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseExited(MouseEvent e) {}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
@@ -330,14 +340,41 @@ public class Grid extends JPanel implements MouseListener{
 			EditSearcherDialog edit = new EditSearcherDialog(target, this);
 			edit.setVisible(true);
 		}
-		
+		if(isWaitingForUpdate()){
+			if(cells == null) throw new RuntimeException("No valid cells available.");
+			for(Cell c: cells){
+				if(c.containsClick(e.getX(), e.getY())){
+					for (Searcher s : searchers){
+						if(s.getIndex().equals(c))
+							manTarget = s;
+					}
+					if(manTarget == null){
+						waitingForUpdate = false;
+						return;
+					}
+				}
+			}
+		}
 		
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	public void mouseReleased(MouseEvent e) {
+		if(isWaitingForUpdate()){
+			if(cells == null) throw new RuntimeException("No valid cells available.");
+			Cell target = null;
+			for(Cell c: cells){
+				if(c.containsClick(e.getX(), e.getY())){
+					target = c;
+					break;
+				}
+			}
+			waitingForUpdate = false;
+			moveManual(manTarget, target);
+			if(manTarget.getRadius() != Dog.RADIUS){
+				UpdateSearcherDialog update = new UpdateSearcherDialog(manTarget, this);
+				update.setVisible(true);
+			}
+		}
 	}
-
 }

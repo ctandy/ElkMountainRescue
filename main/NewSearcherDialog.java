@@ -160,7 +160,6 @@ public class NewSearcherDialog extends JDialog{
 		
 		if(finished)
 			dispose();
-		
 	}
 
 
