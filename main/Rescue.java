@@ -83,12 +83,9 @@ public class Rescue extends JFrame{
 		manUpdate.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// Bernardo: here is where you could look for a click and update the index/direction
-				// could call to the manualUpdate function below
-				// use the moveManual function in Grid
-				waitForUpdate = true;
-				JOptionPane.showMessageDialog(null, "Click the searcher to update",
-						"Manually Update Location", JOptionPane.INFORMATION_MESSAGE);
+				grid.setWaitingForUpdate(true);
+				JOptionPane.showMessageDialog(null, "Click and drag the searcher to update location",
+						"Manual Update", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		menuBar.add(file);
@@ -98,18 +95,6 @@ public class Rescue extends JFrame{
 		file.add(manUpdate);
 		file.add(close);
 		return menuBar;
-	}
-	
-	public void manualUpdate(MouseListener click) {
-
-		JDialog cancelOption = new JDialog(this,
-				"Would you like to cancel the manual update?");
-		JButton cancelButton = new JButton("Cancel");
-		cancelOption.add(cancelButton);
-		cancelOption.setVisible(true);
-		while (waitForUpdate) {
-			
-		}
 	}
 	
 	public Grid getGrid(){
