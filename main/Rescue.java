@@ -17,7 +17,6 @@ import javax.swing.JOptionPane;
 @SuppressWarnings("serial")
 public class Rescue extends JFrame{
 	private Grid grid;
-	private boolean waitForUpdate = false;
 	private Legend legend;
 
 	public Rescue() {
@@ -86,7 +85,7 @@ public class Rescue extends JFrame{
 				// Bernardo: here is where you could look for a click and update the index/direction
 				// could call to the manualUpdate function below
 				// use the moveManual function in Grid
-				waitForUpdate = true;
+				grid.setWaitingForEdit(true);
 				JOptionPane.showMessageDialog(null, "Click the searcher to update",
 						"Manually Update Location", JOptionPane.INFORMATION_MESSAGE);
 			}

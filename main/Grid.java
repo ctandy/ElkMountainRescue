@@ -10,6 +10,7 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.TimerTask;
 
 import javax.swing.JPanel;
 
@@ -127,10 +128,9 @@ public class Grid extends JPanel implements MouseListener{
 		searchedLine(s, introw, intcol, newrow, newcol);
 	}
 	
-	//please correct this comment if wrong
 	//calculates search range for given searcher when moving from initial position(irow, icol)
 	//to new position(nrow, ncol)
-	// yes, and sets all the cells in the search range to searched
+	//sets all the cells in the search range to searched
 	// they will all be yellow when repaint is called
 	public void searchedLine(Searcher s, int irow, int icol, int nrow, int ncol){
 		ArrayList<Cell> searched = new ArrayList<Cell>();
@@ -194,7 +194,7 @@ public class Grid extends JPanel implements MouseListener{
 			}
 		}
 	}
-	
+		
 	public void addSearcher(Searcher s){
 		this.getSearchers().add(s);
 		repaint();
@@ -337,5 +337,17 @@ public class Grid extends JPanel implements MouseListener{
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	class gridUpdater extends TimerTask {
+
+		@Override
+		public void run() {
+			for (Searcher s : searchers) {
+				move(s);
+			}
+			repaint();
+		}
+
 	}
 }
