@@ -191,7 +191,7 @@ public class Grid extends JPanel implements MouseListener{
 	}
 	
 	public void addSearcher(Searcher s){ //called from the menu bar
-		this.getSearchers().add(s);
+		searchers.add(s);
 		Rescue.legend.setUp(this);
 		repaint();
 	}

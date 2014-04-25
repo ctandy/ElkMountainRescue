@@ -24,9 +24,9 @@ public class Legend extends JPanel{
 	public void setUp(Grid grid){
 		searchers = grid.getSearchers();
 		setLayout(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
+		//GridBagConstraints c = new GridBagConstraints();
 		setBorder(new TitledBorder("Legend"));
-		Graphics g;
+		//Graphics g;
 		for(Searcher s: searchers){
 			JPanel sLegend = new JPanel();
 			sLegend.add(new LegendSquare(s));
@@ -38,9 +38,11 @@ public class Legend extends JPanel{
 		Searcher searcher;
 		public LegendSquare(Searcher searcher){
 			this.searcher = searcher;
+			paintComponent();
 		}
 		
-		public void draw(Graphics g){
+		public void paintComponent(){
+			Graphics g = null;
 			super.paintComponent(g);
 			g.setColor(searcher.getColor());
 			g.fillRect(0, 0, 10, 10);
