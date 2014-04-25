@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
+import java.util.Timer;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -17,7 +18,6 @@ import javax.swing.JOptionPane;
 @SuppressWarnings("serial")
 public class Rescue extends JFrame{
 	private Grid grid;
-	private boolean waitForUpdate = false;
 	private Legend legend;
 
 	public Rescue() {
@@ -103,7 +103,10 @@ public class Rescue extends JFrame{
 	
 	public static void main(String[] args) {
         Rescue r = new Rescue();
-       
+        
+        //Determines interval in milliseconds to call GridUpdater
+       Timer timer = new Timer();
+       timer.schedule(new GridUpdater(r), 20000);
         // every time a timer goes off do:
         // for (Searcher s : r.getGrid().getSearchers()){
         //   if (s.getRadius() != Dog.RADIUS) 
