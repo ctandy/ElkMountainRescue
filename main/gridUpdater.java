@@ -18,7 +18,6 @@ public class GridUpdater extends TimerTask {
 		for (Searcher s : g.getSearchers()) {
 			g.move(s);
 		}
-		g.repaint();
 	}
 
 }

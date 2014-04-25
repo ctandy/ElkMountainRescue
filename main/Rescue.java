@@ -106,14 +106,9 @@ public class Rescue extends JFrame{
         
         //Determines interval in milliseconds to call GridUpdater
        Timer timer = new Timer();
-       timer.schedule(new GridUpdater(r), 20000);
-        // every time a timer goes off do:
-        // for (Searcher s : r.getGrid().getSearchers()){
-        //   if (s.getRadius() != Dog.RADIUS) 
-        //	   r.getGrid().move(s);
-        // }
-        // All the menu bar functions can be done on top of this timer
-        // r.getGrid().repaint();
+       while(true){
+    	   timer.schedule(new GridUpdater(r), 1000);
+       }
     }
 	
 }
