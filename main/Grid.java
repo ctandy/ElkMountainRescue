@@ -338,16 +338,5 @@ public class Grid extends JPanel implements MouseListener{
 		// TODO Auto-generated method stub
 		
 	}
-	
-	class gridUpdater extends TimerTask {
 
-		@Override
-		public void run() {
-			for (Searcher s : searchers) {
-				move(s);
-			}
-			repaint();
-		}
-
-	}
 }

@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
+import java.util.Timer;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -108,7 +109,8 @@ public class Rescue extends JFrame{
 	
 	public static void main(String[] args) {
         Rescue r = new Rescue();
-       
+       Timer timer = new Timer();
+       timer.schedule(new gridUpdater(r), 20000);
         // every time a timer goes off do:
         // for (Searcher s : r.getGrid().getSearchers()){
         //   if (s.getRadius() != Dog.RADIUS) 
