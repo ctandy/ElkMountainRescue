@@ -109,6 +109,8 @@ public class Rescue extends JFrame{
 	
 	public static void main(String[] args) {
         Rescue r = new Rescue();
+        
+        //Determines interval in milliseconds to call gridUpdater
        Timer timer = new Timer();
        timer.schedule(new gridUpdater(r), 20000);
         // every time a timer goes off do:
