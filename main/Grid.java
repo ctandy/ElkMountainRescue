@@ -203,6 +203,8 @@ public class Grid extends JPanel implements MouseListener{
 		
 	public void addSearcher(Searcher s){
 		this.getSearchers().add(s);
+		System.out.println(s.getSpeed());
+		System.out.println(s.getDirection());
 		repaint();
 	}
 	

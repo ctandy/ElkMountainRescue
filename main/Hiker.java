@@ -7,7 +7,6 @@ public class Hiker extends AutoSearcher {
 
 	public Hiker(String n, Cell ind, double s, double dir){
 		super(n, ind, RADIUS, s, dir);
-		
 	}
 	
 	public void makeRandColor(){

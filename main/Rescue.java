@@ -111,6 +111,7 @@ public class Rescue extends JFrame{
 		for (Searcher s : grid.getSearchers()) {
 			grid.move(s);
 		}
+		System.out.println("update");
 	}
 	
 	public Grid getGrid(){
@@ -127,7 +128,7 @@ public class Rescue extends JFrame{
     		}
 
     	};
-        Timer timer = new Timer(5000, actListner);
+        Timer timer = new Timer(10000, actListner);
 		timer.start();
 		
     }

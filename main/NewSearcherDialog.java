@@ -125,10 +125,9 @@ public class NewSearcherDialog extends JDialog{
 	public void addSearcher(){
 
 		String sName = name.getText();
-		Searcher searcher;
+		
 		if(dog.isSelected()){
-
-			searcher = new Dog(sName, cell);
+			grid.addSearcher(new Dog(sName, cell));
 		}else {
 			String speedStr = speed.getText();
 			double speedD = Double.parseDouble(speedStr);
@@ -136,13 +135,11 @@ public class NewSearcherDialog extends JDialog{
 			double dirD = Double.parseDouble(dirStr);
 
 			if(hiker.isSelected()){
-				searcher = new Hiker(sName, cell, speedD, dirD);
+				grid.addSearcher(new Hiker(sName, cell, speedD, dirD));
 			}else{
-				searcher = new Helicopter(sName, cell, speedD, dirD);
-
+				grid.addSearcher(new Helicopter(sName, cell, speedD, dirD));
 			}
 		}
-		grid.addSearcher(searcher);
 
 	}
 
