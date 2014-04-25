@@ -110,8 +110,8 @@ public class Rescue extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 				for (Searcher s : r.getGrid().getSearchers()) {
 					r.getGrid().move(s);
+					System.out.println(s.getIndex());
 				}
-				r.getGrid().repaint();
 
 			}
 
