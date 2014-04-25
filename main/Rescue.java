@@ -76,6 +76,9 @@ public class Rescue extends JFrame{
 				// Bernardo: here is where you could look for a click and update the index/direction
 				// could call to the manualUpdate function below
 				// use the moveManual function in Grid
+				grid.setWaitingForPlacement(true);
+				JOptionPane.showMessageDialog(null, "Click the searcher to update",
+						"Manually Update Location", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		menuBar.add(file);
@@ -87,7 +90,9 @@ public class Rescue extends JFrame{
 		return menuBar;
 	}
 	
-	public void manualUpdate(MouseListener click){} 
+	public void manualUpdate(MouseListener click){
+		
+	} 
 	
 	public Grid getGrid(){
 		return grid;
