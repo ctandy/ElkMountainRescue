@@ -26,6 +26,7 @@ public class Grid extends JPanel implements MouseListener{
 	private Image map;
 	private Graphics2D g2d;
 	private boolean waitingForPlacement;
+	private boolean waitingForRemove;
 	
 
 	MediaTracker tracker = new MediaTracker(this);
@@ -36,6 +37,7 @@ public class Grid extends JPanel implements MouseListener{
 		this.initializeCells();
 		searchers = new ArrayList<Searcher>();
 		waitingForPlacement = false;
+		waitingForRemove = false;
 		addMouseListener(this);
 	}
 	
@@ -189,11 +191,7 @@ public class Grid extends JPanel implements MouseListener{
 		}
 	}
 	
-	public void finishPlacement(){
-		
-	}
-	
-	public void addSearcher(Searcher s){ //called from the menu bar
+	public void addSearcher(Searcher s){
 		this.getSearchers().add(s);
 		repaint();
 	}
@@ -237,6 +235,24 @@ public class Grid extends JPanel implements MouseListener{
 	public void setWaitingForPlacement(boolean waitingForPlacement) {
 		this.waitingForPlacement = waitingForPlacement;
 	}
+	
+	public boolean isWaitingForRemove() {
+		return waitingForRemove;
+	}
+
+	public void setWaitingForRemove(boolean remove) {
+		this.waitingForRemove = remove;
+	}
+	
+	public void removeSearcher(Cell c){
+		for (Searcher s : searchers){
+			if(s.getIndex().equals(c)){
+				searchers.remove(s);
+				break; //so it all removes one searcher if two occupy the same cell
+			}
+		}
+		repaint();
+	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -269,6 +285,18 @@ public class Grid extends JPanel implements MouseListener{
 			waitingForPlacement = false;
 			NewSearcherDialog makeNewSearcher = new NewSearcherDialog(target, this);
 			makeNewSearcher.setVisible(true);
+		}
+		if(isWaitingForRemove()){
+			if(cells == null) throw new RuntimeException("No valid cells available.");
+			Cell target = null;
+			for(Cell c: cells){
+				if(c.containsClick(e.getX(), e.getY())){
+					target = c;
+					break;
+				}
+			}
+			waitingForRemove = false;
+			removeSearcher(target);
 		}
 		
 		

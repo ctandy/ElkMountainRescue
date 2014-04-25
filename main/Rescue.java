@@ -18,11 +18,14 @@ import javax.swing.JOptionPane;
 public class Rescue extends JFrame{
 	private Grid grid;
 	private boolean waitForUpdate = false;
+	private Legend legend;
 
 	public Rescue() {
-		//loads the grid
+		//loads the grid and legend
 		try {
 			grid = new Grid();
+			legend = new Legend(grid);
+			legend.setUp();
 		} catch (BadConfigFormatException e) {
 			e.printStackTrace();
 		}
@@ -31,6 +34,7 @@ public class Rescue extends JFrame{
 		JMenuBar menuBar = makeMenuBar();
 		setJMenuBar(menuBar);
 		add(grid, BorderLayout.CENTER);
+		add(legend, BorderLayout.SOUTH);
 		//sets the size of the JFrame
 		setSize(grid.getPixelCol() + 16, grid.getPixelRow() + menuBar.getHeight() + 64);
 		setTitle("Elk Mountain Rescue System");
@@ -61,7 +65,9 @@ public class Rescue extends JFrame{
 		remove.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// combo box with teams, selecting a team or teams removes them from the grid
+				grid.setWaitingForRemove(true);
+				JOptionPane.showMessageDialog(null, "Click a cell to remove searcher", 
+						"Remove Searcher", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		JMenuItem edit = new JMenuItem("Edit Search Team");
@@ -110,8 +116,7 @@ public class Rescue extends JFrame{
 	
 	public static void main(String[] args) {
         Rescue r = new Rescue();
-        //r.getGrid().addSearcher(new Hiker("Hiker", null, 0, 0));
-        //r.getGrid().repaint();
+       
         // every time a timer goes off do:
         // for (Searcher s : r.getGrid().getSearchers()){
         //   if (s.getRadius() != Dog.RADIUS) 

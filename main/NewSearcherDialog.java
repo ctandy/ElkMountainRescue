@@ -42,7 +42,7 @@ public class NewSearcherDialog extends JDialog{
 		JLabel n, s, dir;
 		n = new JLabel("Name");
 		s = new JLabel("Speed");
-		dir = new JLabel("Direction");
+		dir = new JLabel("Direction (Deg)");
 
 		submit = new JButton("Submit");
 		cancel = new JButton("Cancel");
@@ -71,8 +71,6 @@ public class NewSearcherDialog extends JDialog{
 		speed = new JTextArea();
 		direction = new JTextArea();
 		name = new JTextArea();
-
-
 
 
 		setTitle("Add New Searcher");
@@ -183,10 +181,5 @@ public class NewSearcherDialog extends JDialog{
 
 	}
 
-
-	/*public static void main(String[] args) throws BadConfigFormatException{
-		NewSearcherDialog newSearch = new NewSearcherDialog();
-		newSearch.setVisible(true);
-	}*/
 }
 
