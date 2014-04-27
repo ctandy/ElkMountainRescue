@@ -73,6 +73,8 @@ public class Rescue extends JFrame{
 				grid.setWaitingForRemove(true);
 				JOptionPane.showMessageDialog(null, "Click a cell to remove searcher", 
 						"Remove Searcher", JOptionPane.INFORMATION_MESSAGE);
+				revalidate();
+				repaint();
 			}
 		});
 		JMenuItem edit = new JMenuItem("Edit Search Team");
