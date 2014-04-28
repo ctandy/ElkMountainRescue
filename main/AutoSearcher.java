@@ -5,7 +5,7 @@ public class AutoSearcher extends Searcher{
 		
 	public AutoSearcher(String name, Cell index, double radius, double s, double dir){
 		super(name, index, radius);
-		super.setSpeed(s);
+		super.setSpeed(Math.abs(s));
 		super.setDirection(dir);
 	}
 
