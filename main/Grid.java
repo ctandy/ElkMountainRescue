@@ -111,7 +111,7 @@ public class Grid extends JPanel implements MouseListener{
 				s.setSpeed(-1*s.getSpeed());
 			}
 			else if ((newrow<0 || newrow>Grid.MAX_ROW-1) || (newcol<0 || newcol>Grid.MAX_COL-1)){
-				s.setDirection(Math.random()*360);
+				s.setDirection(Math.random()*360); //should this be %360?
 			}
 			else {
 				cell.setRow(newrow);
