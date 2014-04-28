@@ -95,13 +95,14 @@ public class Rescue extends JFrame{
 						"Manual Update", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		JMenuItem time = new JMenuItem("Time Step"); //use this when the auto-update breaks
-		time.addActionListener(new ActionListener() {
+		JMenuItem clear = new JMenuItem("Clear Map"); //use this when the auto-update breaks
+		clear.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				for (Searcher s : grid.getSearchers()) {
-					grid.move(s);
+				for (Cell c : grid.getCells()) {
+					c.setSearched(false);
 				}
+				grid.repaint();
 			}
 		});
 		menuBar.add(file);
@@ -109,7 +110,7 @@ public class Rescue extends JFrame{
 		file.add(remove);
 		file.add(edit);
 		file.add(manUpdate);
-		file.add(time);
+		file.add(clear);
 		file.add(close);
 		return menuBar;
 	}

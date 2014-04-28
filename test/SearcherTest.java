@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 
 import main.Dog;
+import main.Grid;
 import main.Helicopter;
 import main.Hiker;
 import main.NormalCell;
@@ -79,5 +80,38 @@ public class SearcherTest {
 	@Test
 	public void SearchersHaveDifferentColors(){
 		assertFalse((searchers.get(0).getColor()).equals(searchers.get(1).getColor()));
+	}
+	
+	@Test
+	public void testMove() {
+		Searcher s = new Searcher();
+		
+		//test for redirecting the team when it hits a wall
+		s.setDirection(180.0);
+		s.setIndex(new NormalCell(0, 0));
+		s.setSpeed(3.0);
+		s.move();
+		assertTrue(s.getIndex().getRow() >= 0);
+		assertTrue(s.getIndex().getRow() <= s.getSpeed());
+		assertTrue(s.getIndex().getCol() <= s.getSpeed());
+		assertTrue(s.getIndex().getCol() >= 0);
+		
+		//test for a normal move
+		s.setDirection(270);
+		s.setIndex(new NormalCell(0, 0));
+		s.setSpeed(2.0);
+		s.move();
+		NormalCell testCell = new NormalCell(2, 0);
+		assertTrue(s.getIndex().equals(testCell));
+		
+		//test for excessive speed
+		s.setDirection(315);
+		s.setIndex(new NormalCell(0, 0));
+		s.setSpeed(1000.0); //can input any speed, move will stay in grid
+		s.move();
+		assertTrue(s.getIndex().getRow() >= 0);
+		assertTrue(s.getIndex().getRow() < Grid.MAX_ROW);
+		assertTrue(s.getIndex().getCol() < Grid.MAX_COL);
+		assertTrue(s.getIndex().getCol() >= 0);
 	}
 }

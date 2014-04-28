@@ -39,7 +39,7 @@ public abstract class Cell extends JComponent{
 		return searched;
 	}
 	
-	public void setSearched(boolean searched) {// for testing purposes
+	public void setSearched(boolean searched) {
 		if (searched) 
 			this.color = Color.YELLOW;
 		else 

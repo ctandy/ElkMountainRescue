@@ -3,6 +3,7 @@ package test;
 import static org.junit.Assert.*;
 import junit.framework.Assert;
 import main.BadConfigFormatException;
+import main.Cell;
 import main.Grid;
 import main.Hiker;
 import main.NormalCell;
@@ -48,37 +49,7 @@ public class GridTest {
 		assertTrue(testing.getSearchers().size() == 1);
 	}
 	
-	@Test
-	public void testMove() {
-		Searcher s = new Searcher();
-		
-		//test for redirecting the team when it hits a wall
-		s.setDirection(180.0);
-		s.setIndex(new NormalCell(0, 0));
-		s.setSpeed(3.0);
-		testing.move(s);
-		assertTrue(s.getIndex().getRow() >= 0);
-		assertTrue(s.getIndex().getRow() <= s.getSpeed());
-		assertTrue(s.getIndex().getCol() <= s.getSpeed());
-		assertTrue(s.getIndex().getCol() >= 0);
-		
-		//test for a normal move
-		s.setDirection(270);
-		s.setIndex(new NormalCell(0, 0));
-		s.setSpeed(2.0);
-		testing.move(s);
-		NormalCell testCell = new NormalCell(2, 0);
-		assertTrue(s.getIndex().equals(testCell));
-		
-		//test for excessive speed
-		s.setDirection(315);
-		s.setIndex(new NormalCell(0, 0));
-		s.setSpeed(1000.0); //can input any speed, move will stay in grid
-		testing.move(s);
-		assertTrue(s.getIndex().getRow() >= 0);
-		assertTrue(s.getIndex().getRow() < Grid.MAX_ROW);
-		assertTrue(s.getIndex().getCol() < Grid.MAX_COL);
-		assertTrue(s.getIndex().getCol() >= 0);
-	}
+	
+	
 	
 }

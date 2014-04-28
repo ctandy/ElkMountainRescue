@@ -95,52 +95,36 @@ public class Grid extends JPanel implements MouseListener{
 	    map = original;
 	}
 	
-	public void move(Searcher s){
-		Cell cell = s.getIndex();
-		int introw = cell.getRow();
-		int intcol = cell.getCol();
-		int newrow, newcol;
-		while(true){
-			int dx = (int) (Math.round(s.getSpeed()*Math.cos(Math.toRadians(s.getDirection()))));
-			int dy = (int) (Math.round(s.getSpeed()*Math.sin(Math.toRadians(s.getDirection()))));
-			newrow = introw-dy;
-			newcol = intcol+dx;
-			if (s.getSpeed() > Math.sqrt(Grid.MAX_COL*Grid.MAX_ROW)){
-				s.setSpeed(s.getSpeed()/2);
+	public void searchedLine(Searcher s, int irow, int icol, int nrow, int ncol){ // assume speed = 1
+		double i = 0.0;
+		do {
+			crow = irow - i*dy;
+			ccol = icol + i*dx;
+			searched.add(new NormalCell((int) Math.round(crow), (int) Math.round(ccol)));
+			for (double j = 1; j <= s.getRadius(); j++){
+				double jrow = crow - j*dy_90;
+				double jcol = ccol + j*dx_90;
+				searched.add(new NormalCell((int) Math.round(jrow), (int) Math.round(jcol)));
+				jrow = crow - j*dy_270;
+				jcol = ccol + j*dx_270;
+				searched.add(new NormalCell((int) Math.round(jrow), (int) Math.round(jcol)));
 			}
-			else if (s.getSpeed() < 0){
-				s.setSpeed(-1*s.getSpeed());
-			}
-			else if ((newrow<0 || newrow>Grid.MAX_ROW-1) || (newcol<0 || newcol>Grid.MAX_COL-1)){
-				s.setDirection(Math.random()*360); //should this be %360?
-			}
-			else {
-				cell.setRow(newrow);
-				cell.setCol(newcol);
-				s.setIndex(cell);
-				break;
+			i++;
+		} while (Math.round(crow) != Math.round(nrow+dy) && Math.round(ccol) != Math.round(ncol-dx));
+		
+		for (Cell cell : cells){
+			for (Cell sCell : searched){
+				cell.equals(sCell);
 			}
 		}
-		searchedLine(s, introw, intcol, newrow, newcol);
-		repaint();
-	}
-	
-	public void moveManual(Searcher s, Cell newIndex){ // This function is used to manually update index
-		Cell cell = s.getIndex();
-		for (Cell c : cells){
-			if(c.equals(cell))
-				break;
-		}
-		searchedLine(s, cell.getRow(), cell.getCol(), newIndex.getRow(), newIndex.getCol());
-		s.setIndex(newIndex);
-		repaint();
+		
 	}
 	
 	//calculates search range for given searcher when moving from initial position(irow, icol)
 	//to new position(nrow, ncol)
 	//sets all the cells in the search range to searched
 	// they will all be yellow when repaint is called
-	public void searchedLine(Searcher s, int irow, int icol, int nrow, int ncol){
+	/*public void searchedLine(Searcher s, int irow, int icol, int nrow, int ncol){
 		ArrayList<Cell> searched = new ArrayList<Cell>();
 		double crow = irow;
 		double ccol = icol;
@@ -201,14 +185,11 @@ public class Grid extends JPanel implements MouseListener{
 				cell.equals(sCell);
 			}
 		}
-	}
+	}*/
 	
 	public void addSearcher(Searcher s){ //called from the menu bar
 		searchers.add(s);
 		Rescue.legend.addSearcher(this);
-		System.out.println(s.getSpeed());
-		System.out.println(s.getDirection());
-
 		repaint();
 	}
 	
