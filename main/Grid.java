@@ -73,6 +73,7 @@ public class Grid extends JPanel implements MouseListener{
 	public void paintComponent(Graphics g) {
 		//paints the cells onto the board
 		super.paintComponents(g);
+		super.paintComponent(g);
 		g2d = (Graphics2D) g;
 		// paints the image to the background
 		g.drawImage(map, 0, 0, this);
@@ -100,8 +101,8 @@ public class Grid extends JPanel implements MouseListener{
 		int intcol = cell.getCol();
 		int newrow, newcol;
 		while(true){
-			int dx = (int) (s.getSpeed()*Math.cos(Math.toRadians(s.getDirection())));
-			int dy = (int) (s.getSpeed()*Math.sin(Math.toRadians(s.getDirection())));
+			int dx = (int) (Math.round(s.getSpeed()*Math.cos(Math.toRadians(s.getDirection()))));
+			int dy = (int) (Math.round(s.getSpeed()*Math.sin(Math.toRadians(s.getDirection()))));
 			newrow = introw-dy;
 			newcol = intcol+dx;
 			if (s.getSpeed() > Math.sqrt(Grid.MAX_COL*Grid.MAX_ROW)){
@@ -130,6 +131,7 @@ public class Grid extends JPanel implements MouseListener{
 			if(c.equals(cell))
 				break;
 		}
+		searchedLine(s, cell.getRow(), cell.getCol(), newIndex.getRow(), newIndex.getCol());
 		s.setIndex(newIndex);
 		repaint();
 	}
@@ -279,7 +281,7 @@ public class Grid extends JPanel implements MouseListener{
 			if(s.getIndex().equals(c)){
 				searchers.remove(s);
 				Rescue.legend.updateSearchers(this);
-				break; //so it all removes one searcher if two occupy the same cell
+				break; //so it only removes one searcher if two occupy the same cell
 			}
 		}
 		repaint();
