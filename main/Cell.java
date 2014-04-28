@@ -75,5 +75,11 @@ public abstract class Cell extends JComponent{
 			return true;
 		return false;
 	}
+
+	@Override
+	public String toString() {
+		return "Cell [row=" + row + ", col=" + col + ", searched=" + searched
+				+ ", color=" + color + "]";
+	}
 	
 }

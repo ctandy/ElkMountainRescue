@@ -134,7 +134,6 @@ public class Rescue extends JFrame{
 	}
 
 	public static void main(String[] args) {
-
         final Rescue r = new Rescue();
         
         ActionListener actListner = new ActionListener() {
@@ -142,11 +141,8 @@ public class Rescue extends JFrame{
     		public void actionPerformed(ActionEvent event) {
     			r.updateGrid();
     		}
-
     	};
         Timer timer = new Timer(10000, actListner);
 		timer.start();
-		
     }
-
 }

@@ -112,7 +112,7 @@ public class Grid extends JPanel implements MouseListener{
 				s.setSpeed(-1*s.getSpeed());
 			}
 			else if ((newrow<0 || newrow>Grid.MAX_ROW-1) || (newcol<0 || newcol>Grid.MAX_COL-1)){
-				s.setDirection(Math.random()*360);
+				s.setDirection(Math.random()*360); //should this be %360?
 			}
 			else {
 				cell.setRow(newrow);
@@ -149,14 +149,14 @@ public class Grid extends JPanel implements MouseListener{
 			if (nrow-irow != 0)
 				dir = Math.atan((irow-nrow)/(ncol-icol));
 			else if(ncol > icol)
-				dir = 0.0;
+				dir = Math.toRadians(0.0);
 			else
-				dir = 180.0;
+				dir = Math.toRadians(180.0);
 		} else if (nrow-irow != 0){
 			if(nrow > irow)
-				dir = 270.0;
+				dir = Math.toRadians(270.0);
 			else
-				dir = 90.0;
+				dir = Math.toRadians(90.0);
 		} else
 			return; //does not set current index as searched
 		
