@@ -20,6 +20,7 @@ import javax.swing.Timer;
 public class Rescue extends JFrame{
 	private Grid grid;
 	public static Legend legend;
+	private int speedCount = 0;
 
 	public Rescue() {
 		//loads the grid and legend
@@ -124,9 +125,12 @@ public class Rescue extends JFrame{
 	}
 	public void updateGrid() {
 		for (Searcher s : grid.getSearchers()) {
-			grid.move(s);
+			if (s.getSpeed() >= Math.abs(speedCount -10)) {
+				grid.move(s);
+				System.out.println("update");
+			}
 		}
-		System.out.println("update");
+		speedCount = (speedCount + 1) % 11;
 	}
 
 	public Grid getGrid(){
@@ -142,7 +146,7 @@ public class Rescue extends JFrame{
     			r.updateGrid();
     		}
     	};
-        Timer timer = new Timer(10000, actListner);
+        Timer timer = new Timer(1000, actListner);
 		timer.start();
     }
 }

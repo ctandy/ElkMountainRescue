@@ -2,10 +2,13 @@ package main;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.JComponent;
+import javax.swing.Timer;
 
 
 public class Searcher extends JComponent{
@@ -26,7 +29,6 @@ public class Searcher extends JComponent{
 		this.radius = radius;
 		setRand(new Random());
 		makeRandColor();
-		
 	}
 	
 	//Ensures that no two searchers have the same colors
@@ -42,8 +44,6 @@ public class Searcher extends JComponent{
 				index.getRow()*Grid.CELL_SIZE, Grid.CELL_SIZE, Grid.CELL_SIZE);
 		//g.drawString(name, index.getRow()*Grid.CELL_SIZE + Grid.CELL_SIZE/2, index.getCol()*Grid.CELL_SIZE);
 	};
-
-
 	public void setName(String name) {
 		this.name = name;
 	}
