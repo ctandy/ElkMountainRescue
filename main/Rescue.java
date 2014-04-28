@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,14 +19,14 @@ import javax.swing.Timer;
 @SuppressWarnings("serial")
 public class Rescue extends JFrame{
 	private Grid grid;
-	private Legend legend;
+	public static Legend legend;
 
 	public Rescue() {
 		//loads the grid and legend
 		try {
 			grid = new Grid();
 			legend = new Legend(grid);
-			legend.setUp();
+			legend.setUp(grid);
 		} catch (BadConfigFormatException e) {
 			e.printStackTrace();
 		}
@@ -36,7 +37,8 @@ public class Rescue extends JFrame{
 		add(grid, BorderLayout.CENTER);
 		add(legend, BorderLayout.SOUTH);
 		//sets the size of the JFrame
-		setSize(grid.getPixelCol() + 16, grid.getPixelRow() + menuBar.getHeight() + 64);
+		pack();
+		setSize(grid.getPixelCol() + 16, grid.getPixelRow() + menuBar.getHeight() + 64 + legend.getHeight());
 		setTitle("Elk Mountain Rescue System");
 		setVisible(true);
 	}
@@ -59,8 +61,11 @@ public class Rescue extends JFrame{
 				grid.setWaitingForPlacement(true);
 				JOptionPane.showMessageDialog(null, "Click a cell to place searcher", 
 						"Add new Searcher", JOptionPane.INFORMATION_MESSAGE);
+				repaint();
 			}
+			
 		});
+		
 		JMenuItem remove = new JMenuItem("Remove Search Team");
 		remove.addActionListener(new ActionListener() {
 			@Override
@@ -68,6 +73,8 @@ public class Rescue extends JFrame{
 				grid.setWaitingForRemove(true);
 				JOptionPane.showMessageDialog(null, "Click a cell to remove searcher", 
 						"Remove Searcher", JOptionPane.INFORMATION_MESSAGE);
+				revalidate();
+				repaint();
 			}
 		});
 		JMenuItem edit = new JMenuItem("Edit Search Team");
@@ -107,18 +114,27 @@ public class Rescue extends JFrame{
 		return menuBar;
 	}
 	
+
+	public void paintComponent(Graphics g){
+		super.paintComponents(g);
+		pack();
+	}
+
+	public void manualUpdate(MouseListener click) {
+	}
 	public void updateGrid() {
 		for (Searcher s : grid.getSearchers()) {
 			grid.move(s);
 		}
 		System.out.println("update");
 	}
-	
+
 	public Grid getGrid(){
 		return grid;
 	}
-	
+
 	public static void main(String[] args) {
+
         final Rescue r = new Rescue();
         
         ActionListener actListner = new ActionListener() {
@@ -132,5 +148,5 @@ public class Rescue extends JFrame{
 		timer.start();
 		
     }
-	
+
 }

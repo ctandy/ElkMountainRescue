@@ -14,11 +14,13 @@ import java.awt.event.ActionListener;
 
 
 
+
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.EtchedBorder;
@@ -33,6 +35,7 @@ public class NewSearcherDialog extends JDialog{
 	JButton submit, cancel;
 	Grid grid;
 	Cell cell;
+	boolean finished;
 
 	public NewSearcherDialog(Cell cell, Grid grid){
 		setModal(true);
@@ -125,22 +128,38 @@ public class NewSearcherDialog extends JDialog{
 	public void addSearcher(){
 
 		String sName = name.getText();
-		
+		Searcher searcher;
+		finished = true;
 		if(dog.isSelected()){
-			grid.addSearcher(new Dog(sName, cell));
+
+			searcher = new Dog(sName, cell);
+			grid.addSearcher(searcher);
 		}else {
 			String speedStr = speed.getText();
-			double speedD = Double.parseDouble(speedStr);
 			String dirStr = direction.getText();
-			double dirD = Double.parseDouble(dirStr);
-
-			if(hiker.isSelected()){
-				grid.addSearcher(new Hiker(sName, cell, speedD, dirD));
-			}else{
-				grid.addSearcher(new Helicopter(sName, cell, speedD, dirD));
-			}
+			double speedD, dirD;
+			
+			try{
+				speedD = Double.parseDouble(speedStr);
+				dirD = Double.parseDouble(dirStr);
+				if(hiker.isSelected()){
+					searcher = new Hiker(sName, cell, speedD, dirD);
+				}else{
+					searcher = new Helicopter(sName, cell, speedD, dirD);
+				}
+				grid.addSearcher(searcher);
+				finished = true;
+				
+			}catch(NumberFormatException e){
+				JOptionPane.showMessageDialog(this, "Check format for speed and direction!",
+						"Wrong Number Format", JOptionPane.ERROR_MESSAGE);
+				finished = false;
+			}	
+			
 		}
-
+		
+		if(finished)
+			dispose();
 	}
 
 
@@ -167,7 +186,6 @@ public class NewSearcherDialog extends JDialog{
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource() == submit){
 				addSearcher();
-				dispose();
 			}
 			else{
 				grid.setWaitingForPlacement(false);
