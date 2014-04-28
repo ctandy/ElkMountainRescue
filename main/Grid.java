@@ -339,6 +339,7 @@ public class Grid extends JPanel implements MouseListener{
 		}
 		if(isWaitingForUpdate()){
 			if(cells == null) throw new RuntimeException("No valid cells available.");
+			manTarget = null;
 			for(Cell c: cells){
 				if(c.containsClick(e.getX(), e.getY())){
 					for (Searcher s : searchers){

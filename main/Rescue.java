@@ -43,7 +43,7 @@ public class Rescue extends JFrame{
 	private JMenuBar makeMenuBar() {
 		//makes menu bar and adds items to menu bar
 		JMenuBar menuBar = new JMenuBar();
-		JMenu file = new JMenu("File");
+		JMenu file = new JMenu("Functions");
 		JMenuItem close = new JMenuItem("Exit");
 		close.addActionListener(new ActionListener() {
 			@Override
@@ -88,7 +88,7 @@ public class Rescue extends JFrame{
 						"Manual Update", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		JMenuItem time = new JMenuItem("Time Step");
+		JMenuItem time = new JMenuItem("Time Step"); //use this when the auto-update breaks
 		time.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
