@@ -121,7 +121,6 @@ public class Grid extends JPanel implements MouseListener{
 			}
 		}
 		searchedLine(s, introw, intcol, newrow, newcol);
-		//System.out.println(s.getIndex());
 		repaint();
 	}
 	
@@ -201,9 +200,13 @@ public class Grid extends JPanel implements MouseListener{
 			}
 		}
 	}
-		
-	public void addSearcher(Searcher s){
-		this.getSearchers().add(s);
+	
+	public void addSearcher(Searcher s){ //called from the menu bar
+		searchers.add(s);
+		Rescue.legend.addSearcher(this);
+		System.out.println(s.getSpeed());
+		System.out.println(s.getDirection());
+
 		repaint();
 	}
 	
@@ -275,6 +278,7 @@ public class Grid extends JPanel implements MouseListener{
 		for (Searcher s : searchers){
 			if(s.getIndex().equals(c)){
 				searchers.remove(s);
+				Rescue.legend.updateSearchers(this);
 				break; //so it all removes one searcher if two occupy the same cell
 			}
 		}
