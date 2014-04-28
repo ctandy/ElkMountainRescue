@@ -147,14 +147,14 @@ public class Grid extends JPanel implements MouseListener{
 			if (nrow-irow != 0)
 				dir = Math.atan((irow-nrow)/(ncol-icol));
 			else if(ncol > icol)
-				dir = 0.0;
+				dir = Math.toRadians(0.0);
 			else
-				dir = 180.0;
+				dir = Math.toRadians(180.0);
 		} else if (nrow-irow != 0){
 			if(nrow > irow)
-				dir = 270.0;
+				dir = Math.toRadians(270.0);
 			else
-				dir = 90.0;
+				dir = Math.toRadians(90.0);
 		} else
 			return; //does not set current index as searched
 		
