@@ -24,7 +24,7 @@ public abstract class Cell extends JComponent{
 		this.color = null;
 		this.searched = false;
 	}
-	
+	// when comparing 2 cells this will set a cell to searched and update the color of the cell
 	public boolean equals(Cell c){
 		if(this.row == c.getRow() && this.col == c.getCol()) {
 			this.searched = true;
@@ -68,7 +68,7 @@ public abstract class Cell extends JComponent{
 	public void setCol(int col) {
 		this.col = col;
 	}
-	
+	//checks to see if the cell contains a mouse click (used when placeing or updating searchers
 	public boolean containsClick(int mouseX, int mouseY) {
 		Rectangle rect = new Rectangle(col * Grid.CELL_SIZE, row * Grid.CELL_SIZE, Grid.CELL_SIZE, Grid.CELL_SIZE);
 		if (rect.contains(new Point(mouseX, mouseY))) 

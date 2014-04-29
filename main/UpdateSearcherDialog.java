@@ -40,7 +40,7 @@ public class UpdateSearcherDialog extends JDialog{
 		this.grid = grid;
 
 		JLabel s, dir;
-		s = new JLabel("Speed");
+		s = new JLabel("Speed(0-10)");
 		dir = new JLabel("Direction (Deg)");
 
 		submit = new JButton("Submit");
