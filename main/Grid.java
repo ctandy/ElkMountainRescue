@@ -187,6 +187,16 @@ public class Grid extends JPanel implements MouseListener{
 		}
 	}
 	
+	public void moveManual(Searcher s, Cell newIndex){ // This function is used to manually update index
+		Cell cell = s.getIndex();
+		for (Cell c : cells){
+			if(c.equals(cell))
+				break;
+		}
+		s.setIndex(newIndex);
+		repaint();
+	}
+	
 	public void addSearcher(Searcher s){ //called from the menu bar
 		searchers.add(s);
 		Rescue.legend.addSearcher(this);
@@ -354,7 +364,7 @@ public class Grid extends JPanel implements MouseListener{
 				}
 			}
 			waitingForUpdate = false;
-			//moveManual(manTarget, target);
+			moveManual(manTarget, target);
 			if(manTarget.getRadius() != Dog.RADIUS){
 				UpdateSearcherDialog update = new UpdateSearcherDialog(manTarget, this);
 				update.setVisible(true);
