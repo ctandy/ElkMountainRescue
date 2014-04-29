@@ -124,16 +124,22 @@ public class Rescue extends JFrame{
 
 	public void manualUpdate(MouseListener click) {
 	}
+	//updates the positions of the searchers
 	public void updateGrid() {
 		for (Searcher s : grid.getSearchers()) {
+
 			int brow = s.getIndex().getRow();
 			int bcol = s.getIndex().getCol();
+
+			// updates the position of the searcher at different intervals depending on the set speed
+
 			if (s.getSpeed() > Math.abs(speedCount -9)) {
 				s.move();
 				grid.searchedLine(s, brow, bcol, s.getIndex());
 				grid.repaint();
 			}
 		}
+		//increments speedCount so that lower speeds won't move on every update
 		speedCount = (speedCount + 1) % 10;
 	}
 
@@ -150,6 +156,7 @@ public class Rescue extends JFrame{
     			r.updateGrid();
     		}
     	};
+    	//timer used for updating searcher positions
         Timer timer = new Timer(1000, actListner);
 		timer.start();
     }

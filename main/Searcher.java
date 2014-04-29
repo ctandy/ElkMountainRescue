@@ -22,7 +22,7 @@ public class Searcher extends JComponent{
 	private Random rand;
 
 	public Searcher(){} //For testing the Grid
-	
+
 	public Searcher(String name, Cell index, double radius){
 		this.name = name;
 		this.index = index;
@@ -30,10 +30,10 @@ public class Searcher extends JComponent{
 		setRand(new Random());
 		makeRandColor();
 	}
-	
+
 	//Ensures that no two searchers have the same colors
 	public void makeRandColor(){}
-	
+
 
 	public void draw(Graphics g){
 		g.setColor(color);
@@ -43,7 +43,7 @@ public class Searcher extends JComponent{
 		g.drawOval(index.getCol()*Grid.CELL_SIZE, 
 				index.getRow()*Grid.CELL_SIZE, Grid.CELL_SIZE, Grid.CELL_SIZE);
 	}
-	
+
 	public void move(){
 		int introw = index.getRow();
 		int intcol = index.getCol();
@@ -63,8 +63,10 @@ public class Searcher extends JComponent{
 				break;
 			}
 		}
+		repaint();
 	}
 
+	
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -80,7 +82,7 @@ public class Searcher extends JComponent{
 	public void setIndex(Cell index) {
 		this.index = index;
 	}
-	
+
 	public void setColor(Color color){
 		this.color = color;
 	}
@@ -104,11 +106,11 @@ public class Searcher extends JComponent{
 	public Cell getIndex() {
 		return index;
 	}
-	
+
 	public double getRadius() {
 		return radius;
 	}
-	
+
 	public Color getColor(){
 		return color;
 	}

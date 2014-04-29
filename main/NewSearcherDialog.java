@@ -44,7 +44,7 @@ public class NewSearcherDialog extends JDialog{
 
 		JLabel n, s, dir;
 		n = new JLabel("Name");
-		s = new JLabel("Speed");
+		s = new JLabel("Speed(0-10)");
 		dir = new JLabel("Direction (Deg)");
 
 		submit = new JButton("Submit");
@@ -54,7 +54,7 @@ public class NewSearcherDialog extends JDialog{
 		submit.setMaximumSize(new Dimension(40,40));
 		cancel.setMaximumSize(new Dimension(40,40));
 
-
+		//creates searcher type options to add to the panel
 		dog = new JCheckBox("Dog");
 		hiker = new JCheckBox("Hiker");
 		helicopter = new JCheckBox("Helicopter");
@@ -124,7 +124,7 @@ public class NewSearcherDialog extends JDialog{
 
 
 	}
-
+	// adds the searcher when all attributes are filled
 	public void addSearcher(){
 
 		String sName = name.getText();
@@ -141,6 +141,10 @@ public class NewSearcherDialog extends JDialog{
 			
 			try{
 				speedD = Double.parseDouble(speedStr);
+				if (speedD > 10)
+					speedD = 10;
+				else if (speedD < 0)
+					speedD = 0;
 				dirD = Double.parseDouble(dirStr);
 				if(hiker.isSelected()){
 					searcher = new Hiker(sName, cell, speedD, dirD);
@@ -167,6 +171,7 @@ public class NewSearcherDialog extends JDialog{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			//if searcher is a dog the user is unable to edit speed and direction
 			if(e.getSource() == dog){
 				speed.setEnabled(false);
 				direction.setEnabled(false);

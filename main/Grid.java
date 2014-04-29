@@ -18,7 +18,7 @@ public class Grid extends JPanel implements MouseListener{
 
 	private static ArrayList<Searcher> searchers;
 	public final static Integer CELL_SIZE = 16;
-	private ArrayList<Cell> cells;
+	protected static ArrayList<Cell> cells;
 	//origin of grid is upper-left
 	public static int MAX_ROW = 0; //row is increasing going down 
 	public static int MAX_COL = 0; //col is increasing going right
@@ -95,6 +95,8 @@ public class Grid extends JPanel implements MouseListener{
 	    map = original;
 	}
 	
+	//sets all the cells in the search range to searched
+	// they will all be yellow when repaint is called
 	public void searchedLine(Searcher s, int brow, int bcol, Cell after){ // assume speed = 1 // only called after a move
 		ArrayList<Cell> searched = new ArrayList<Cell>();
 		int arow = after.getRow();
@@ -150,9 +152,8 @@ public class Grid extends JPanel implements MouseListener{
 				cell.equals(sCell); // sets cells in searched to searched:true
 			}
 		}
-		
 	}
-	
+
 	public void addSearcher(Searcher s){ //called from the menu bar
 		searchers.add(s);
 		Rescue.legend.addSearcher(this);
@@ -250,6 +251,7 @@ public class Grid extends JPanel implements MouseListener{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		// sets waitingForPlacement to false if user selects a valid cell to place a searcher in and makes the searcher visible
 		if(isWaitingForPlacement()){
 			if(cells == null) throw new RuntimeException("No valid cells available.");
 			Cell target = null;
@@ -263,6 +265,7 @@ public class Grid extends JPanel implements MouseListener{
 			NewSearcherDialog makeNewSearcher = new NewSearcherDialog(target, this);
 			makeNewSearcher.setVisible(true);
 		}
+		//sets waitingForRemove to false if the user selects a valid target then removes the Searcher at that target
 		if(isWaitingForRemove()){
 			if(cells == null) throw new RuntimeException("No valid cells available.");
 			Cell target = null;
@@ -275,6 +278,7 @@ public class Grid extends JPanel implements MouseListener{
 			waitingForRemove = false;
 			removeSearcher(target);
 		}
+		//sets waitingForEdit to false if user selects a valid target and brings up EditSearcherDialog
 		if(isWaitingForEdit()){
 			if(cells == null) throw new RuntimeException("No valid cells available.");
 			Cell target = null;
@@ -315,6 +319,7 @@ public class Grid extends JPanel implements MouseListener{
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		// sets waitingForUpdate to false updates the searcher location and searched cells(used with manual update)
 		if(isWaitingForUpdate()){
 			if(cells == null) throw new RuntimeException("No valid cells available.");
 			Cell target = null;
@@ -328,8 +333,10 @@ public class Grid extends JPanel implements MouseListener{
 			}
 			
 			waitingForUpdate = false;
+
 			manTarget.setIndex(target);
 			repaint();
+
 			if(manTarget.getRadius() != Dog.RADIUS){
 				UpdateSearcherDialog update = new UpdateSearcherDialog(manTarget, this);
 				update.setVisible(true);

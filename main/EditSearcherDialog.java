@@ -24,7 +24,9 @@ import javax.swing.JTextArea;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
-
+/*
+ * allows the user to edit a searchers attributes works like NewSearcherDialog
+ */
 @SuppressWarnings("serial")
 public class EditSearcherDialog extends JDialog{
 
@@ -41,7 +43,7 @@ public class EditSearcherDialog extends JDialog{
 
 		JLabel n, s, dir;
 		n = new JLabel("Name");
-		s = new JLabel("Speed");
+		s = new JLabel("Speed(0-10)");
 		dir = new JLabel("Direction (Deg)");
 
 		submit = new JButton("Submit");
@@ -121,7 +123,6 @@ public class EditSearcherDialog extends JDialog{
 
 
 	}
-
 	public void editSearcher(){
 		grid.removeSearcher(cell);
 		String sName = name.getText();
@@ -132,6 +133,10 @@ public class EditSearcherDialog extends JDialog{
 		}else {
 			String speedStr = speed.getText();
 			double speedD = Double.parseDouble(speedStr);
+			if (speedD > 10)
+				speedD = 10;
+			else if (speedD < 0)
+				speedD = 0;
 			String dirStr = direction.getText();
 			double dirD = Double.parseDouble(dirStr);
 
