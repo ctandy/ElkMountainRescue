@@ -95,102 +95,73 @@ public class Grid extends JPanel implements MouseListener{
 	    map = original;
 	}
 	
-	/*public void searchedLine(Searcher s, int irow, int icol, int nrow, int ncol){ // assume speed = 1
-		double i = 0.0;
-		do {
-			crow = irow - i*dy;
-			ccol = icol + i*dx;
-			searched.add(new NormalCell((int) Math.round(crow), (int) Math.round(ccol)));
-			for (double j = 1; j <= s.getRadius(); j++){
-				double jrow = crow - j*dy_90;
-				double jcol = ccol + j*dx_90;
-				searched.add(new NormalCell((int) Math.round(jrow), (int) Math.round(jcol)));
-				jrow = crow - j*dy_270;
-				jcol = ccol + j*dx_270;
-				searched.add(new NormalCell((int) Math.round(jrow), (int) Math.round(jcol)));
-			}
-			i++;
-		} while (Math.round(crow) != Math.round(nrow+dy) && Math.round(ccol) != Math.round(ncol-dx));
-		
-		for (Cell cell : cells){
-			for (Cell sCell : searched){
-				cell.equals(sCell);
-			}
-		}
-		
-	}*/
-	
-	//calculates search range for given searcher when moving from initial position(irow, icol)
-	//to new position(nrow, ncol)
-	//sets all the cells in the search range to searched
-	// they will all be yellow when repaint is called
-	/*public void searchedLine(Searcher s, int irow, int icol, int nrow, int ncol){
+	public void searchedLine(Searcher s, int brow, int bcol, Cell after){ // assume speed = 1 // only called after a move
 		ArrayList<Cell> searched = new ArrayList<Cell>();
-		double crow = irow;
-		double ccol = icol;
+		int arow = after.getRow();
+		int acol = after.getCol();
+		
+		searched.add(new NormalCell(brow, bcol));// add initial position
+		
 		double dir = 0.0;
-		if (ncol-icol != 0){
-			if (nrow-irow != 0)
-				dir = Math.atan((irow-nrow)/(ncol-icol));
-			else if(ncol > icol)
+		if (bcol != acol){
+			if (brow != arow)
+				dir = Math.atan((brow-arow)/(acol-bcol));
+			else if(acol > bcol)
 				dir = Math.toRadians(0.0);
 			else
 				dir = Math.toRadians(180.0);
-		} else if (nrow-irow != 0){
-			if(nrow > irow)
+		} else {
+			if(arow > brow)
 				dir = Math.toRadians(270.0);
 			else
 				dir = Math.toRadians(90.0);
-		} else
-			return; //does not set current index as searched
+		}
 		
-		double dx = (double) (Math.cos(dir));
-		double dy = (double) (Math.sin(dir));
-		double dx_90 = (double) (Math.cos(dir+(Math.PI)/2));
-		double dy_90 = (double) (Math.sin(dir+(Math.PI)/2));
-		double dx_270 = (double) (Math.cos(dir+(Math.PI)*3/2));
-		double dy_270 = (double) (Math.sin(dir+(Math.PI)*3/2));
+		int dx = (int) Math.round((Math.cos(dir)));
+		int dy = (int) Math.round((Math.sin(dir)));
+		int dx_90 = (int) Math.round((Math.cos(dir+(Math.PI)/2)));
+		int dy_90 = (int) Math.round(Math.sin(dir+(Math.PI)/2));
+		int dx_270 = (int) Math.round(Math.cos(dir+(Math.PI)*3/2));
+		int dy_270 = (int) Math.round(Math.sin(dir+(Math.PI)*3/2));
 		
-		if(Math.abs(Math.round(dx) - dx) < Math.pow(10, -2))
-			dx = Math.round(dx);
-		if(Math.abs(Math.round(dy) - dy) < Math.pow(10, -2))
-			dy = Math.round(dy);
-		if(Math.abs(Math.round(dx_90) - dx_90) < Math.pow(10, -2))
-			dx_90 = Math.round(dx_90);
-		if(Math.abs(Math.round(dy_90) - dy_90) < Math.pow(10, -2))
-			dy_90 = Math.round(dy_90);
-		if(Math.abs(Math.round(dx_270) - dx_270) < Math.pow(10, -2))
-			dx_270 = Math.round(dx_270);
-		if(Math.abs(Math.round(dy_270) - dy_270) < Math.pow(10, -2))
-			dy_270 = Math.round(dy_270);
+		double fullHypo = Math.sqrt(Math.pow((brow-arow),2)+Math.pow((acol-bcol),2));
+		double dHypo = Math.sqrt(Math.pow(dx,2)+Math.pow(dy,2));
+		int steps = (int) Math.round(fullHypo/dHypo);
+	
+		int crow = brow;
+		int ccol = bcol;
 		
-		double i = 0.0;
-		do {
-			crow = irow - i*dy;
-			ccol = icol + i*dx;
-			searched.add(new NormalCell((int) Math.round(crow), (int) Math.round(ccol)));
-			for (double j = 1; j <= s.getRadius(); j++){
-				double jrow = crow - j*dy_90;
-				double jcol = ccol + j*dx_90;
-				searched.add(new NormalCell((int) Math.round(jrow), (int) Math.round(jcol)));
+		for (int i = 0; i < steps; i++){
+			crow = crow - i*dy;
+			ccol = ccol + i*dx;
+			searched.add(new NormalCell(crow, ccol));// adds the current cell
+			for (int j = 1; j <= s.getRadius(); j++){ //adds the radius cells to searched
+				int jrow = crow - j*dy_90;
+				int jcol = ccol + j*dx_90;
+				searched.add(new NormalCell(jrow, jcol));
 				jrow = crow - j*dy_270;
 				jcol = ccol + j*dx_270;
-				searched.add(new NormalCell((int) Math.round(jrow), (int) Math.round(jcol)));
+				searched.add(new NormalCell(jrow, jcol));
 			}
-			i++;
-		} while (Math.round(crow) != Math.round(nrow+dy) && Math.round(ccol) != Math.round(ncol-dx));
+		} 
 		
 		for (Cell cell : cells){
 			for (Cell sCell : searched){
-				cell.equals(sCell);
+				cell.equals(sCell); // sets cells in searched to searched:true
 			}
 		}
-	}*/
+		
+	}
 	
 	public void addSearcher(Searcher s){ //called from the menu bar
 		searchers.add(s);
 		Rescue.legend.addSearcher(this);
 		repaint();
+	}
+	
+	public void addTwoSearchers(Searcher s1, Searcher s2){ //used for testing empty searcher
+		searchers.add(s1);
+		searchers.add(s2);
 	}
 	
 	public void setMAX_ROW(int mAX_ROW) {
@@ -347,14 +318,18 @@ public class Grid extends JPanel implements MouseListener{
 		if(isWaitingForUpdate()){
 			if(cells == null) throw new RuntimeException("No valid cells available.");
 			Cell target = null;
+			int brow = manTarget.getIndex().getRow();
+			int bcol = manTarget.getIndex().getCol();
 			for(Cell c: cells){
 				if(c.containsClick(e.getX(), e.getY())){
 					target = c;
 					break;
 				}
 			}
+			
 			waitingForUpdate = false;
-			//moveManual(manTarget, target);
+			manTarget.setIndex(target);
+			repaint();
 			if(manTarget.getRadius() != Dog.RADIUS){
 				UpdateSearcherDialog update = new UpdateSearcherDialog(manTarget, this);
 				update.setVisible(true);

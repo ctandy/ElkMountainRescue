@@ -126,9 +126,11 @@ public class Rescue extends JFrame{
 	}
 	public void updateGrid() {
 		for (Searcher s : grid.getSearchers()) {
+			int brow = s.getIndex().getRow();
+			int bcol = s.getIndex().getCol();
 			if (s.getSpeed() > Math.abs(speedCount -9)) {
 				s.move();
-				System.out.println("update");
+				grid.searchedLine(s, brow, bcol, s.getIndex());
 				grid.repaint();
 			}
 		}

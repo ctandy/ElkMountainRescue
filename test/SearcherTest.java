@@ -101,7 +101,7 @@ public class SearcherTest {
 		s.setIndex(new NormalCell(0, 0));
 		s.setSpeed(2.0);
 		s.move();
-		NormalCell testCell = new NormalCell(2, 0);
+		NormalCell testCell = new NormalCell(1, 0);
 		assertTrue(s.getIndex().equals(testCell));
 		
 		//test for excessive speed

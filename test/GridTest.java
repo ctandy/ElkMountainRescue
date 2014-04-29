@@ -44,9 +44,10 @@ public class GridTest {
 	
 	@Test
 	public void testAddSearcher() {
-		Searcher s = new Searcher();
-		testing.addSearcher(s);
-		assertTrue(testing.getSearchers().size() == 1);
+		Searcher s1 = new Searcher();
+		Searcher s2 = new Searcher();
+		testing.addTwoSearchers(s1,s2);
+		assertTrue(testing.getSearchers().size() == 2);
 	}
 	
 	

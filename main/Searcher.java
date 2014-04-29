@@ -42,7 +42,6 @@ public class Searcher extends JComponent{
 		g.setColor(Color.BLACK);
 		g.drawOval(index.getCol()*Grid.CELL_SIZE, 
 				index.getRow()*Grid.CELL_SIZE, Grid.CELL_SIZE, Grid.CELL_SIZE);
-		//g.drawString(name, index.getRow()*Grid.CELL_SIZE + Grid.CELL_SIZE/2, index.getCol()*Grid.CELL_SIZE);
 	}
 	
 	public void move(){
