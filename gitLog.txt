@@ -1,0 +1,847 @@
+commit a91829377305b4097f2669d07bba6a95465d47b2
+Merge: bcac9dd 58cd7fa
+Author: mberntso <mberntso@mines.edu>
+Date:   Mon Apr 28 23:56:32 2014 -0600
+
+    Final code, Merge Complete
+
+commit bcac9dd12ff54cf77a01e0f5c5e3056fa59dd0ca
+Author: mberntso <mberntso@mines.edu>
+Date:   Mon Apr 28 23:53:00 2014 -0600
+
+    Final code, All tests pass, searched cells painted correctly
+
+commit 58cd7fa6f16f177ab41cd69700ebc41a880528b6
+Merge: e84a507 f6cd3b4
+Author: ctandy <ctandy@mymail.mines.edu>
+Date:   Mon Apr 28 23:19:33 2014 -0600
+
+    Merge branch 'master' of http://github.com/ctandy/ElkMountainRescue
+
+commit e84a50736761fcc6e273ade7827b8f91ab722b42
+Author: ctandy <ctandy@mymail.mines.edu>
+Date:   Mon Apr 28 23:19:22 2014 -0600
+
+    comments added throughout
+
+commit f6cd3b4e92a7823606fb926445f8a0c93650fcd1
+Author: Trey <nwinbush@mines.edu>
+Date:   Mon Apr 28 23:10:37 2014 -0600
+
+    Manual update wasn't working on the last pull, but now works
+
+commit feb17c320ae20f6c21d1b657de9e847ba882a834
+Author: Trey <nwinbush@mines.edu>
+Date:   Mon Apr 28 23:04:34 2014 -0600
+
+    SearchedLine() is now a static function in grid and is called in move for the searcher.
+
+commit 7daf2d16b1dcbb40671e581943f295e96b1ddbba
+Merge: 2798a67 65d7ba2
+Author: Charles Tandy <ctandy@mymail.mines.edu>
+Date:   Sun Apr 27 23:28:31 2014 -0600
+
+    Still need to impliment SearchLine and it's test
+
+commit 2798a671e01a4df638e729445ee6bb1fb40388c3
+Author: Charles Tandy <ctandy@mymail.mines.edu>
+Date:   Sun Apr 27 23:16:00 2014 -0600
+
+    modified the timer to work with speed
+
+commit 65d7ba2546ad84a280bdbd05abb5ace2a6cab7fb
+Author: mberntso <mberntso@mines.edu>
+Date:   Sun Apr 27 23:14:44 2014 -0600
+
+    Move function now in searcher, Charles and I are doing a major overhall of searchedLine, move, and timer
+
+commit a4466a28821e5a3319fbfac6b29745e18c2f3fae
+Merge: 40d0911 5a1d557
+Author: mberntso <mberntso@mines.edu>
+Date:   Sun Apr 27 21:07:33 2014 -0600
+
+    Merge branch 'master' of https://github.com/ctandy/ElkMountainRescue
+
+commit 40d0911349dca870222c6e38753d08622c685e9c
+Author: mberntso <mberntso@mines.edu>
+Date:   Sun Apr 27 21:07:22 2014 -0600
+
+    Prepare to merge
+
+commit 5a1d557850409bd6867dbbc1c5e5c749d5cc1315
+Merge: 0958290 31c078b
+Author: Charles Tandy <ctandy@mymail.mines.edu>
+Date:   Sun Apr 27 21:06:16 2014 -0600
+
+    Merge conflict in Rescue fixed
+
+commit 0958290a47e41c8c185452ed44435c6a2bbaaa77
+Author: Charles Tandy <ctandy@mymail.mines.edu>
+Date:   Sun Apr 27 21:02:47 2014 -0600
+
+    refactor in searchedLine() in Grid
+
+commit 31c078ba7cb7e7ea7a1ad328936a909771a650d1
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Sun Apr 27 21:02:20 2014 -0600
+
+    added question to grid move function-minor
+
+commit c405265268079b8d5ee9418662a0405ff29cf11e
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Sun Apr 27 20:55:31 2014 -0600
+
+    corrected comments for colors for dog and helicopter
+
+commit 5f6dd0b19ed07da4a68b53763da445dbb8fc4943
+Merge: 9114e72 18e653e
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Sun Apr 27 20:26:57 2014 -0600
+
+    resolved timer conflicts
+
+commit 7f25f9b4ce2b7a7f718d48f1f1e0dfc3390501bb
+Merge: 8367a63 18e653e
+Author: mberntso <mberntso@mines.edu>
+Date:   Sun Apr 27 20:11:49 2014 -0600
+
+    Merge branch 'master' of https://github.com/ctandy/ElkMountainRescue
+
+commit 8367a633429f97193012fd5f1dce73a9e0a3b767
+Author: mberntso <mberntso@mines.edu>
+Date:   Sun Apr 27 20:11:38 2014 -0600
+
+    Preparing to merge
+
+commit 18e653e610b4ad2a4f30b1242ba8ac3b66727147
+Author: Trey <nwinbush@mines.edu>
+Date:   Sun Apr 27 15:25:03 2014 -0600
+
+    Remove searchers now updates the legend, need to work on wrap arround method for legend though
+
+commit dd142e90f521150d64103227c2eeca373518afcd
+Merge: 36e0b5e d8fccf9
+Author: Trey <nwinbush@mines.edu>
+Date:   Fri Apr 25 16:50:30 2014 -0600
+
+    Merged Result
+
+commit 36e0b5ef5dfba04d82dbe19619bdf68a00db2d70
+Author: Trey <nwinbush@mines.edu>
+Date:   Fri Apr 25 15:57:31 2014 -0600
+
+    The Legend finally updates based on the searchers present now move and coverage functions need to be implemented
+
+commit d8fccf945dc32ac2321e4d4ef51ff435ca4a355e
+Author: mberntso <mberntso@mines.edu>
+Date:   Fri Apr 25 15:52:13 2014 -0600
+
+    All menu bar tests pass.  searchedLine test fails at a wall
+
+commit fd669bcb7edc433e6d5e5adbe5a1c3d72436def8
+Merge: 19bd476 30e5abe
+Author: Trey <nwinbush@mines.edu>
+Date:   Fri Apr 25 11:46:28 2014 -0600
+
+    Added invalid searcher information.
+
+commit 1f42e64a10e09bf714e84cacc427478d4bfa5519
+Author: mberntso <mberntso@mines.edu>
+Date:   Fri Apr 25 10:22:33 2014 -0600
+
+    Timer works, but in the dialog boxes the attributes are not actually being set
+
+commit 1c85fd0affbb8e215749081472a0cab1f013a206
+Merge: f67dd31 47792a8
+Author: ctandy <ctandy@mymail.mines.edu>
+Date:   Fri Apr 25 00:13:43 2014 -0600
+
+    merge conflict fixed
+
+commit f67dd3184f3ad6b3259bf9a7717b0102a3630659
+Author: ctandy <ctandy@mymail.mines.edu>
+Date:   Fri Apr 25 00:09:26 2014 -0600
+
+    modified timer
+
+commit 9114e72da9c6a911b0c0b4eee5dfc433897e3e78
+Merge: 16ff878 47792a8
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 24 23:54:23 2014 -0600
+
+    Merge branch 'master' of https://github.com/ctandy/ElkMountainRescue
+
+commit 16ff8787f9e95f598de1981948384d40a6f74063
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 24 23:54:17 2014 -0600
+
+    added automatically generated to string method in cell class for debugging
+
+commit 47792a8d49e158edd395c3aec9d4d45eee9c3ad3
+Merge: 480055f f653f48
+Author: mberntso <mberntso@mines.edu>
+Date:   Thu Apr 24 23:53:44 2014 -0600
+
+    Part II code complete.  Working on timer for final code
+
+commit 480055f59a2bbe925653db7e3304ea9fdef6a328
+Author: mberntso <mberntso@mines.edu>
+Date:   Thu Apr 24 23:52:26 2014 -0600
+
+    Part II code complete.  Working on timer for final code
+
+commit f653f4823cbeb6ebbb733979ba57efd38596228b
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 24 23:46:12 2014 -0600
+
+    refactored to use swing timer
+
+commit ab569ca47f8e7e27bdaff136eede210b33dcfb00
+Merge: 9ef2b67 cff68b6
+Author: mberntso <mberntso@mines.edu>
+Date:   Thu Apr 24 23:40:09 2014 -0600
+
+    Merge branch 'master' of https://github.com/ctandy/ElkMountainRescue
+
+commit 9ef2b67e3509b86ed45bfe394351312331d51a5b
+Author: mberntso <mberntso@mines.edu>
+Date:   Thu Apr 24 23:40:04 2014 -0600
+
+    My attempt with the timer-failure
+
+commit cff68b6ac4131904f4924d68ae05777120725617
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 24 23:20:26 2014 -0600
+
+    corrected compilation error in grid updater
+
+commit 3f8b60ef406a8319bd51bd393564813bfbbc3393
+Author: mberntso <mberntso@mines.edu>
+Date:   Thu Apr 24 23:16:29 2014 -0600
+
+    Forgot to add new file again: update dialog
+
+commit d14b462af104802479ea923af13f6f9c9fa8aa0f
+Merge: 50ed522 30e5abe
+Author: mberntso <mberntso@mines.edu>
+Date:   Thu Apr 24 23:15:28 2014 -0600
+
+    Merged with timer
+
+commit 50ed522c3d1318b2abbef924bd7b4eaad5b01fd7
+Author: mberntso <mberntso@mines.edu>
+Date:   Thu Apr 24 23:13:14 2014 -0600
+
+    Manual update implemented
+
+commit 19bd476049feca384e0812d152b6090962dc3bb3
+Author: Trey <nwinbush@mines.edu>
+Date:   Thu Apr 24 23:06:05 2014 -0600
+
+    Pulling
+
+commit 30e5abe4da38a8df5eba0544214c31136dfef30b
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 24 22:57:33 2014 -0600
+
+    commented work on grid updater
+
+commit 7f50e53696d59b696a44d5f8acd4e98b82172037
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 24 22:56:47 2014 -0600
+
+    added timer task
+
+commit 6d3f442f14be8f270c883e5034c45b95767a7c79
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 24 22:47:59 2014 -0600
+
+    refactored code to use new manual update and wrote stub for timer
+
+commit 952b062bd534724fe4030993af0dfe94b1bccf94
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 24 22:38:23 2014 -0600
+
+    finished clean up for manual update function
+
+commit 1eccbb66ffd439a167fb80decd85429ebc5bca0f
+Merge: 9695de7 f4db343
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 24 22:35:02 2014 -0600
+
+    merged manual update functionality
+
+commit 9695de70a45785e6cbf6d1a0aae31b72ab516eda
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 24 22:32:29 2014 -0600
+
+    manual update functionality stub
+
+commit f4db343236e17c258ac3b58d418d9a3023f1092f
+Author: mberntso <mberntso@mines.edu>
+Date:   Thu Apr 24 22:17:58 2014 -0600
+
+    Forgot to add new file, the edit dialog
+
+commit 7ace69249deb4afa8597e2cbf68b4e7d8d78cae1
+Merge: 324d8aa ff35e97
+Author: mberntso <mberntso@mines.edu>
+Date:   Thu Apr 24 22:16:58 2014 -0600
+
+    Merge branch 'master' of https://github.com/ctandy/ElkMountainRescue
+
+commit 324d8aaffb4297c5803661d25a707271bba5933e
+Author: mberntso <mberntso@mines.edu>
+Date:   Thu Apr 24 22:16:49 2014 -0600
+
+    Edit searcher implemented
+
+commit ff35e97d3823c5709e845814cd5ecdd937b52ab4
+Merge: f0adfd8 b2d3cce
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 24 21:47:12 2014 -0600
+
+    merged in changes
+
+commit f0adfd89f4f15e8d33b79d3e7cfb149a248ba21d
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 24 21:46:25 2014 -0600
+
+    added stub for manual update functionality
+
+commit b2d3cce58c4d77feacfe069d15f12d08dc432a91
+Merge: 9ba8f45 fc13236
+Author: mberntso <mberntso@mines.edu>
+Date:   Thu Apr 24 21:45:03 2014 -0600
+
+    Merge branch 'master' of https://github.com/ctandy/ElkMountainRescue
+
+commit 9ba8f454a27b7b9ae7683b3219e7ad220f3c9ef5
+Author: mberntso <mberntso@mines.edu>
+Date:   Thu Apr 24 21:44:30 2014 -0600
+
+    Remove searcher implemented
+
+commit fc132367d2d631222814752f86bf1d0369f5c254
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 24 21:21:05 2014 -0600
+
+    added descriptive comment for searchedline function
+
+commit 8ac870b1f630b752f3270829e3dee799f6e4f749
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 24 21:19:51 2014 -0600
+
+    wrote initial info message for manual update
+
+commit 134ca38ceac9ae681933a5a7f7c522dfbefdeadf
+Author: Trey <nwinbush@mines.edu>
+Date:   Thu Apr 24 15:57:07 2014 -0600
+
+    To pull
+
+commit 72decfcb84edeb230f46ea44e0fc069ba934421f
+Merge: bd8202f c1a87c0
+Author: Trey <nwinbush@mines.edu>
+Date:   Thu Apr 24 04:44:44 2014 -0600
+
+    Placing searcher merged
+
+commit bd8202fdb8693b0a85c89bf2630d996dce2d165f
+Author: Trey <nwinbush@mines.edu>
+Date:   Thu Apr 24 04:42:07 2014 -0600
+
+    Place Searcher is working
+
+commit c1a87c00258f90f29beeec049428d0d17b85def3
+Author: mberntso <mberntso@mines.edu>
+Date:   Wed Apr 23 17:39:44 2014 -0600
+
+    Completed searchedLine, tests pass
+
+commit 6b182d690d5893370e9193090ae5f66844d33db7
+Author: mberntso <mberntso@mines.edu>
+Date:   Wed Apr 23 11:35:08 2014 -0600
+
+    Made Searcher variables private. Next step is the menu bar
+
+commit 66ae48f6714ed96679f346c2d23412c6416ffda3
+Merge: 154a6fa ab4c368
+Author: mberntso <mberntso@mines.edu>
+Date:   Wed Apr 23 11:19:58 2014 -0600
+
+    Merged with the new Searcher classes
+
+commit 154a6fac6f1ca6ced2e7bf42208eabb0f6d9d1c8
+Author: mberntso <mberntso@mines.edu>
+Date:   Wed Apr 23 11:16:41 2014 -0600
+
+    Search line and move functionality for manual updating and regualr moves done/
+
+commit ab4c368476c5d203cc98c8b870d385db63fd20ad
+Merge: dc461ae 9be0ef6
+Author: Trey <nwinbush@mines.edu>
+Date:   Wed Apr 23 10:48:06 2014 -0600
+
+    Searcher classes are altered since dog does not need to have speed and direction. Also draw functions are implemented for the searcher classes. The colors are random but have dominant hues depending on the type of searcher. Now the add searcher functionality needs to be put in
+
+commit dc461aea8f26a672d7193ae70362e19b211dbe89
+Author: Trey <nwinbush@mines.edu>
+Date:   Wed Apr 23 09:22:34 2014 -0600
+
+    Starting to draw objects but needed to merger first to get the panels from Rescue
+
+commit 9be0ef6c23a084388e87baf3f5d1689f51553544
+Author: mberntso <mberntso@mines.edu>
+Date:   Tue Apr 22 16:38:20 2014 -0600
+
+    Update cell classes and paint component in Grid to print the searchers
+
+commit b15f3fcca03912d17e4a2c7d5b153c7589b096e8
+Author: mberntso <mberntso@mines.edu>
+Date:   Tue Apr 22 16:25:47 2014 -0600
+
+    GUI functionality is in menu bar drop-down in the Rescue classgit pull elk master
+
+commit 85a82a227caca55eac1f3e9a87d8282314374dda
+Author: Charles Tandy <ctandy@mymail.mines.edu>
+Date:   Tue Apr 22 15:34:07 2014 -0600
+
+    removed a println in Grid
+
+commit 7e613a3719bec7df032be8efcd0888edaed28a11
+Author: Charles Tandy <ctandy@mymail.mines.edu>
+Date:   Tue Apr 22 15:30:21 2014 -0600
+
+    minor refactor in grid and Rescue
+
+commit 36d5856428221a39000acf19d1e4b8abb7e61072
+Merge: d2310e0 7ea9c96
+Author: Charles Tandy <ctandy@mymail.mines.edu>
+Date:   Tue Apr 22 15:23:34 2014 -0600
+
+    GUI for map with grid working
+
+commit d2310e0d7b3457e6023de02bdf60289eec602690
+Author: Charles Tandy <ctandy@mymail.mines.edu>
+Date:   Tue Apr 22 14:58:05 2014 -0600
+
+    updated GridTest
+
+commit 7ea9c96ae11f041960ba77e5b291f3f1feab092d
+Author: mberntso <mberntso@mines.edu>
+Date:   Tue Apr 22 12:01:50 2014 -0600
+
+    Moved move and addSearcher and Search aray to Grid, should help with painting. Put a speed limiter on the move function.
+
+commit 4bc0ab02787ddf5acd2cb8d0c90841baa62d7f54
+Author: Charles Tandy <ctandy@mymail.mines.edu>
+Date:   Tue Apr 22 10:45:46 2014 -0600
+
+    paintComponent created in Grid
+
+commit f03b90aa6e0909b6d5617de2741b8b97f861dca7
+Merge: 25ff6c0 4885a80
+Author: mberntso <mberntso@mines.edu>
+Date:   Tue Apr 22 10:32:59 2014 -0600
+
+    Merge branch 'master' of https://github.com/ctandy/ElkMountainRescue
+
+commit 25ff6c0b88a64ac8ad6df401583faa61ef1e2184
+Author: mberntso <mberntso@mines.edu>
+Date:   Tue Apr 22 10:31:38 2014 -0600
+
+    Cropped searchMap
+
+commit 4885a80afbd8e0ba05c19ed9249a875a878efa5f
+Author: ctandy <ctandy@mymail.mines.edu>
+Date:   Mon Apr 21 18:18:38 2014 -0600
+
+    background image loading and MAX_COL, MAX_ROW set from pixel count
+
+commit bd0ddc2e5958152501f22e75c7b1d3f7f5b354cf
+Author: mberntso <mberntso@mines.edu>
+Date:   Thu Apr 17 23:00:39 2014 -0600
+
+    All tests pass, Part 1 finished
+
+commit ef0848ca7f4f76edd24192cb7614bb8de059f8f5
+Author: mberntso <mberntso@mines.edu>
+Date:   Thu Apr 17 22:55:14 2014 -0600
+
+    Made searcher abstract, fixed all associated issues. Still working on radii test
+
+commit 9721124f779fbab6ee9687657205cd06a3d218f4
+Merge: e91593b d99f89b
+Author: mberntso <mberntso@mines.edu>
+Date:   Thu Apr 17 22:47:38 2014 -0600
+
+    Merged conflicts, please don't change the Searcher classes
+
+commit e91593b6838e8e1bd7528c8b12b70bda0006e988
+Author: mberntso <mberntso@mines.edu>
+Date:   Thu Apr 17 22:42:18 2014 -0600
+
+    Finished rescue tests and Searcher classes
+
+commit d99f89bbe4bd7319ed81eddb0a7d2900d8c8df01
+Author: ctandy <ctandy@mymail.mines.edu>
+Date:   Thu Apr 17 22:36:42 2014 -0600
+
+    commented out background stuff for now will implement with GUI later
+
+commit 4675c77afab05c6053f2a1ff05a08343b53937c9
+Author: ctandy <ctandy@mymail.mines.edu>
+Date:   Thu Apr 17 22:28:05 2014 -0600
+
+    Failing test for MAX_ROW and MAX_COL written
+
+commit 248be4844a312bb349fe8e25e9e502deb8944117
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 17 22:22:49 2014 -0600
+
+    removed print statement in searcher tests
+
+commit e95a0405c0489d021ddab34c128d7fa6cc4c568a
+Merge: 4f27d56 53da11f
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 17 22:19:34 2014 -0600
+
+    Merge branch 'master' of https://github.com/ctandy/ElkMountainRescue
+
+commit 4f27d5642e24184f810cb4fe8c2e40e53f2b7004
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 17 22:19:26 2014 -0600
+
+    row/column use of searcher deprecated
+
+commit 53da11fc5e640ff8f75610c9d531c39b8f8a028e
+Author: ctandy <ctandy@mymail.mines.edu>
+Date:   Thu Apr 17 22:06:31 2014 -0600
+
+    loaded background image in Grid
+
+commit 71075ee9b7c47bad20dbb285c73e2e2c227b50b3
+Author: ctandy <ctandy@mymail.mines.edu>
+Date:   Thu Apr 17 22:04:02 2014 -0600
+
+    added background image to image folder
+
+commit d532574ac05cbfc5188f5d840292818da0b2d062
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 17 21:16:52 2014 -0600
+
+    added location handling by cell in searcher, need verification on status of row/column functionality
+
+commit e31e00caa263b4db169de0868744c7ae1be82a03
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 17 20:31:34 2014 -0600
+
+    added tests for searcher radius
+
+commit 90304b241eb9dc0c44e7c6b5c7ab913b62d5b87a
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 17 20:18:51 2014 -0600
+
+    corrected null pointer error in seachers tests
+
+commit b099b291a601a2eff7d3b6c1e1dafce64ae060d3
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 17 19:55:30 2014 -0600
+
+    refactored locatoin tests for searcher
+
+commit a592e32ba0049c8f224a530b0c20e8b888e3b6f3
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 17 19:48:39 2014 -0600
+
+    added blank constructor for tests
+
+commit 3977efe4f7f5eb036b85cd926334001ebf190f0a
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 17 19:07:57 2014 -0600
+
+    changed location tests for row and column in searcher
+
+commit 39c164ac1d5fd7fb0d43541d01579e66b0ce228d
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 17 19:04:38 2014 -0600
+
+    changed searcher class to use row and column
+
+commit 036e2ab0940db8d22cf92dcd246d90dbb182773b
+Merge: f1346d1 872d183
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 17 18:54:18 2014 -0600
+
+    Merge branch 'master' of https://github.com/ctandy/ElkMountainRescue
+
+commit f1346d19ccab7bac5c18ea039c1287732ee19413
+Author: Bernardo Trindade <btrindade@eeshoo.com>
+Date:   Thu Apr 17 18:52:44 2014 -0600
+
+    corrected set up for searcher tests
+
+commit 872d183d7d343473526119b7312ae11a209b254d
+Author: mberntso <mberntso@mines.edu>
+Date:   Thu Apr 17 18:29:50 2014 -0600
+
+    Rescue move test passes
+
+commit e542546e6680c3d418e1cb08b94183791439d742
+Author: mberntso <mberntso@mines.edu>
+Date:   Thu Apr 17 18:27:41 2014 -0600
+
+    Created failing rescue move test
+
+commit c80253a49504dbc9b9c01ad51bbc773ba85a83ff
+Author: Charles Tandy <ctandy@mymail.mines.edu>
+Date:   Thu Apr 17 13:41:24 2014 -0600
+
+    changed new Cell in Grid to new NormalCell
+
+commit 44c04dd098ffbc0f152499f4e121a5136b259044
+Author: Charles Tandy <ctandy@mymail.mines.edu>
+Date:   Thu Apr 17 13:27:26 2014 -0600
+
+    Both tests for CellTest are passing
+
+commit 900fd993351c7e2da8b000262ac2346d2c67c3a7
+Author: Charles Tandy <ctandy@mymail.mines.edu>
+Date:   Thu Apr 17 13:11:19 2014 -0600
+
+    failing test for testEquals in CellTest written
+
+commit 8f6e28ae4a84655b4a9f9c410d0afb00bb48eee8
+Author: Charles Tandy <ctandy@mymail.mines.edu>
+Date:   Thu Apr 17 12:59:25 2014 -0600
+
+    merge conflicts fixed
+
+commit 5258a2f6420de2787869425363b3298b35ac9759
+Merge: a49089b cf39dd6
+Author: Charles Tandy <ctandy@mymail.mines.edu>
+Date:   Thu Apr 17 12:57:56 2014 -0600
+
+    merge conflicts fixed
+
+commit a49089b760d2c8e043bc5ac2e8f277be700f38a2
+Merge: 4faf570 5928a6b
+Author: Charles Tandy <ctandy@mymail.mines.edu>
+Date:   Thu Apr 17 12:55:40 2014 -0600
+
+    failing test for testSearchedColor written
+
+commit cf39dd6848ce11a28081e914d289a317deb9bcd8
+Author: mberntso <mberntso@mines.edu>
+Date:   Thu Apr 17 12:38:29 2014 -0600
+
+    Work on the move function in incomplete.  To do: searcher tests and Cell functionality/tests
+
+commit 4faf57077d871bbc24ca08add38c4a1a25e610f3
+Author: Charles Tandy <ctandy@mymail.mines.edu>
+Date:   Thu Apr 17 12:20:41 2014 -0600
+
+    failing test for testDimensions in GridTest
+
+commit 5928a6bbcb2ca8ff22c912c9853c2886bf3c95cb
+Author: mberntso <mberntso@mines.edu>
+Date:   Thu Apr 17 12:13:31 2014 -0600
+
+    Moved grid and cell related code from Rescue to Grid. Grid tests now pass.  Searcher and children classes are complete, just need to do the tests.
+
+commit 1820e64a01ac35b1d659be595284c3dfed1bf612
+Merge: 5fd14a3 03bee70
+Author: unknown <nwinbush@mz026-11.adit.mines.edu>
+Date:   Thu Apr 17 10:55:13 2014 -0600
+
+    Merged Searcher Classes
+
+commit 5fd14a3417c4f8c849141f7f3ecf941fd1c3e8e2
+Merge: e4486e9 90d8a0b
+Author: unknown <nwinbush@mz026-11.adit.mines.edu>
+Date:   Thu Apr 17 10:54:05 2014 -0600
+
+    Merge for searcher and child classes
+
+commit 03bee70c8dd5cfa77a2f5eebe860619097b21e67
+Merge: 1340440 90d8a0b
+Author: Bernardo Trindade <btrindad@mines.edu>
+Date:   Thu Apr 17 10:53:18 2014 -0600
+
+    attemtped resolution of merge conflicts
+
+commit 1340440056a627397f266d7dc7931fdc23ee2f21
+Author: Bernardo Trindade <btrindad@mines.edu>
+Date:   Thu Apr 17 10:51:49 2014 -0600
+
+    refactored searcher name tests
+
+commit e4486e9bf1865869a02cb03fd8514e310857a496
+Merge: acbff80 e55cfbe
+Author: unknown <nwinbush@mz026-11.adit.mines.edu>
+Date:   Thu Apr 17 10:51:23 2014 -0600
+
+    Merged Searcher and its child classes
+
+commit 90d8a0bf7be94d1e56710d8efeffd82d11b9df2d
+Merge: 9761cba 43b4fc0
+Author: Charles Tandy <ctandy@mymail.mines.edu>
+Date:   Thu Apr 17 10:47:47 2014 -0600
+
+    Merge branch 'master' of https://github.com/ctandy/ElkMountainRescue
+
+commit 9761cba929504d516076dd16e78bd4236a1260fb
+Author: Charles Tandy <ctandy@mymail.mines.edu>
+Date:   Thu Apr 17 10:47:31 2014 -0600
+
+    finished failing calcIndex test
+
+commit 43b4fc0e4e0f5385b705e3f33b2b00c76b370e51
+Author: mberntso <mberntso@mines.edu>
+Date:   Thu Apr 17 10:47:17 2014 -0600
+
+    Modified Searcher as move is going to Rescue
+
+commit acbff80d0b760182e1ede9da7fcd6cb87154049a
+Author: unknown <nwinbush@mz026-11.adit.mines.edu>
+Date:   Thu Apr 17 10:38:11 2014 -0600
+
+    Child classes of Searcher accurately implement all parent methods.
+
+commit e55cfbe40404cb2bf6ec4e24579ca844ab2bcbc0
+Merge: 50683fe e30c42a
+Author: mberntso <mberntso@mines.edu>
+Date:   Thu Apr 17 10:37:05 2014 -0600
+
+    Trying to merge Searcher
+
+commit 50683fe3ef575c58f557cf44e3f5e2507d53ab9d
+Author: mberntso <mberntso@mines.edu>
+Date:   Thu Apr 17 10:33:58 2014 -0600
+
+    Modified searcher and children
+
+commit e30c42a68096a95790f5faa0b003eba76672a8ef
+Author: unknown <nwinbush@mz026-11.adit.mines.edu>
+Date:   Thu Apr 17 10:28:03 2014 -0600
+
+    Row and Column vs Cell index for searcher
+
+commit 33331d0d93d4c9e32ef657090433483f7bd5b766
+Merge: 62cd3e8 de20963
+Author: Charles Tandy <ctandy@mymail.mines.edu>
+Date:   Thu Apr 17 10:18:30 2014 -0600
+
+    Merge branch 'master' of https://github.com/ctandy/ElkMountainRescue
+
+commit 62cd3e8899567e63c651230cb1e586b518af7432
+Author: Charles Tandy <ctandy@mymail.mines.edu>
+Date:   Thu Apr 17 10:17:59 2014 -0600
+
+    empty Grid class created
+
+commit 16cff30532e4b8cff46bc93eaa45fac07ab17fe8
+Merge: dcca9e5 de20963
+Author: mberntso <mberntso@mines.edu>
+Date:   Thu Apr 17 10:17:55 2014 -0600
+
+    Merge branch 'master' of https://github.com/ctandy/ElkMountainRescue
+
+commit dcca9e5f3c7025f721ef2fdde531595feddd4ade
+Author: mberntso <mberntso@mines.edu>
+Date:   Thu Apr 17 10:17:44 2014 -0600
+
+    Minor fixes
+
+commit de209637e0c0b8cfe80c93d67ddf5883b507dfb7
+Author: Bernardo Trindade <btrindad@mines.edu>
+Date:   Thu Apr 17 10:11:37 2014 -0600
+
+    pass main Rescue class into move, so that function can access collection of cells
+
+commit 59ca6dec2894db36254897e1bc00279c3173ff96
+Author: Bernardo Trindade <btrindad@mines.edu>
+Date:   Thu Apr 17 10:09:52 2014 -0600
+
+    added test for searcher name
+
+commit 4309ddda9d937254ec8975c909002d2e22aa716d
+Author: Bernardo Trindade <btrindad@mines.edu>
+Date:   Thu Apr 17 10:00:32 2014 -0600
+
+    added constructor to abstract class Searcher to accept parameters
+
+commit 879afd443b96f09f907c78c73c5ea8fb7b3d5094
+Author: Bernardo Trindade <btrindad@mines.edu>
+Date:   Thu Apr 17 09:55:44 2014 -0600
+
+    changed searcher class to be abstract
+
+commit 3c4b389efc9d759390fcc6bbbba747188edadaee
+Author: mberntso <mberntso@mines.edu>
+Date:   Wed Apr 16 22:28:17 2014 -0600
+
+    Made Searcher index a Cell type
+
+commit fd78b9d5e25dd2b152b679c3f39e50ae8efb42ef
+Author: mberntso <mberntso@mines.edu>
+Date:   Wed Apr 16 22:12:28 2014 -0600
+
+    Passing tests for RescueTest
+
+commit 60940c26c617abae6ac35db49ce743b65e81a39d
+Author: mberntso <mberntso@mines.edu>
+Date:   Wed Apr 16 21:57:43 2014 -0600
+
+    Failing tests for RescueTest
+
+commit 5ea2a1d52a8806adf6ca71342fe5ed34019a5622
+Author: mberntso <mberntso@mines.edu>
+Date:   Wed Apr 16 21:22:44 2014 -0600
+
+    Added tests.
+
+commit 04828c2f8ccf347f8c76f016748a576137892058
+Merge: 715e53c dfb5c17
+Author: mberntso <mberntso@mines.edu>
+Date:   Wed Apr 16 21:20:59 2014 -0600
+
+    Merge branch 'master' of https://github.com/ctandy/ElkMountainRescue
+
+commit 715e53c9e35e5502c0078ca2d21f799c528afc5f
+Author: mberntso <mberntso@mines.edu>
+Date:   Wed Apr 16 21:19:49 2014 -0600
+
+    Made outlines for searcher, dog, and rescue classes.  Hiker and Helicopter are the same code as Dog.
+
+commit dfb5c1794b1891a8c832717ba99fdcee70fa493e
+Author: ctandy <ctandy@mymail.mines.edu>
+Date:   Wed Apr 16 20:37:52 2014 -0600
+
+    added class NormalCell
+
+commit 70b4bacdaa152e29c5053a440a4d624dd5f36a10
+Author: mberntso <mberntso@mines.edu>
+Date:   Tue Apr 15 11:52:45 2014 -0600
+
+    Added test for Rescue class.  Everyone will have to make their own project, this repo just includes the src.  Config files should be placed in a new package.
+
+commit 07be986bc54695b0cbf08358644e1f6003cb3c4c
+Merge: 9afe5bb 6985858
+Author: mberntso <mberntso@mines.edu>
+Date:   Tue Apr 15 11:42:27 2014 -0600
+
+    Merge branch 'master' of https://github.com/ctandy/ElkMountainRescue
+
+commit 9afe5bb87a5dedc40b054170540c5602196deff1
+Author: mberntso <mberntso@mines.edu>
+Date:   Tue Apr 15 11:40:55 2014 -0600
+
+    Created Project
+
+commit 6985858d8cc747e5df13b4e167506a1d7336c857
+Author: ctandy <ctandy@mymail.mines.edu>
+Date:   Tue Apr 15 08:41:54 2014 -0700
+
+    Initial commit
