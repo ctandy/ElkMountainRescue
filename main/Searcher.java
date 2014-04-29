@@ -54,7 +54,7 @@ public class Searcher extends JComponent{
 			newrow = introw-dy;
 			newcol = intcol+dx;
 			if ((newrow<0 || newrow>Grid.MAX_ROW-1) || (newcol<0 || newcol>Grid.MAX_COL-1)){
-				setDirection(Math.random()*360);
+				setSpeed(0);
 			}
 			else {
 				index.setRow(newrow);

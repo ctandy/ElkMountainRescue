@@ -122,8 +122,6 @@ public class Rescue extends JFrame{
 		pack();
 	}
 
-	public void manualUpdate(MouseListener click) {
-	}
 	//updates the positions of the searchers
 	public void updateGrid() {
 		for (Searcher s : grid.getSearchers()) {

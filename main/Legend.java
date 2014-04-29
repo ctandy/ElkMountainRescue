@@ -12,7 +12,7 @@ import javax.swing.border.TitledBorder;
 public class Legend extends JPanel{
 
 	private ArrayList<Searcher> searchers;
-	//private ArrayList<JPanel> searcherPanels;
+	
 	public Legend(Grid grid){
 		searchers = grid.getSearchers();
 		setUp(grid);
@@ -21,9 +21,7 @@ public class Legend extends JPanel{
 	public void setUp(Grid grid){
 		searchers = grid.getSearchers();
 		setLayout(new FlowLayout());
-		//GridBagConstraints c = new GridBagConstraints();
 		setBorder(new TitledBorder("Legend"));
-		//Graphics g;
 	}
 	
 	public void addSearcher(Grid grid){

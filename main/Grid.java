@@ -134,8 +134,8 @@ public class Grid extends JPanel implements MouseListener{
 		int ccol = bcol;
 		
 		for (int i = 0; i < steps; i++){
-			crow = crow - i*dy;
-			ccol = ccol + i*dx;
+			crow = crow - dy;
+			ccol = ccol + dx;
 			searched.add(new NormalCell(crow, ccol));// adds the current cell
 			for (int j = 1; j <= s.getRadius(); j++){ //adds the radius cells to searched
 				int jrow = crow - j*dy_90;
@@ -333,7 +333,7 @@ public class Grid extends JPanel implements MouseListener{
 			}
 			
 			waitingForUpdate = false;
-
+			searchedLine(manTarget, brow, bcol, target);
 			manTarget.setIndex(target);
 			repaint();
 

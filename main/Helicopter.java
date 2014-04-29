@@ -3,7 +3,7 @@ package main;
 import java.awt.Color;
 
 public class Helicopter extends AutoSearcher {
-	public static double RADIUS = 10.0;  
+	public static double RADIUS = 5.0;  
 
 	public Helicopter(String n, Cell ind, double s, double dir){
 		super(n, ind, RADIUS, s, dir);
