@@ -18,7 +18,7 @@ public class Grid extends JPanel implements MouseListener{
 
 	private static ArrayList<Searcher> searchers;
 	public final static Integer CELL_SIZE = 16;
-	private ArrayList<Cell> cells;
+	protected static ArrayList<Cell> cells;
 	//origin of grid is upper-left
 	public static int MAX_ROW = 0; //row is increasing going down 
 	public static int MAX_COL = 0; //col is increasing going right
@@ -124,7 +124,7 @@ public class Grid extends JPanel implements MouseListener{
 	//to new position(nrow, ncol)
 	//sets all the cells in the search range to searched
 	// they will all be yellow when repaint is called
-	/*public void searchedLine(Searcher s, int irow, int icol, int nrow, int ncol){
+	public static void searchedLine(Searcher s, int irow, int icol, int nrow, int ncol){
 		ArrayList<Cell> searched = new ArrayList<Cell>();
 		double crow = irow;
 		double ccol = icol;
@@ -185,7 +185,7 @@ public class Grid extends JPanel implements MouseListener{
 				cell.equals(sCell);
 			}
 		}
-	}*/
+	}
 	
 	public void addSearcher(Searcher s){ //called from the menu bar
 		searchers.add(s);
