@@ -55,6 +55,7 @@ public class Searcher extends JComponent{
 			newcol = intcol+dx;
 			if ((newrow<0 || newrow>Grid.MAX_ROW-1) || (newcol<0 || newcol>Grid.MAX_COL-1)){
 				setSpeed(0);
+				break;
 			}
 			else {
 				index.setRow(newrow);
