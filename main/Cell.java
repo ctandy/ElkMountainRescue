@@ -16,19 +16,16 @@ import javax.swing.JComponent;
 public abstract class Cell extends JComponent{
 	private int row, col;
 	private boolean searched;
-	private Color color;
 	
 	public Cell(int r, int c) {
 		this.row = r;
 		this.col = c;
-		this.color = null;
 		this.searched = false;
 	}
 	// when comparing 2 cells this will set a cell to searched and update the color of the cell
 	public boolean equals(Cell c){
 		if(this.row == c.getRow() && this.col == c.getCol()) {
 			this.searched = true;
-			this.color = Color.YELLOW;
 			return true;
 		}
 		else 
@@ -40,18 +37,10 @@ public abstract class Cell extends JComponent{
 	}
 	
 	public void setSearched(boolean searched) {
-		if (searched) 
-			this.color = Color.YELLOW;
-		else 
-			this.color = null;
 		this.searched = searched;
 	}
 	
 	public abstract void draw(Graphics2D g, Integer x, Integer y);
-	
-	public Color getColor() {
-		return color;
-	}
 	
 	public int getRow() {
 		return row;
@@ -78,8 +67,7 @@ public abstract class Cell extends JComponent{
 
 	@Override
 	public String toString() {
-		return "Cell [row=" + row + ", col=" + col + ", searched=" + searched
-				+ ", color=" + color + "]";
+		return "Cell [row=" + row + ", col=" + col + ", searched=" + searched + "]";
 	}
 	
 }

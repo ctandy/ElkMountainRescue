@@ -23,14 +23,5 @@ public class CellTest {
 		assertTrue(cell.equals(new NormalCell(0, 0)));
 		assertFalse(cell.equals(new NormalCell(1, 1)));
 	}
-	@Test
-	public void testSearchedColor() {
-		cell.setSearched(true);
-		assertEquals(Color.YELLOW, cell.getColor());
-		cell.setSearched(false);
-		assertEquals(null, cell.getColor());
-		cell.equals(new NormalCell(0, 0));
-		assertEquals(Color.YELLOW, cell.getColor());
-	}
 
 }

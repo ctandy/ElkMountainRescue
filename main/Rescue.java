@@ -115,12 +115,6 @@ public class Rescue extends JFrame{
 		file.add(close);
 		return menuBar;
 	}
-	
-
-	public void paintComponent(Graphics g){
-		super.paintComponents(g);
-		pack();
-	}
 
 	//updates the positions of the searchers
 	public void updateGrid() {

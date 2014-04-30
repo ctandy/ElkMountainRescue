@@ -1,9 +1,7 @@
 package main;
 
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.util.Map;
 
 public class NormalCell extends Cell{
 	
