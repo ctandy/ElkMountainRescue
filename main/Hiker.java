@@ -3,7 +3,7 @@ package main;
 import java.awt.Color;
 
 public class Hiker extends AutoSearcher {
-	public static double RADIUS = 2.0;  
+	public static double RADIUS = 1.0;  
 
 	public Hiker(String n, Cell ind, double s, double dir){
 		super(n, ind, RADIUS, s, dir);

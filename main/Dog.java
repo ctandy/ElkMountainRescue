@@ -3,7 +3,7 @@ package main;
 import java.awt.Color;
 
 public class Dog extends Searcher {
-	public static double RADIUS = 3.0;  
+	public static double RADIUS = 2.0;  
 
 	public Dog(String n, Cell ind){
 		super(n, ind, RADIUS);

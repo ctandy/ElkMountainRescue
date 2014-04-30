@@ -16,7 +16,8 @@ public class NormalCell extends Cell{
 		g.setColor(Color.black);
 		g.drawRect(x, y, Grid.CELL_SIZE.intValue(), Grid.CELL_SIZE.intValue());
 		if (this.isSearched()) {
-			g.setColor(this.getColor());
+			Color yellow = new Color (255,255,0,100);
+			g.setColor(yellow);
 			g.fillRect(x + 1, y + 1, Grid.CELL_SIZE.intValue() - 1, Grid.CELL_SIZE.intValue() - 1);
 		}
 	}
